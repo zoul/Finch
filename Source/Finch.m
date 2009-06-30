@@ -8,6 +8,7 @@
 @end
 
 @implementation Finch
+@synthesize userMusicPlaying;
 
 - (id) init
 {
@@ -32,24 +33,57 @@
 - (BOOL) openAudioSession
 {
     OSStatus errcode;
+    
+    // Initialize the audio session.
 	errcode = AudioSessionInitialize(NULL, NULL, NULL, NULL);
     if (errcode)
     {
         NSLog(@"Error initializing the audio session: %x", errcode);
         return NO;
     }
-    
-    // Mix user music with our sound.
+
+    /*
+        Check if there is user music playing. We do
+        not use this, but the called might be interested.
+        The check has to be done AFTER we initialize the
+        session and BEFORE we initialize OpenAL.
+    */
+	UInt32 userPlayback;
+	UInt32 propertySize = sizeof(userPlayback);
+	AudioSessionGetProperty(kAudioSessionProperty_OtherAudioIsPlaying,
+		&propertySize, &userPlayback);
+    userMusicPlaying = (userPlayback != 0);
+
+    /*
+        This is a hack. AVAudioPlayer (or maybe somebody lower
+        in the audio stack) sometimes refuses to play music, even
+        though the OtherAudioIsPlaying property indicates that no
+        other music is currently playing. It can be fixed by
+        switching to Media Playback session category temporarily.
+    */
+    if (!userMusicPlaying)
+    {
+        UInt32 sessionCategory = kAudioSessionCategory_MediaPlayback;
+        AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
+            sizeof(sessionCategory), &sessionCategory);
+        AudioSessionSetActive(YES);
+    }
+
+    /*
+        Set audio session cathegory. We use the Ambient Sound
+        category in order to mix game sounds with whatever is
+        playing underneath.
+    */
 	UInt32 sessionCategory = kAudioSessionCategory_AmbientSound;
 	errcode = AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
-		sizeof(sessionCategory), &sessionCategory);
+        sizeof(sessionCategory), &sessionCategory);
     if (errcode)
     {
         NSLog(@"Error setting session category: %x", errcode);
         return NO;
     }    
         
-	errcode = AudioSessionSetActive(true);
+	errcode = AudioSessionSetActive(YES);
     if (errcode)
     {
         NSLog(@"Error activating the audio session: %x", errcode);
@@ -57,15 +91,6 @@
     }
     
     return YES;
-}
-
-+ (BOOL) isUserMusicPlaying
-{
-	UInt32 userMusicPlaying;
-	UInt32 propertySize = sizeof(userMusicPlaying);
-	AudioSessionGetProperty(kAudioSessionProperty_OtherAudioIsPlaying,
-		&propertySize, &userMusicPlaying);
-	return userMusicPlaying != 0;
 }
 
 #pragma mark OpenAL Initialization
@@ -76,7 +101,7 @@
     NSLog(@"Running on simulator, OpenAL might not work.");
     #endif
     
-	device = alcOpenDevice(NULL);
+    device = alcOpenDevice(NULL);
     if (!device)
     {
         NSLog(@"Could not open default OpenAL device.");

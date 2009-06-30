@@ -5,8 +5,9 @@
 {
     ALCdevice *device;
     ALCcontext *context;
+    BOOL userMusicPlaying;
 }
 
-+ (BOOL) isUserMusicPlaying;
+@property(readonly) BOOL userMusicPlaying;
 
 @end
