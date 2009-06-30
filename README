@@ -3,21 +3,17 @@
 About
 =====
 
-Finch is a dead-simple OpenAL-based sound player for iPhone.
+Finch is a dead-simple OpenAL-based sound effect player for iPhone.
+The reasons for writing Finch instead of sticking with Apple’s
+AVAudioPlayer are described in my question on Stack Overflow:
 
-Goals:
+http://stackoverflow.com/questions/986983
 
-* Play samples without much fuss.
-* Do not lag in the `play` method as `AVAudioPlayer` does.
-
-Non-goals:
-
-* Playing background music.
-
-The reasons for coding Finch instead of sticking with `AVAudioPlayer`
-are described in my question on [Stack Overflow][so].
-
-[so]: http://stackoverflow.com/questions/986983
+The goals are simple: (1) Play sound effects without much fuss,
+and (2) do not lag in the `play` method as AVAudioPlayer does.
+Finch is not meant to play background music. If you want to play
+background music, you can simply stick to AVAudioPlayer. Finch
+will play the sound effects over the background music just fine.
 
 Howto
 =====
@@ -26,7 +22,6 @@ Howto
     #import "Sound+IO.h"
 
     // Initializes Audio Session, opens OpenAL device.
-    // Do once in the application.
     Finch *soundEngine = [[Finch alloc] init];
 
     NSString *soundPath = [[[NSBundle mainBundle] resourcePath]
@@ -36,6 +31,15 @@ Howto
 
 This is alpha code, the interface will almost certainly change.
 That said, it should be fairly easy to adapt to changes.
+
+Bugs, gotchas
+=============
+
+Many people are having problems with OpenAL sound in the simulator.
+I have not found a definitive answer from Apple, but it seems that
+OpenAL simply does not work in the simulator. When run on the
+simulator, Finch will warn you that OpenAL is probably not going
+to work.
 
 License
 =======
@@ -53,4 +57,4 @@ Links
 Author
 ======
 
-Tomáš Znamenáček, <zoul@fleuron.cz>. Suggestions welcome.
+Tomáš Znamenáček, <zoul@fleuron.cz>. Suggestions welcomed.

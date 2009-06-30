@@ -72,6 +72,10 @@
 
 - (BOOL) initOpenAL
 {
+    #if TARGET_IPHONE_SIMULATOR
+    NSLog(@"Running on simulator, OpenAL might not work.");
+    #endif
+    
 	device = alcOpenDevice(NULL);
     if (!device)
     {
