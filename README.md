@@ -3,15 +3,15 @@ About
 
 Finch is a dead-simple OpenAL-based sound effect player for iPhone.
 The reasons for writing Finch instead of sticking with Apple’s
-AVAudioPlayer are described in my question on Stack Overflow:
+`AVAudioPlayer` are described in my [question on Stack Overflow][so].
 
-http://stackoverflow.com/questions/986983
+[so]: http://stackoverflow.com/questions/986983
 
 The goals are simple: (1) Play sound effects without much fuss,
-and (2) do not lag in the `play` method as AVAudioPlayer does.
+and (2) do not lag in the `play` method as `AVAudioPlayer` does.
 Finch is not meant to play background music. If you want to play
-background music, you can simply stick to AVAudioPlayer. Finch
-will play the sound effects over the background music just fine.
+background music, you can go with `AVAudioPlayer`. Finch will
+play the sound effects over the background music just fine.
 
 Howto
 =====
@@ -47,10 +47,13 @@ You can do with this code whatever you like.
 Links
 =====
 
-* http://github.com/zoul/Finch/
-* http://www.subfurther.com/blog/?p=602
-* http://connect.creativelabs.com/openal/Documentation/OpenAL_Programmers_Guide.pdf
-* http://connect.creativelabs.com/openal/Documentation/OpenAL%201.1%20Specification.pdf
+* [Finch on github][git]
+* [An iPhone OpenAL brain dump][dump]
+* [OpenAL Programmer’s Guide][guide]
+
+[git]: http://github.com/zoul/Finch/
+[dump]: http://www.subfurther.com/blog/?p=602
+[guide]: http://connect.creativelabs.com/openal/Documentation/OpenAL_Programmers_Guide.pdf
 
 Author
 ======
