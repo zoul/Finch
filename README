@@ -1,0 +1,46 @@
+<!-- vim: set ft=mkd: -->
+
+About
+=====
+
+Finch is a dead-simple OpenAL-based sound player for iPhone.
+
+Goals:
+
+* Play samples without much fuss.
+* Do not lag in the `play` method as `AVAudioPlayer` does.
+
+Non-goals:
+
+* Playing background music.
+
+Howto
+=====
+
+    #import "Finch.h"
+    #import "Sound+IO.h"
+
+    // Initializes Audio Session, opens OpenAL device.
+    Finch *soundEngine = [[Finch alloc] init];
+
+    NSString *soundPath = [[[NSBundle mainBundle] resourcePath]
+        stringByAppendingPathComponent:@"SFX/click.wav"];
+    Sound *click = [[Sound alloc] initWithFile:path];
+    [sample play];
+
+License
+=======
+
+You can do with this code whatever you like.
+
+Links
+=====
+
+* http://www.subfurther.com/blog/?p=602
+* http://connect.creativelabs.com/openal/Documentation/OpenAL_Programmers_Guide.pdf
+* http://connect.creativelabs.com/openal/Documentation/OpenAL%201.1%20Specification.pdf
+
+Author
+======
+
+Tomáš Znamenáček, <zoul@fleuron.cz>
