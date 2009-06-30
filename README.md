@@ -1,17 +1,15 @@
 About
 =====
 
-Finch is a dead-simple OpenAL-based sound effect player for iPhone.
-The reasons for writing Finch instead of sticking with Apple’s
-`AVAudioPlayer` are described in my [question on Stack Overflow][so].
+Finch is a dead-simple OpenAL-based sound effect player for iPhone. The
+reasons for writing Finch instead of sticking with Apple’s `AVAudioPlayer` are
+described in my [question on Stack Overflow][so]. The goals are simple: (1)
+Play sound effects without much fuss, and (2) do not lag in the `play` method
+as `AVAudioPlayer` does. Finch is not meant to play background music. If you
+want to play background music, you can go with `AVAudioPlayer`. Finch will play
+the sound effects over the background music just fine.
 
 [so]: http://stackoverflow.com/questions/986983
-
-The goals are simple: (1) Play sound effects without much fuss,
-and (2) do not lag in the `play` method as `AVAudioPlayer` does.
-Finch is not meant to play background music. If you want to play
-background music, you can go with `AVAudioPlayer`. Finch will
-play the sound effects over the background music just fine.
 
 Howto
 =====
@@ -27,17 +25,16 @@ Howto
     Sound *click = [[Sound alloc] initWithFile:path];
     [sample play];
 
-This is alpha code, the interface will almost certainly change.
-That said, it should be fairly easy to adapt to changes.
+This is alpha code, the interface will almost certainly change. That said, it
+should be fairly easy to adapt to changes.
 
 Bugs, gotchas
 =============
 
-Many people are having problems with OpenAL sound in the simulator.
-I have not found a definitive answer from Apple, but it seems that
-OpenAL simply does not work in the simulator. When run on the
-simulator, Finch will warn you that OpenAL is probably not going
-to work.
+Many people are having problems with OpenAL sound in the simulator. I have not
+found a definitive answer from Apple, but it seems that OpenAL simply does not
+work in the simulator. When run on the simulator, Finch will warn you that
+OpenAL is probably not going to work.
 
 License
 =======
