@@ -1,5 +1,3 @@
-<!-- vim: set ft=mkd: -->
-
 About
 =====
 
