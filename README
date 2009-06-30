@@ -14,6 +14,11 @@ Non-goals:
 
 * Playing background music.
 
+The reasons for coding Finch instead of sticking with `AVAudioPlayer`
+are described in my question on [Stack Overflow][so].
+
+[so]: http://stackoverflow.com/questions/986983
+
 Howto
 =====
 
@@ -21,12 +26,16 @@ Howto
     #import "Sound+IO.h"
 
     // Initializes Audio Session, opens OpenAL device.
+    // Do once in the application.
     Finch *soundEngine = [[Finch alloc] init];
 
     NSString *soundPath = [[[NSBundle mainBundle] resourcePath]
         stringByAppendingPathComponent:@"SFX/click.wav"];
     Sound *click = [[Sound alloc] initWithFile:path];
     [sample play];
+
+This is alpha code, the interface will almost certainly change.
+That said, it should be fairly easy to adapt to changes.
 
 License
 =======
@@ -36,6 +45,7 @@ You can do with this code whatever you like.
 Links
 =====
 
+* http://github.com/zoul/Finch/
 * http://www.subfurther.com/blog/?p=602
 * http://connect.creativelabs.com/openal/Documentation/OpenAL_Programmers_Guide.pdf
 * http://connect.creativelabs.com/openal/Documentation/OpenAL%201.1%20Specification.pdf
@@ -43,4 +53,4 @@ Links
 Author
 ======
 
-Tomáš Znamenáček, <zoul@fleuron.cz>
+Tomáš Znamenáček, <zoul@fleuron.cz>. Suggestions welcome.
