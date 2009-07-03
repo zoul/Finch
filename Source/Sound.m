@@ -5,7 +5,7 @@
 #define DETACH_SOURCE 0
 
 @implementation Sound
-@synthesize loop;
+@synthesize loop, length;
 
 // Clears the error flag.
 - (BOOL) checkSuccessOrLog: (NSString*) msg

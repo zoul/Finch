@@ -67,6 +67,11 @@ typedef struct ReadInfo ReadInfo;
 		NSLog(@"Failed to read sound file size (%x).", errcode);
 		goto exit;
 	}
+    
+    propertySize = sizeof(length);
+    errcode = AudioFileGetProperty(fileId, kAudioFilePropertyEstimatedDuration, &propertySize, &length);
+    if (errcode)
+        NSLog(@"Failed to read sound length: %x.", errcode);
 	
 	UInt32 dataSize = (UInt32) fileSize;
 	result.data = malloc(dataSize);
