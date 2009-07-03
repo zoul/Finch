@@ -16,14 +16,23 @@ Howto
 
     #import "Finch.h"
     #import "Sound+IO.h"
+    #import "RevolverSound.h"
 
     // Initializes Audio Session, opens OpenAL device.
     Finch *soundEngine = [[Finch alloc] init];
 
-    NSString *soundPath = [[[NSBundle mainBundle] resourcePath]
-        stringByAppendingPathComponent:@"SFX/click.wav"];
-    Sound *click = [[Sound alloc] initWithFile:path];
+    // Simple sound, only one instance can play at a time.
+    // If you call ‘play’ and the sound is still playing,
+    // it will start from the beginning.
+    Sound *click = [[Sound alloc] initWithFile:@"…/SFX/click.wav"];
     [sample play];
+
+    // For playing multiple instances of the same sample at once.
+    RevolverSound *gun = [[RevolverSound alloc]
+        initWithFile:@"…/SFX/gunshot.wav" rounds:10];
+    // Now I have a machinegun, ho-ho-ho.
+    for (int i=1; i<=10; i++)
+        [gun play];
 
 This is alpha code, the interface will almost certainly change. That said, it
 should be fairly easy to adapt to changes.
