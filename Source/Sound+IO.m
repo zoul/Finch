@@ -52,6 +52,12 @@ typedef struct ReadInfo ReadInfo;
 		NSLog(@"Sound file not linear PCM.");
 		goto exit;
 	}
+
+    if (!TestAudioFormatNativeEndian(fileFormat))
+    {
+        NSLog(@"Sounds must be little-endian.");
+        goto exit;
+    }
 	
 	if ((fileFormat.mBitsPerChannel != 8) && (fileFormat.mBitsPerChannel != 16))
     { 
@@ -67,7 +73,7 @@ typedef struct ReadInfo ReadInfo;
 		NSLog(@"Failed to read sound file size (%x).", errcode);
 		goto exit;
 	}
-    
+
     propertySize = sizeof(length);
     errcode = AudioFileGetProperty(fileId, kAudioFilePropertyEstimatedDuration, &propertySize, &length);
     if (errcode)
