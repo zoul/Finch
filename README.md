@@ -14,6 +14,9 @@ the sound effects over the background music just fine.
 Howto
 =====
 
+This is alpha code, the interface will almost certainly change. That said, it
+should be fairly easy to adapt to changes.
+
     #import "Finch.h"
     #import "Sound+IO.h"
     #import "RevolverSound.h"
@@ -34,9 +37,11 @@ Howto
     for (int i=1; i<=10; i++)
         [gun play];
 
-(Don’t forget to link the application with `AudioToolbox` and `OpenAL`
-frameworks.) This is alpha code, the interface will almost certainly change.
-That said, it should be fairly easy to adapt to changes.
+Don’t forget to link the application with `AudioToolbox` and `OpenAL`
+frameworks. And please note that OpenAL does not support any compressed
+audio, which means that Finch – being just a tiny wrapper around OpenAL –
+also does not support compressed audio. You should be safe with mono or
+stereo WAV files sampled at 44.100 Hz.
 
 Bugs, gotchas
 =============
@@ -53,6 +58,8 @@ You can do with this code whatever you like.
 
 Links
 =====
+
+Some links you might find useful:
 
 * [Finch on github][git]
 * [An iPhone OpenAL brain dump][dump]
