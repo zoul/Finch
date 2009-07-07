@@ -34,8 +34,9 @@ Howto
     for (int i=1; i<=10; i++)
         [gun play];
 
-This is alpha code, the interface will almost certainly change. That said, it
-should be fairly easy to adapt to changes.
+(Don’t forget to link the application with `AudioToolbox` and `OpenAL`
+frameworks.) This is alpha code, the interface will almost certainly change.
+That said, it should be fairly easy to adapt to changes.
 
 Bugs, gotchas
 =============
