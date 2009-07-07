@@ -5,7 +5,7 @@
 #define DETACH_SOURCE 0
 
 @implementation Sound
-@synthesize loop, length;
+@synthesize loop, length, gain;
 
 // Clears the error flag.
 - (BOOL) checkSuccessOrLog: (NSString*) msg
@@ -44,7 +44,8 @@
 	alSourcei(source, AL_BUFFER, buffer);
     if (![self checkSuccessOrLog:@"Failed to create OpenAL source"])
         return nil;
-        
+
+    gain = 1;
     return self;
 }
 
@@ -60,6 +61,12 @@
 }
 
 #pragma mark Playback Controls
+
+- (void) setGain: (float) val
+{
+    gain = val;
+    alSourcef(source, AL_GAIN, gain);
+}
 
 - (BOOL) playing
 {

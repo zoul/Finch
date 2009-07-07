@@ -14,6 +14,8 @@
     int current;
 }
 
+@property(assign) float gain;
+
 - (id) initWithFile: (NSString*) file rounds: (int) max;
 
 - (void) play;

@@ -6,6 +6,7 @@
     BOOL loop;
     ALuint source, buffer;
     double length;
+    float gain;
 }
 
 // Sound length in seconds.
@@ -14,6 +15,8 @@
 @property(readonly) BOOL playing;
 // Should the sound loop?
 @property(assign) BOOL loop;
+// Sound gain.
+@property(assign) float gain;
 
 - (void) play;
 - (void) stop;

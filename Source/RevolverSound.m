@@ -29,4 +29,15 @@
     [[sounds objectAtIndex:current] stop];
 }
 
+- (void) setGain: (float) val
+{
+    for (Sound *sound in sounds)
+        [sound setGain:val];
+}
+
+- (float) gain
+{
+    return [[sounds lastObject] gain];
+}
+
 @end
