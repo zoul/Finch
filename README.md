@@ -43,6 +43,15 @@ audio, which means that Finch – being just a tiny wrapper around OpenAL –
 also does not support compressed audio. You should be safe with mono or
 stereo WAV files sampled at 44.100 Hz.
 
+Another thing to keep in mind is that you have to pass an absolute path
+when loading a sound. If you have a `boom.wav` sound in a `SFX` directory
+of your resources directory, you can get the full path using the following
+code:
+
+    NSString *fullpath = [[[NSBundle mainBundle] resourcePath]
+       stringByAppendingPathComponent:@"SFX/boom.wav"];
+    Sound *boom = [[Sound alloc] initWithFile:fullPath];
+
 Bugs, gotchas
 =============
 
