@@ -112,6 +112,14 @@ exit:
 
 - (id) initWithFile: (NSString*) path
 {
+    // Provide a friendly error message in case
+    // the caller screwed up the file path.
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path])
+    {
+        NSLog(@"Sound not found: %@.", path);
+        return nil;
+    }
+    
     ReadInfo info = [self readPCMDataFrom:[NSURL fileURLWithPath:path]];
     if (!info.success)
         return nil;
