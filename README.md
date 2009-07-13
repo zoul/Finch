@@ -28,7 +28,7 @@ should be fairly easy to adapt to changes.
     // If you call ‘play’ and the sound is still playing,
     // it will start from the beginning.
     Sound *click = [[Sound alloc] initWithFile:@"…/SFX/click.wav"];
-    [sample play];
+    [click play];
 
     // For playing multiple instances of the same sample at once.
     RevolverSound *gun = [[RevolverSound alloc]
