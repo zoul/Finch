@@ -8,7 +8,13 @@
     [super init];
     sounds = [[NSMutableArray alloc] init];
     for (int i=0; i<max; i++)
-        [sounds addObject:[[[Sound alloc] initWithFile:file] autorelease]];
+    {
+        Sound *const sample = [[Sound alloc] initWithFile:file];
+        if (!sample)
+            return nil;
+        [sounds addObject:sample];
+        [sample release];
+    }
     return self;
 }
 
