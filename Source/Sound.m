@@ -26,6 +26,13 @@
 {
     [super init];
     
+    ALCcontext *const currentContext = alcGetCurrentContext();
+    if (currentContext == NULL)
+    {
+        NSLog(@"OpenAL context not set, did you initialize Finch?");
+        return nil;
+    }
+    
     // Allocate buffer.
     CLEAR_ERROR_FLAG;
     alGenBuffers(1, &buffer);
