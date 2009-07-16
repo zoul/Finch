@@ -52,6 +52,19 @@ code:
        stringByAppendingPathComponent:@"SFX/boom.wav"];
     Sound *boom = [[Sound alloc] initWithFile:fullPath];
 
+Background music
+================
+
+You can use `AVAudioPlayer` to play background music. There is one
+catch regarding system sound - Finch by default uses the `AmbientSound`
+audio session category which [harms MP3 decoding performance][mp3].
+If you want to play background music, you should probably switch to
+the `SoloAmbientSound` category:
+
+    soundEngine.mixWithSystemSound = NO;
+
+[mp3]: http://stackoverflow.com/questions/1009385
+
 Bugs, gotchas
 =============
 

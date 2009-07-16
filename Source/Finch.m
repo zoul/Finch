@@ -2,9 +2,12 @@
 #import <AudioToolbox/AudioToolbox.h> 
 
 @interface Finch (Private)
+
 - (BOOL) openAudioSession;
-+ (BOOL) isUserMusicPlaying;
 - (BOOL) initOpenAL;
+
+@property(assign) UInt32 sessionCategory;
+
 @end
 
 @implementation Finch
@@ -42,46 +45,28 @@
         return NO;
     }
 
-    /*
-        Check if there is user music playing. We do
-        not use this, but the called might be interested.
-        The check has to be done AFTER we initialize the
-        session and BEFORE we initialize OpenAL.
-    */
+    // Check if some other sound is already playing.
 	UInt32 userPlayback;
 	UInt32 propertySize = sizeof(userPlayback);
-	AudioSessionGetProperty(kAudioSessionProperty_OtherAudioIsPlaying,
+	AudioSessionGetProperty(
+        kAudioSessionProperty_OtherAudioIsPlaying,
 		&propertySize, &userPlayback);
     userMusicPlaying = (userPlayback != 0);
 
     /*
-        This is a hack. AVAudioPlayer (or maybe somebody lower
-        in the audio stack) sometimes refuses to play music, even
-        though the OtherAudioIsPlaying property indicates that no
-        other music is currently playing. It can be fixed by
-        switching to Media Playback session category temporarily.
+    This is a hack. AVAudioPlayer (or maybe somebody lower
+    in the audio stack) sometimes refuses to play music, even
+    though the OtherAudioIsPlaying property indicates that no
+    other music is currently playing. It can be fixed by
+    switching to Media Playback session category temporarily.
     */
     if (!userMusicPlaying)
     {
-        UInt32 sessionCategory = kAudioSessionCategory_MediaPlayback;
-        AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
-            sizeof(sessionCategory), &sessionCategory);
+        self.sessionCategory = kAudioSessionCategory_MediaPlayback;
         AudioSessionSetActive(YES);
     }
 
-    /*
-        Set audio session cathegory. We use the Ambient Sound
-        category in order to mix game sounds with whatever is
-        playing underneath.
-    */
-	UInt32 sessionCategory = kAudioSessionCategory_AmbientSound;
-	errcode = AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
-        sizeof(sessionCategory), &sessionCategory);
-    if (errcode)
-    {
-        NSLog(@"Error setting session category: %x", errcode);
-        return NO;
-    }    
+    [self setMixWithSystemSound:YES];
         
 	errcode = AudioSessionSetActive(YES);
     if (errcode)
@@ -91,6 +76,36 @@
     }
     
     return YES;
+}
+
+#pragma mark Audio Category
+
+- (void) setSessionCategory: (UInt32) cat
+{
+    AudioSessionSetProperty(
+        kAudioSessionProperty_AudioCategory,
+        sizeof(cat), &cat);
+}
+
+- (UInt32) sessionCategory
+{
+    UInt32 propertySize, cat;
+    AudioSessionGetProperty(
+        kAudioSessionProperty_AudioCategory,
+        &propertySize, &cat);
+    return cat;
+}
+
+- (void) setMixWithSystemSound: (BOOL) mix
+{
+    self.sessionCategory = mix ?
+        kAudioSessionCategory_AmbientSound :
+        kAudioSessionCategory_SoloAmbientSound;
+}
+
+- (BOOL) mixWithSystemSound
+{
+    return (self.sessionCategory == kAudioSessionCategory_AmbientSound);
 }
 
 #pragma mark OpenAL Initialization
