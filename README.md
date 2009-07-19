@@ -69,9 +69,8 @@ Bugs, gotchas
 =============
 
 Many people are having problems with OpenAL sound in the simulator. I have not
-found a definitive answer from Apple, but it seems that OpenAL simply does not
-work in the simulator. When run on the simulator, Finch will warn you that
-OpenAL is probably not going to work.
+found a definitive answer from Apple, but it seems that OpenAL quite often does
+not work in the simulator.
 
 License
 =======
