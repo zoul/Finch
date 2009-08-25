@@ -89,7 +89,7 @@
 
 - (UInt32) sessionCategory
 {
-    UInt32 propertySize, cat;
+    UInt32 propertySize = sizeof(UInt32), cat;
     AudioSessionGetProperty(
         kAudioSessionProperty_AudioCategory,
         &propertySize, &cat);
