@@ -66,7 +66,7 @@
         AudioSessionSetActive(YES);
     }
 
-    [self setMixWithSystemSound:YES];
+    [self setMixWithSystemSound:userMusicPlaying];
         
 	errcode = AudioSessionSetActive(YES);
     if (errcode)
