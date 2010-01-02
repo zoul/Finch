@@ -38,7 +38,7 @@
     OSStatus errcode;
     
     // Initialize the audio session.
-	errcode = AudioSessionInitialize(NULL, NULL, NULL, NULL);
+    errcode = AudioSessionInitialize(NULL, NULL, NULL, NULL);
     if (errcode)
     {
         NSLog(@"Error initializing the audio session: %x", errcode);
@@ -46,11 +46,11 @@
     }
 
     // Check if some other sound is already playing.
-	UInt32 userPlayback;
-	UInt32 propertySize = sizeof(userPlayback);
-	AudioSessionGetProperty(
+    UInt32 userPlayback;
+    UInt32 propertySize = sizeof(userPlayback);
+    AudioSessionGetProperty(
         kAudioSessionProperty_OtherAudioIsPlaying,
-		&propertySize, &userPlayback);
+        &propertySize, &userPlayback);
     userMusicPlaying = (userPlayback != 0);
 
     /*
