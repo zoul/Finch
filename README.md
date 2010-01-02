@@ -55,13 +55,26 @@ code:
 Background music
 ================
 
-You can use `AVAudioPlayer` to play background music. There is one
-catch regarding system sound – Finch by default uses the `AmbientSound`
-audio session category which [harms MP3 decoding performance][mp3].
-If you want to play background music, you should probably switch to
-the `SoloAmbientSound` category:
+Finch is designed to play short uncompressed samples. If you want to
+play background music, you can use the `AVAudioPlayer` class supplied
+by Apple. Finch will mix with the background track just fine.
 
-    soundEngine.mixWithSystemSound = NO;
+There is one important catch in playing background music, or more precisely, in
+playing compressed audio on iPhone. Each application that wants to work with
+sound on iPhone can choose from several audio session ‘categories’ that affect
+the way your application behaves with respect to sound. If you want to play
+your sound over the system sounds, for example over the iPod sound, you have to
+choose the `AmbientSound` category. The problem is that this category [harms
+MP3 decoding performance][mp3]. This means that if you want to play your own
+background music, you should switch to the `SoloAmbientSound` category, which
+does not mix your sound with the system sound, but does not harm the MP3 decoding
+performance. In Finch you can use the `mixWithSystemSound` property to switch
+between the `SoloAmbientSound` and `AmbientSound` categories:
+
+    soundEngine.mixWithSystemSound = NO;  // SoloAmbientSound
+    soundEngine.mixWithSystemSound = YES; // AmbientSound
+
+By default Finch will mix with system sound if there is something playing.
 
 [mp3]: http://stackoverflow.com/questions/1009385
 
