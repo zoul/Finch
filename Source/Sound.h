@@ -18,6 +18,7 @@
 // Sound gain.
 @property(assign) float gain;
 
+- (id) initWithFile: (NSString*) name;
 - (void) play;
 - (void) stop;
 

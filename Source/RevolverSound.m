@@ -1,5 +1,5 @@
 #import "RevolverSound.h"
-#import "Sound+IO.h"
+#import "Sound.h"
 
 @implementation RevolverSound
 

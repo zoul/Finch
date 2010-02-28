@@ -1,5 +1,7 @@
 #import "Sound.h"
 #import <AudioToolbox/AudioToolbox.h> 
+#import "Decoder.h"
+#import "Sample.h"
 
 #define CLEAR_ERROR_FLAG alGetError()
 #define DETACH_SOURCE 0
@@ -21,7 +23,7 @@
 
 #pragma mark Designated Initializer
 
-- (id) initWithData: (ALvoid*) data length: (ALsizei) size
+- (id) initWithData: (const ALvoid*) data length: (ALsizei) size
     format: (ALenum) format sampleRate: (ALsizei) frequency 
 {
     [super init];
@@ -65,6 +67,14 @@
     alDeleteSources(1, &source), source = 0;
     [self checkSuccessOrLog:@"Failed to clean up after sound"];
     [super dealloc];
+}
+
+- (id) initWithFile: (NSString*) name
+{
+    Sample *sample = [Decoder decodeFile:name error:nil];
+    ALenum format = (sample.channels > 1) ? AL_FORMAT_STEREO16 : AL_FORMAT_MONO16;
+    return [self initWithData:sample.data.bytes length:sample.duration
+        format:format sampleRate:sample.sampleRate];
 }
 
 #pragma mark Playback Controls
