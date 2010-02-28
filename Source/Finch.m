@@ -39,8 +39,7 @@
     
     // Initialize the audio session.
     errcode = AudioSessionInitialize(NULL, NULL, NULL, NULL);
-    if (errcode)
-    {
+    if (errcode) {
         NSLog(@"Error initializing the audio session: %x", errcode);
         return NO;
     }
@@ -60,8 +59,7 @@
     other music is currently playing. It can be fixed by
     switching to Media Playback session category temporarily.
     */
-    if (!userMusicPlaying)
-    {
+    if (!userMusicPlaying) {
         self.sessionCategory = kAudioSessionCategory_MediaPlayback;
         AudioSessionSetActive(YES);
     }
@@ -69,8 +67,7 @@
     [self setMixWithSystemSound:userMusicPlaying];
         
 	errcode = AudioSessionSetActive(YES);
-    if (errcode)
-    {
+    if (errcode) {
         NSLog(@"Error activating the audio session: %x", errcode);
         return NO;
     }
@@ -113,22 +110,19 @@
 - (BOOL) initOpenAL
 {
     device = alcOpenDevice(NULL);
-    if (!device)
-    {
+    if (!device) {
         NSLog(@"Could not open default OpenAL device.");
         return NO;
     }
     
     context = alcCreateContext(device, 0);
-    if (!context)
-    {
+    if (!context) {
         NSLog(@"Failed to create OpenAL context for default device.");
         return NO;
     }
     
     BOOL success = alcMakeContextCurrent(context);
-    if (!success)
-    {
+    if (!success) {
         NSLog(@"Failed to set current OpenAL context.");
         return NO;
     }
