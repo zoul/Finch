@@ -80,6 +80,7 @@
     [sample setChannels:fileFormat.mChannelsPerFrame];
     [sample setEndianity:TestAudioFormatNativeEndian(fileFormat) ? kLittleEndian : kBigEndian];
     [sample setBitsPerChannel:fileFormat.mBitsPerChannel];
+    [sample setSampleRate:fileFormat.mSampleRate];
     [sample setDuration:sampleLength];
     [sample setData:[NSData dataWithBytesNoCopy:data length:dataSize freeWhenDone:YES]];
     
