@@ -18,7 +18,7 @@ This is alpha code, the interface will almost certainly change. That said, it
 should be fairly easy to adapt to changes.
 
     #import "Finch.h"
-    #import "Sound+IO.h"
+    #import "Sound.h"
     #import "RevolverSound.h"
 
     // Initializes Audio Session, opens OpenAL device.
