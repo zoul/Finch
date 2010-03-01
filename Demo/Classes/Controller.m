@@ -23,10 +23,19 @@ static const int kBulletRounds = 4;
     engine = [[Finch alloc] init];
     sitar = [[Sound alloc] initWithFile:RSRC(@"sitar.wav")];
     gun = [[RevolverSound alloc] initWithFile:RSRC(@"shot.wav") rounds:kBulletRounds];
-    [sitar setPitch:2];
 }
 
-- (void) makeGoodSound: (id) sender
+- (void) dealloc
+{
+    [engine release];
+    [sitar release];
+    [gun release];
+    [super dealloc];
+}
+
+#pragma mark Actions
+
+- (IBAction) makeGoodSound: (id) sender
 {
     NSLog(@"Playing good sound.");
     [sitar play];
@@ -41,12 +50,9 @@ static const int kBulletRounds = 4;
     }
 }
 
-- (void) dealloc
+- (IBAction) updateSitarPitchFrom: (id) sender
 {
-    [engine release];
-    [sitar release];
-    [gun release];
-    [super dealloc];
+    sitar.pitch = [(UISlider*) sender value];
 }
 
 @end
