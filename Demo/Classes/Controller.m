@@ -23,6 +23,7 @@ static const int kBulletRounds = 4;
     engine = [[Finch alloc] init];
     sitar = [[Sound alloc] initWithFile:RSRC(@"sitar.wav")];
     gun = [[RevolverSound alloc] initWithFile:RSRC(@"shot.wav") rounds:kBulletRounds];
+    [sitar setPitch:2];
 }
 
 - (void) makeGoodSound: (id) sender

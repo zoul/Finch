@@ -8,7 +8,7 @@
 #define DETACH_SOURCE 0
 
 @implementation Sound
-@synthesize loop, length, gain;
+@synthesize loop, length, gain, pitch;
 
 // Clears the error flag.
 - (BOOL) checkSuccessOrLog: (NSString*) msg
@@ -118,6 +118,12 @@
 {
     gain = val;
     alSourcef(source, AL_GAIN, gain);
+}
+
+- (void) setPitch: (float) val
+{
+    pitch = val;
+    alSourcef(source, AL_PITCH, pitch);
 }
 
 - (BOOL) playing

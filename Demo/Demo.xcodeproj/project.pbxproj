@@ -78,7 +78,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
+		080E96DDFE201D6D7F000001 /* Application Classes */ = {
 			isa = PBXGroup;
 			children = (
 				1D3623240D0F684500981E51 /* Application.h */,
@@ -86,6 +86,7 @@
 				28D7ACF60DDB3853001CB0EB /* Controller.h */,
 				28D7ACF70DDB3853001CB0EB /* Controller.m */,
 			);
+			name = "Application Classes";
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -131,7 +132,7 @@
 			children = (
 				0DBBA07F113BE7BC00236DFC /* Sample Decoder */,
 				0D4AC9ED100D14FF00BFE1FA /* Finch */,
-				080E96DDFE201D6D7F000001 /* Classes */,
+				080E96DDFE201D6D7F000001 /* Application Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,

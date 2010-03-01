@@ -11,7 +11,7 @@ enum SoundError {
 {
     BOOL loop;
     ALuint source, buffer;
-    float gain;
+    float gain, pitch;
 }
 
 // Sound length in seconds.
@@ -22,6 +22,8 @@ enum SoundError {
 @property(assign) BOOL loop;
 // Sound gain.
 @property(assign) float gain;
+// Sound pitch.
+@property(assign) float pitch;
 
 - (id) initWithFile: (NSString*) name;
 - (id) initWithFile: (NSString*) name error: (NSError**) error;
