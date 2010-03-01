@@ -1,24 +1,9 @@
 #import "Decoder.h"
+#import "SNDError.h"
 
-static NSString *const kErrorDomain = @"Sample Decoder";
 static NSMutableDictionary *decoders = nil;
 
 @implementation Decoder
-
-#pragma mark Error Handling
-
-+ (NSError*) errorWithCode: (int) decoderErrorCode
-{
-    return [NSError errorWithDomain:kErrorDomain
-        code:decoderErrorCode userInfo:nil];
-}
-
-+ (NSError*) errorWithCode: (int) decoderErrorCode description: (NSString*) msg
-{
-    return [NSError errorWithDomain:kErrorDomain
-        code:decoderErrorCode userInfo:[NSDictionary
-        dictionaryWithObject:msg forKey:NSLocalizedDescriptionKey]];
-}
 
 #pragma mark Decoders
 
@@ -44,7 +29,7 @@ static NSMutableDictionary *decoders = nil;
                 decodeFile:path error:error];
     
     // No decoder found
-    *error = [self errorWithCode:kDENoSuitableDecoderFound description:
+    *error = [SNDError errorWithCode:kDENoSuitableDecoderFound description:
         [NSString stringWithFormat:@"No suitable decoder found for %@.", path]];
     return nil;
 }

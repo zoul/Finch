@@ -1,11 +1,7 @@
 #import "PCMDecoder.h"
-#import "Sample.h"
 #import <AudioToolbox/AudioToolbox.h> 
-
-@interface Decoder (Errors)
-+ (NSError*) errorWithCode: (int) decoderErrorCode;
-+ (NSError*) errorWithCode: (int) decoderErrorCode description: (NSString*) msg;
-@end
+#import "Sample.h"
+#import "SNDError.h"
 
 @implementation PCMDecoder
 
@@ -14,11 +10,12 @@
 	OSStatus errcode = noErr;
 	UInt32 propertySize;
 	AudioFileID fileId = 0;
-    NSURL *path = [NSURL URLWithString:name];
+    NSURL *path = [NSURL fileURLWithPath:name];
+    INIT_ERROR(error);
     
 	errcode = AudioFileOpenURL((CFURLRef) path, kAudioFileReadPermission, 0, &fileId);
 	if (errcode) {
-        *error = [Decoder errorWithCode:kDEFileReadError];
+        *error = [SNDError errorWithCode:kDEFileReadError];
 		return nil;
 	}
 	
@@ -26,13 +23,13 @@
     propertySize = sizeof(fileFormat);
 	errcode = AudioFileGetProperty(fileId, kAudioFilePropertyDataFormat, &propertySize, &fileFormat);
 	if (errcode) {
-        *error = [Decoder errorWithCode:kDEFileFormatReadError];
+        *error = [SNDError errorWithCode:kDEFileFormatReadError];
         AudioFileClose(fileId);
 		return nil;
 	}
 
 	if (fileFormat.mFormatID != kAudioFormatLinearPCM) { 
-        *error = [Decoder
+        *error = [SNDError
             errorWithCode:kDEInvalidFileFormat
             description:@"Sound file not linear PCM."];
         AudioFileClose(fileId);
@@ -43,18 +40,18 @@
     propertySize = sizeof(fileSize);
 	errcode = AudioFileGetProperty(fileId, kAudioFilePropertyAudioDataByteCount, &propertySize, &fileSize);
 	if (errcode) {
-        *error = [Decoder
+        *error = [SNDError
             errorWithCode:kDEFileFormatReadError
             description:@"Failed to read sound file size."];
         AudioFileClose(fileId);
         return nil;
 	}
 
-    float sampleLength = -1;
+    double sampleLength = -1;
     propertySize = sizeof(sampleLength);
     errcode = AudioFileGetProperty(fileId, kAudioFilePropertyEstimatedDuration, &propertySize, &sampleLength);
     if (errcode) {
-        *error = [Decoder
+        *error = [SNDError
             errorWithCode:kDEFileFormatReadError
             description:@"Failed to read sound length."];
         AudioFileClose(fileId);
@@ -64,14 +61,14 @@
 	UInt32 dataSize = (UInt32) fileSize;
 	void *data = malloc(dataSize);
 	if (!data) {
-        *error = [Decoder errorWithCode:kDEMemoryAllocationError];
+        *error = [SNDError errorWithCode:kDEMemoryAllocationError];
         AudioFileClose(fileId);
         return nil;
     }
     
     errcode = AudioFileReadBytes(fileId, false, 0, &dataSize, data);
     if (errcode) {
-        *error = [Decoder
+        *error = [SNDError
             errorWithCode:kDEFileFormatReadError
             description:@"Failed to read sound data."];
         free(data);

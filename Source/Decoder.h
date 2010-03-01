@@ -2,7 +2,7 @@
 
 enum DecoderError
 {
-    kDENoSuitableDecoderFound,
+    kDENoSuitableDecoderFound = 1,
     kDEFileReadError,
     kDEFileFormatReadError,
     kDEInvalidFileFormat,

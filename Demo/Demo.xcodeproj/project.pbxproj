@@ -12,10 +12,10 @@
 		0D4AC9F9100D14FF00BFE1FA /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AC9F5100D14FF00BFE1FA /* Sound.m */; };
 		0D4ACA04100D157000BFE1FA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4ACA03100D157000BFE1FA /* AudioToolbox.framework */; };
 		0D4ACA06100D157000BFE1FA /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4ACA05100D157000BFE1FA /* OpenAL.framework */; };
+		0DBBA071113BE6DF00236DFC /* SNDError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBA070113BE6DF00236DFC /* SNDError.m */; };
 		0DE52C80100D19B600F58F3C /* sitar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DE52C7F100D19B600F58F3C /* sitar.wav */; };
 		0DEF74521139028F003EA297 /* Decoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF74511139028F003EA297 /* Decoder.m */; };
 		0DEF746B1139043C003EA297 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF746A1139043C003EA297 /* Sample.m */; };
-		0DEF747311390894003EA297 /* NSError+Finch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF747211390894003EA297 /* NSError+Finch.m */; };
 		0DEF747811390998003EA297 /* PCMDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF747711390998003EA297 /* PCMDecoder.m */; };
 		1D3623260D0F684500981E51 /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* Application.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -36,15 +36,15 @@
 		0D4AC9F5100D14FF00BFE1FA /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sound.m; sourceTree = "<group>"; };
 		0D4ACA03100D157000BFE1FA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0D4ACA05100D157000BFE1FA /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		0DBBA06F113BE6DF00236DFC /* SNDError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNDError.h; path = ../Source/SNDError.h; sourceTree = "<group>"; };
+		0DBBA070113BE6DF00236DFC /* SNDError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNDError.m; path = ../Source/SNDError.m; sourceTree = "<group>"; };
 		0DE52C7F100D19B600F58F3C /* sitar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sitar.wav; sourceTree = "<group>"; };
-		0DEF74501139028F003EA297 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
-		0DEF74511139028F003EA297 /* Decoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decoder.m; sourceTree = "<group>"; };
-		0DEF74691139043C003EA297 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
-		0DEF746A1139043C003EA297 /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample.m; sourceTree = "<group>"; };
-		0DEF747111390894003EA297 /* NSError+Finch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Finch.h"; sourceTree = "<group>"; };
-		0DEF747211390894003EA297 /* NSError+Finch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Finch.m"; sourceTree = "<group>"; };
-		0DEF747611390998003EA297 /* PCMDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCMDecoder.h; sourceTree = "<group>"; };
-		0DEF747711390998003EA297 /* PCMDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCMDecoder.m; sourceTree = "<group>"; };
+		0DEF74501139028F003EA297 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Decoder.h; path = ../Source/Decoder.h; sourceTree = "<group>"; };
+		0DEF74511139028F003EA297 /* Decoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Decoder.m; path = ../Source/Decoder.m; sourceTree = "<group>"; };
+		0DEF74691139043C003EA297 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sample.h; path = ../Source/Sample.h; sourceTree = "<group>"; };
+		0DEF746A1139043C003EA297 /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sample.m; path = ../Source/Sample.m; sourceTree = "<group>"; };
+		0DEF747611390998003EA297 /* PCMDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PCMDecoder.h; path = ../Source/PCMDecoder.h; sourceTree = "<group>"; };
+		0DEF747711390998003EA297 /* PCMDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PCMDecoder.m; path = ../Source/PCMDecoder.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* Application.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Application.m; sourceTree = "<group>"; };
@@ -94,10 +94,18 @@
 				0D4AC9EF100D14FF00BFE1FA /* Finch.m */,
 				0D4AC9F0100D14FF00BFE1FA /* RevolverSound.h */,
 				0D4AC9F1100D14FF00BFE1FA /* RevolverSound.m */,
-				0DEF747111390894003EA297 /* NSError+Finch.h */,
-				0DEF747211390894003EA297 /* NSError+Finch.m */,
 				0D4AC9F4100D14FF00BFE1FA /* Sound.h */,
 				0D4AC9F5100D14FF00BFE1FA /* Sound.m */,
+			);
+			name = Finch;
+			path = ../Source;
+			sourceTree = SOURCE_ROOT;
+		};
+		0DBBA07F113BE7BC00236DFC /* Sample Decoder */ = {
+			isa = PBXGroup;
+			children = (
+				0DBBA06F113BE6DF00236DFC /* SNDError.h */,
+				0DBBA070113BE6DF00236DFC /* SNDError.m */,
 				0DEF74691139043C003EA297 /* Sample.h */,
 				0DEF746A1139043C003EA297 /* Sample.m */,
 				0DEF74501139028F003EA297 /* Decoder.h */,
@@ -105,9 +113,8 @@
 				0DEF747611390998003EA297 /* PCMDecoder.h */,
 				0DEF747711390998003EA297 /* PCMDecoder.m */,
 			);
-			name = Finch;
-			path = ../Source;
-			sourceTree = SOURCE_ROOT;
+			name = "Sample Decoder";
+			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
@@ -120,6 +127,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				0DBBA07F113BE7BC00236DFC /* Sample Decoder */,
 				0D4AC9ED100D14FF00BFE1FA /* Finch */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -225,8 +233,8 @@
 				0D4AC9F9100D14FF00BFE1FA /* Sound.m in Sources */,
 				0DEF74521139028F003EA297 /* Decoder.m in Sources */,
 				0DEF746B1139043C003EA297 /* Sample.m in Sources */,
-				0DEF747311390894003EA297 /* NSError+Finch.m in Sources */,
 				0DEF747811390998003EA297 /* PCMDecoder.m in Sources */,
+				0DBBA071113BE6DF00236DFC /* SNDError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

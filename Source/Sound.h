@@ -1,6 +1,12 @@
 #import <OpenAL/al.h>
 #import <OpenAL/alc.h>
 
+enum SoundError {
+    kSEInvalidNumberOfChannels = 1,
+    kSEInvalidEndianity,
+    kSEInvalidSampleResolution
+};
+
 @interface Sound : NSObject
 {
     BOOL loop;
@@ -19,6 +25,8 @@
 @property(assign) float gain;
 
 - (id) initWithFile: (NSString*) name;
+- (id) initWithFile: (NSString*) name error: (NSError**) error;
+
 - (void) play;
 - (void) stop;
 

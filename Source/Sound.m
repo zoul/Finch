@@ -2,6 +2,7 @@
 #import <AudioToolbox/AudioToolbox.h> 
 #import "Decoder.h"
 #import "Sample.h"
+#import "SNDError.h"
 
 #define CLEAR_ERROR_FLAG alGetError()
 #define DETACH_SOURCE 0
@@ -69,12 +70,44 @@
     [super dealloc];
 }
 
-- (id) initWithFile: (NSString*) name
+- (id) initWithFile: (NSString*) name error: (NSError**) error;
 {
-    Sample *sample = [Decoder decodeFile:name error:nil];
-    ALenum format = (sample.channels > 1) ? AL_FORMAT_STEREO16 : AL_FORMAT_MONO16;
+    Sample *sample = [Decoder decodeFile:name error:error];
+    if (!sample)
+        return nil;
+    
+    // Check the number of channels
+    if (sample.channels != 1 && sample.channels != 2) {
+        *error = [SNDError errorWithCode:kSEInvalidNumberOfChannels];
+        return nil;
+    }
+    
+    // Check sample resolution
+    if (sample.bitsPerChannel != 8 && sample.bitsPerChannel != 16) {
+        *error = [SNDError errorWithCode:kSEInvalidSampleResolution];
+        return nil;
+    }
+    
+    // Check data endianity
+    if (sample.endianity != kLittleEndian) {
+        *error = [SNDError errorWithCode:kSEInvalidEndianity];
+        return nil;
+    }
+    
+    const ALenum format = sample.channels == 1 ?
+        (sample.bitsPerChannel == 16 ? AL_FORMAT_MONO16 : AL_FORMAT_MONO8) :
+        (sample.bitsPerChannel == 16 ? AL_FORMAT_STEREO16 : AL_FORMAT_STEREO8);
     return [self initWithData:sample.data.bytes length:sample.duration
         format:format sampleRate:sample.sampleRate];
+}
+
+- (id) initWithFile: (NSString*) name
+{
+    NSError *error = nil;
+    id instance = [self initWithFile:name error:&error];
+    if (error)
+        NSLog(@"There was an error loading a sound: %@", [error localizedDescription]);
+    return instance;
 }
 
 #pragma mark Playback Controls
