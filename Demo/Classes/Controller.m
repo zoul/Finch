@@ -1,6 +1,10 @@
 #import "Controller.h"
 #import "Finch.h"
 #import "Sound.h"
+#import "RevolverSound.h"
+
+#define RSRC(x) [[NSBundle mainBundle] pathForResource:x ofType:nil]
+static const int kBulletRounds = 4;
 
 @implementation Controller
 
@@ -17,24 +21,30 @@
 {
     [super awakeFromNib];
     engine = [[Finch alloc] init];
-    NSString *const path = [[[NSBundle mainBundle] resourcePath]
-        stringByAppendingPathComponent:@"sitar.wav"];
-    NSError *error = nil;
-    sample = [[Sound alloc] initWithFile:path error:&error];
-    if (!sample)
-        [self presentError:error];
+    sitar = [[Sound alloc] initWithFile:RSRC(@"sitar.wav")];
+    gun = [[RevolverSound alloc] initWithFile:RSRC(@"shot.wav") rounds:kBulletRounds];
 }
 
-- (void) makeSound: (id) sender
+- (void) makeGoodSound: (id) sender
 {
-    NSLog(@"Playing sound.");
-    [sample play];
+    NSLog(@"Playing good sound.");
+    [sitar play];
+}
+
+- (IBAction) makeBadSound: (id) sender
+{
+    NSLog(@"Playing bad sound.");
+    for (int i=0; i<kBulletRounds; i++) {
+        [gun play];
+        usleep(80000);
+    }
 }
 
 - (void) dealloc
 {
     [engine release];
-    [sample release];
+    [sitar release];
+    [gun release];
     [super dealloc];
 }
 
