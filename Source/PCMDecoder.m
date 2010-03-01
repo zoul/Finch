@@ -9,11 +9,12 @@
 
 @implementation PCMDecoder
 
-+ (Sample*) decodeFile: (NSString*) path error: (NSError**) error
++ (Sample*) decodeFile: (NSString*) name error: (NSError**) error
 {
 	OSStatus errcode = noErr;
 	UInt32 propertySize;
 	AudioFileID fileId = 0;
+    NSURL *path = [NSURL URLWithString:name];
     
 	errcode = AudioFileOpenURL((CFURLRef) path, kAudioFileReadPermission, 0, &fileId);
 	if (errcode) {
