@@ -51,7 +51,7 @@
     // Initialize the source.
     CLEAR_ERROR_FLAG;
     alGenSources(1, &source);
-	alSourcei(source, AL_BUFFER, buffer);
+    alSourcei(source, AL_BUFFER, buffer);
     if (![self checkSuccessOrLog:@"Failed to create OpenAL source"])
         return nil;
 

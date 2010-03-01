@@ -66,7 +66,7 @@
 
     [self setMixWithSystemSound:userMusicPlaying];
         
-	errcode = AudioSessionSetActive(YES);
+    errcode = AudioSessionSetActive(YES);
     if (errcode) {
         NSLog(@"Error activating the audio session: %x", errcode);
         return NO;
