@@ -11,7 +11,6 @@ enum SoundError {
 {
     BOOL loop;
     ALuint source, buffer;
-    double length;
     float gain;
 }
 

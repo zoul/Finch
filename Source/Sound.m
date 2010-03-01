@@ -24,7 +24,7 @@
 
 #pragma mark Designated Initializer
 
-- (id) initWithData: (const ALvoid*) data length: (ALsizei) size
+- (id) initWithData: (const ALvoid*) data size: (ALsizei) size
     format: (ALenum) format sampleRate: (ALsizei) frequency 
 {
     [super init];
@@ -99,7 +99,7 @@
     const ALenum format = sample.channels == 1 ?
         (sample.bitsPerChannel == 16 ? AL_FORMAT_MONO16 : AL_FORMAT_MONO8) :
         (sample.bitsPerChannel == 16 ? AL_FORMAT_STEREO16 : AL_FORMAT_STEREO8);
-    return [self initWithData:sample.data.bytes length:sample.duration
+    return [self initWithData:sample.data.bytes size:sample.data.length
         format:format sampleRate:sample.sampleRate];
 }
 
