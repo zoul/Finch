@@ -29,7 +29,7 @@ static NSMutableDictionary *decoders = nil;
                 decodeFile:path error:error];
     
     // No decoder found
-    Reporter *reporter = [Reporter forDomain:@"Sample Decoder"];
+    Reporter *reporter = [Reporter forDomain:@"Sample Decoder" error:error];
     *error = [reporter errorWithCode:kDENoSuitableDecoderFound description:
         [NSString stringWithFormat:@"No suitable decoder found for %@.", path]];
     return nil;

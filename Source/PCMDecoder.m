@@ -11,8 +11,7 @@
 	UInt32 propertySize;
 	AudioFileID fileId = 0;
     NSURL *path = [NSURL fileURLWithPath:name];
-    Reporter *reporter = [Reporter forDomain:@"Sample Decoder"];
-    INIT_ERROR(error);
+    Reporter *reporter = [Reporter forDomain:@"Sample Decoder" error:error];
     
 	errcode = AudioFileOpenURL((CFURLRef) path, kAudioFileReadPermission, 0, &fileId);
 	if (errcode) {

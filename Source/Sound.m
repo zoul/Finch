@@ -76,8 +76,7 @@
     if (!sample)
         return nil;
     
-    INIT_ERROR(error);
-    Reporter *reporter = [Reporter forDomain:@"Sound Initialization"];
+    Reporter *reporter = [Reporter forDomain:@"Sound Initialization" error:error];
     
     // Check the number of channels
     if (sample.channels != 1 && sample.channels != 2) {
