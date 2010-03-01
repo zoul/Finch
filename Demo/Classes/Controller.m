@@ -18,7 +18,7 @@
     [super awakeFromNib];
     engine = [[Finch alloc] init];
     NSString *const path = [[[NSBundle mainBundle] resourcePath]
-        stringByAppendingPathComponent:@"sitasr.wav"];
+        stringByAppendingPathComponent:@"sitar.wav"];
     NSError *error = nil;
     sample = [[Sound alloc] initWithFile:path error:&error];
     if (!sample)

@@ -9,9 +9,15 @@
     if (_e == NULL) \
         _e = &_dummyError;
 
-@interface SNDError : NSError {}
+@interface Reporter : NSObject
+{
+    NSString *domain;
+}
 
-+ (NSError*) errorWithCode: (int) code;
-+ (NSError*) errorWithCode: (int) code description: (NSString*) msg;
+- (id) initWithDomain: (NSString*) errDomain;
++ (id) forDomain: (NSString*) errDomain;
+
+- (NSError*) errorWithCode: (int) code;
+- (NSError*) errorWithCode: (int) code description: (NSString*) msg;
 
 @end

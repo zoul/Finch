@@ -1,5 +1,5 @@
 #import "Decoder.h"
-#import "SNDError.h"
+#import "Reporter.h"
 
 static NSMutableDictionary *decoders = nil;
 
@@ -29,7 +29,7 @@ static NSMutableDictionary *decoders = nil;
                 decodeFile:path error:error];
     
     // No decoder found
-    *error = [SNDError errorWithCode:kDENoSuitableDecoderFound description:
+    *error = [Reporter errorWithCode:kDENoSuitableDecoderFound description:
         [NSString stringWithFormat:@"No suitable decoder found for %@.", path]];
     return nil;
 }

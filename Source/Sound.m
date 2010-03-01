@@ -2,7 +2,7 @@
 #import <AudioToolbox/AudioToolbox.h> 
 #import "Decoder.h"
 #import "Sample.h"
-#import "SNDError.h"
+#import "Reporter.h"
 
 #define CLEAR_ERROR_FLAG alGetError()
 #define DETACH_SOURCE 0
@@ -76,21 +76,24 @@
     if (!sample)
         return nil;
     
+    INIT_ERROR(error);
+    Reporter *reporter = [Reporter forDomain:@"Sound Initialization"];
+    
     // Check the number of channels
     if (sample.channels != 1 && sample.channels != 2) {
-        *error = [SNDError errorWithCode:kSEInvalidNumberOfChannels];
+        *error = [reporter errorWithCode:kSEInvalidNumberOfChannels];
         return nil;
     }
     
     // Check sample resolution
     if (sample.bitsPerChannel != 8 && sample.bitsPerChannel != 16) {
-        *error = [SNDError errorWithCode:kSEInvalidSampleResolution];
+        *error = [reporter errorWithCode:kSEInvalidSampleResolution];
         return nil;
     }
     
     // Check data endianity
     if (sample.endianity != kLittleEndian) {
-        *error = [SNDError errorWithCode:kSEInvalidEndianity];
+        *error = [reporter errorWithCode:kSEInvalidEndianity];
         return nil;
     }
     
