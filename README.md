@@ -100,7 +100,11 @@ not work in the simulator.
 License
 =======
 
-You can do with this code whatever you like.
+Licensed under the [MIT License][license]. Essentially you can do with this
+software whatever you like, provided that you keep the copyright notice and
+the license text along.
+
+[license]: http://www.opensource.org/licenses/mit-license.php
 
 Links
 =====
