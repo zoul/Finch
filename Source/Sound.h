@@ -11,11 +11,11 @@ enum SoundError {
 {
     BOOL loop;
     ALuint source, buffer;
-    float gain, pitch;
+    float gain, pitch, duration;
 }
 
 // Sound length in seconds.
-@property(readonly) double length;
+@property(readonly) float duration;
 // Is the sound currently playing?
 @property(readonly) BOOL playing;
 // Should the sound loop?

@@ -22,7 +22,9 @@ static const int kBulletRounds = 4;
     [super awakeFromNib];
     engine = [[Finch alloc] init];
     sitar = [[Sound alloc] initWithFile:RSRC(@"sitar.wav")];
+    NSLog(@"Loaded sitar sound, %2.2f seconds.", sitar.duration);
     gun = [[RevolverSound alloc] initWithFile:RSRC(@"shot.wav") rounds:kBulletRounds];
+    NSLog(@"Loaded revolver sound.");
 }
 
 - (void) dealloc

@@ -8,7 +8,7 @@
 #define DETACH_SOURCE 0
 
 @implementation Sound
-@synthesize loop, length, gain, pitch;
+@synthesize loop, duration, gain, pitch;
 
 // Clears the error flag.
 - (BOOL) checkSuccessOrLog: (NSString*) msg
@@ -25,7 +25,8 @@
 #pragma mark Designated Initializer
 
 - (id) initWithData: (const ALvoid*) data size: (ALsizei) size
-    format: (ALenum) format sampleRate: (ALsizei) frequency 
+    format: (ALenum) format sampleRate: (ALsizei) frequency
+    duration: (float) seconds
 {
     [super init];
     
@@ -56,6 +57,7 @@
         return nil;
 
     gain = 1;
+    duration = seconds;
     return self;
 }
 
@@ -100,7 +102,7 @@
         (sample.bitsPerChannel == 16 ? AL_FORMAT_MONO16 : AL_FORMAT_MONO8) :
         (sample.bitsPerChannel == 16 ? AL_FORMAT_STEREO16 : AL_FORMAT_STEREO8);
     return [self initWithData:sample.data.bytes size:sample.data.length
-        format:format sampleRate:sample.sampleRate];
+        format:format sampleRate:sample.sampleRate duration:sample.duration];
 }
 
 - (id) initWithFile: (NSString*) name
