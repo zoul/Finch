@@ -1,7 +1,7 @@
 About
 =====
 
-Finch is a dead-simple OpenAL-based sound effect player for iPhone. The
+Finch is a simple OpenAL-based sound effect player for iPhone. The
 reasons for writing Finch instead of sticking with Apple’s `AVAudioPlayer` are
 described in my [question on Stack Overflow][so]. The goals are simple: (1)
 Play sound effects without much fuss, and (2) do not lag in the `play` method
@@ -14,8 +14,8 @@ the sound effects over the background music just fine.
 Howto
 =====
 
-This is alpha code, the interface will almost certainly change. That said, it
-should be fairly easy to adapt to changes.
+This is beta code. The interface will probably change, but it should be
+fairly easy to keep up with the changes.
 
     #import "Finch.h"
     #import "Sound.h"
@@ -38,10 +38,8 @@ should be fairly easy to adapt to changes.
         [gun play];
 
 Don’t forget to link the application with `AudioToolbox` and `OpenAL`
-frameworks. And please note that OpenAL does not support any compressed
-audio, which means that Finch – being just a tiny wrapper around OpenAL –
-also does not support compressed audio. You should be safe with mono or
-stereo WAV files sampled at 44.100 Hz.
+frameworks. And please note that Finch does not yet support compressed
+audio. You should be safe with mono or stereo WAV files sampled at 44.100 Hz.
 
 Another thing to keep in mind is that you have to pass an absolute path
 when loading a sound. If you have a `boom.wav` sound in a `SFX` directory
@@ -52,7 +50,7 @@ code:
        stringByAppendingPathComponent:@"SFX/boom.wav"];
     Sound *boom = [[Sound alloc] initWithFile:fullPath];
 
-Background music
+Background Music
 ================
 
 Finch is designed to play short uncompressed samples. If you want to
@@ -78,7 +76,21 @@ By default Finch will mix with system sound if there is something playing.
 
 [mp3]: http://stackoverflow.com/questions/1009385
 
-Bugs, gotchas
+Design Notes
+============
+
+Finch has been designed so that its components can be used separately. If you
+want to, you can initialize the OpenAL yourself and only use the `Sound` class.
+And if you want to, you can use just the `Decoder` to get raw PCM data from WAV
+and CAF files without having to import the `Finch` and `Sound` classes. You can
+also come up with the PCM data yourself and pass it to OpenAL using the designated
+initializer of the `Sound` class:
+
+    - (id) initWithData: (const ALvoid*) data size: (ALsizei) size
+        format: (ALenum) format sampleRate: (ALsizei) frequency
+        duration: (float) seconds;
+
+Bugs, Gotchas
 =============
 
 Many people are having problems with OpenAL sound in the simulator. I have not
@@ -103,7 +115,15 @@ Some links you might find useful:
 [dump]: http://www.subfurther.com/blog/?p=602
 [guide]: http://connect.creativelabs.com/openal/Documentation/OpenAL_Programmers_Guide.pdf
 
-Author
-======
+Author & Support
+================
 
 Tomáš Znamenáček, <zoul@fleuron.cz>. Suggestions welcomed.
+
+If you have a question that could possibly be of interest to other people, you
+can ask it on [Stack Overflow][questions] and send me a link to your question.
+It’s better than discussing it in private, because you can get answers from
+other people and once the question has been answered, other people can benefit
+from the answer, too.
+
+[questions]: http://stackoverflow.com/questions/tagged/finch
