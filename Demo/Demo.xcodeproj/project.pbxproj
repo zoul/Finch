@@ -266,7 +266,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Demo_Prefix.pch;
+				GCC_PREFIX_HEADER = prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = Demo;
 			};
