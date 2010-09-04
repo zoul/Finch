@@ -12,6 +12,8 @@
 		0D4AC9F9100D14FF00BFE1FA /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4AC9F5100D14FF00BFE1FA /* Sound.m */; };
 		0D4ACA04100D157000BFE1FA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4ACA03100D157000BFE1FA /* AudioToolbox.framework */; };
 		0D4ACA06100D157000BFE1FA /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4ACA05100D157000BFE1FA /* OpenAL.framework */; };
+		0D5061C91232BB77008CCDDD /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D5061C71232BB77008CCDDD /* Icon.png */; };
+		0D5061CA1232BB77008CCDDD /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D5061C81232BB77008CCDDD /* Icon@2x.png */; };
 		0DA3B145113BFD5000BE205F /* shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3B144113BFD5000BE205F /* shot.wav */; };
 		0DBBA071113BE6DF00236DFC /* Reporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBA070113BE6DF00236DFC /* Reporter.m */; };
 		0DE52C80100D19B600F58F3C /* sitar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DE52C7F100D19B600F58F3C /* sitar.wav */; };
@@ -37,6 +39,8 @@
 		0D4AC9F5100D14FF00BFE1FA /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sound.m; sourceTree = "<group>"; };
 		0D4ACA03100D157000BFE1FA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0D4ACA05100D157000BFE1FA /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		0D5061C71232BB77008CCDDD /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		0D5061C81232BB77008CCDDD /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		0DA3B144113BFD5000BE205F /* shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shot.wav; sourceTree = "<group>"; };
 		0DBBA06F113BE6DF00236DFC /* Reporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reporter.h; path = ../Source/Reporter.h; sourceTree = "<group>"; };
 		0DBBA070113BE6DF00236DFC /* Reporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reporter.m; path = ../Source/Reporter.m; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D5061C71232BB77008CCDDD /* Icon.png */,
+				0D5061C81232BB77008CCDDD /* Icon@2x.png */,
 				0DA3B144113BFD5000BE205F /* shot.wav */,
 				0DE52C7F100D19B600F58F3C /* sitar.wav */,
 				2899E5210DE3E06400AC0155 /* Controller.xib */,
@@ -220,6 +226,8 @@
 				2899E5220DE3E06400AC0155 /* Controller.xib in Resources */,
 				0DE52C80100D19B600F58F3C /* sitar.wav in Resources */,
 				0DA3B145113BFD5000BE205F /* shot.wav in Resources */,
+				0D5061C91232BB77008CCDDD /* Icon.png in Resources */,
+				0D5061CA1232BB77008CCDDD /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
