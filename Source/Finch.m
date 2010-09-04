@@ -40,7 +40,7 @@
     // Initialize the audio session.
     errcode = AudioSessionInitialize(NULL, NULL, NULL, NULL);
     if (errcode) {
-        NSLog(@"Error initializing the audio session: %x", errcode);
+        NSLog(@"Error initializing the audio session: %lx", errcode);
         return NO;
     }
 
@@ -68,7 +68,7 @@
         
     errcode = AudioSessionSetActive(YES);
     if (errcode) {
-        NSLog(@"Error activating the audio session: %x", errcode);
+        NSLog(@"Error activating the audio session: %lx", errcode);
         return NO;
     }
     

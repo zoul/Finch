@@ -19,11 +19,11 @@ enum SoundError {
 // Is the sound currently playing?
 @property(readonly) BOOL playing;
 // Should the sound loop?
-@property(assign) BOOL loop;
+@property(assign, nonatomic) BOOL loop;
 // Sound gain.
-@property(assign) float gain;
+@property(assign, nonatomic) float gain;
 // Sound pitch.
-@property(assign) float pitch;
+@property(assign, nonatomic) float pitch;
 
 // Designated initializer. The format
 // is AL_FORMAT_{MONO,STEREO}{8,16}.

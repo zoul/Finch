@@ -2,6 +2,7 @@
 #import "Finch.h"
 #import "Sound.h"
 #import "RevolverSound.h"
+#import <unistd.h>
 
 #define RSRC(x) [[NSBundle mainBundle] pathForResource:x ofType:nil]
 static const int kBulletRounds = 4;
