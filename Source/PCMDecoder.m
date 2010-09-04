@@ -84,6 +84,7 @@
     [sample setDuration:sampleLength];
     [sample setData:[NSData dataWithBytesNoCopy:data length:dataSize freeWhenDone:YES]];
     
+    AudioFileClose(fileId);
     return [sample autorelease];
 }
 
