@@ -27,12 +27,13 @@ fairly easy to keep up with the changes.
     // Simple sound, only one instance can play at a time.
     // If you call ‘play’ and the sound is still playing,
     // it will start from the beginning.
-    Sound *click = [[Sound alloc] initWithFile:@"…/SFX/click.wav"];
+    Sound *click = [[Sound alloc] initWithFile:
+        [[NSBundle mainBundle] URLForResource:@"click" withExtension:@"wav"]];
     [click play];
 
     // For playing multiple instances of the same sample at once.
-    RevolverSound *gun = [[RevolverSound alloc]
-        initWithFile:@"…/SFX/gunshot.wav" rounds:10];
+    RevolverSound *gun = [[RevolverSound alloc] initWithFile:
+        [[NSBundle mainBundle] URLForResource:@"gunshot" withExtension:@"wav"] rounds:10];
     // Now I have a machinegun, ho-ho-ho.
     for (int i=1; i<=10; i++)
         [gun play];
@@ -40,15 +41,6 @@ fairly easy to keep up with the changes.
 Don’t forget to link the application with `AudioToolbox` and `OpenAL`
 frameworks. And please note that Finch does not yet support compressed
 audio. You should be safe with mono or stereo WAV files sampled at 44.100 Hz.
-
-Another thing to keep in mind is that you have to pass an absolute path
-when loading a sound. If you have a `boom.wav` sound in a `SFX` directory
-of your resources directory, you can get the full path using the following
-code:
-
-    NSString *fullpath = [[[NSBundle mainBundle] resourcePath]
-       stringByAppendingPathComponent:@"SFX/boom.wav"];
-    Sound *boom = [[Sound alloc] initWithFile:fullPath];
 
 Background Music
 ================
