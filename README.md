@@ -23,17 +23,18 @@ fairly easy to keep up with the changes.
 
     // Initializes Audio Session, opens OpenAL device.
     Finch *soundEngine = [[Finch alloc] init];
+    NSBundle *bundle = [NSBundle mainBundle];
 
     // Simple sound, only one instance can play at a time.
     // If you call ‘play’ and the sound is still playing,
     // it will start from the beginning.
     Sound *click = [[Sound alloc] initWithFile:
-        [[NSBundle mainBundle] URLForResource:@"click" withExtension:@"wav"]];
+        [bundle URLForResource:@"click" withExtension:@"wav"]];
     [click play];
 
     // For playing multiple instances of the same sample at once.
     RevolverSound *gun = [[RevolverSound alloc] initWithFile:
-        [[NSBundle mainBundle] URLForResource:@"gunshot" withExtension:@"wav"] rounds:10];
+        [bundle URLForResource:@"gunshot" withExtension:@"wav"] rounds:10];
     // Now I have a machinegun, ho-ho-ho.
     for (int i=1; i<=10; i++)
         [gun play];
