@@ -5,15 +5,14 @@
 
 @implementation PCMDecoder
 
-+ (Sample*) decodeFile: (NSString*) name error: (NSError**) error
++ (Sample*) decodeFile: (NSURL*) fileURL error: (NSError**) error
 {
     OSStatus errcode = noErr;
     UInt32 propertySize;
     AudioFileID fileId = 0;
-    NSURL *path = [NSURL fileURLWithPath:name];
     Reporter *reporter = [Reporter forDomain:@"Sample Decoder" error:error];
     
-    errcode = AudioFileOpenURL((CFURLRef) path, kAudioFileReadPermission, 0, &fileId);
+    errcode = AudioFileOpenURL((CFURLRef) fileURL, kAudioFileReadPermission, 0, &fileId);
     if (errcode) {
         *error = [reporter errorWithCode:kDEFileReadError];
         return nil;

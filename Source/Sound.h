@@ -33,11 +33,11 @@ enum SoundError {
     
 // Convenience initializer, will decode the
 // sound for you using the Decoder class.
-- (id) initWithFile: (NSString*) name error: (NSError**) error;
+- (id) initWithFile: (NSURL*) fileURL error: (NSError**) error;
 
 // Just as the one above, logs errors using NSLog
 // instead of reporting through NSError.
-- (id) initWithFile: (NSString*) name;
+- (id) initWithFile: (NSURL*) fileURL;
 
 - (void) play;
 - (void) stop;

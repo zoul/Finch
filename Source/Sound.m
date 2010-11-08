@@ -72,9 +72,9 @@
     [super dealloc];
 }
 
-- (id) initWithFile: (NSString*) name error: (NSError**) error;
+- (id) initWithFile: (NSURL*) fileURL error: (NSError**) error;
 {
-    Sample *sample = [Decoder decodeFile:name error:error];
+    Sample *sample = [Decoder decodeFile:fileURL error:error];
     if (!sample)
         return nil;
     
@@ -105,10 +105,10 @@
         format:format sampleRate:sample.sampleRate duration:sample.duration];
 }
 
-- (id) initWithFile: (NSString*) name
+- (id) initWithFile: (NSURL*) fileURL
 {
     NSError *error = nil;
-    id instance = [self initWithFile:name error:&error];
+    id instance = [self initWithFile:fileURL error:&error];
     if (error)
         NSLog(@"There was an error loading a sound: %@", [error localizedDescription]);
     return instance;

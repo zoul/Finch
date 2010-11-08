@@ -17,21 +17,21 @@ static NSMutableDictionary *decoders = nil;
     [decoders setObject:c forKey:ext];
 }
 
-+ (Sample*) decodeFile: (NSString*) path error: (NSError**) error
++ (Sample*) decodeFile: (NSURL*) fileURL error: (NSError**) error
 {
     NSAssert([self class] == [Decoder class],
         @"Decoder subclasses have to override this method.");
     
     // Find suitable decoder
     for (NSString *extension in [decoders allKeys])
-        if ([path hasSuffix:extension])
+        if ([fileURL.path hasSuffix:extension])
             return [[decoders objectForKey:extension]
-                decodeFile:path error:error];
+                decodeFile:fileURL error:error];
     
     // No decoder found
     Reporter *reporter = [Reporter forDomain:@"Sample Decoder" error:error];
     *error = [reporter errorWithCode:kDENoSuitableDecoderFound description:
-        [NSString stringWithFormat:@"No suitable decoder found for %@.", path]];
+        [NSString stringWithFormat:@"No suitable decoder found for %@.", fileURL.path]];
     return nil;
 }
 

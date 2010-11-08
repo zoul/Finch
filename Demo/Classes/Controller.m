@@ -4,7 +4,6 @@
 #import "RevolverSound.h"
 #import <unistd.h>
 
-#define RSRC(x) [[NSBundle mainBundle] pathForResource:x ofType:nil]
 static const int kBulletRounds = 4;
 
 @implementation Controller
@@ -22,9 +21,12 @@ static const int kBulletRounds = 4;
 {
     [super awakeFromNib];
     engine = [[Finch alloc] init];
-    sitar = [[Sound alloc] initWithFile:RSRC(@"sitar.wav")];
+    sitar = [[Sound alloc] initWithFile:
+        [[NSBundle mainBundle] URLForResource:@"sitar" withExtension:@"wav"]];
     NSLog(@"Loaded sitar sound, %2.2f seconds.", sitar.duration);
-    gun = [[RevolverSound alloc] initWithFile:RSRC(@"shot.wav") rounds:kBulletRounds];
+    gun = [[RevolverSound alloc] initWithFile:
+        [[NSBundle mainBundle] URLForResource:@"shot" withExtension:@"wav"]
+        rounds:kBulletRounds];
     NSLog(@"Loaded revolver sound.");
 }
 

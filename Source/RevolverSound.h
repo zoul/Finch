@@ -16,7 +16,7 @@
 
 @property(assign) float gain;
 
-- (id) initWithFile: (NSString*) file rounds: (int) max;
+- (id) initWithFile: (NSURL*) fileURL rounds: (int) max;
 
 - (void) play;
 - (void) stop;

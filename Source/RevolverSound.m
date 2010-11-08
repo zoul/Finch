@@ -3,13 +3,13 @@
 
 @implementation RevolverSound
 
-- (id) initWithFile: (NSString*) file rounds: (int) max
+- (id) initWithFile: (NSURL*) fileURL rounds: (int) max
 {
     [super init];
     sounds = [[NSMutableArray alloc] init];
     for (int i=0; i<max; i++)
     {
-        Sound *const sample = [[Sound alloc] initWithFile:file];
+        Sound *const sample = [[Sound alloc] initWithFile:fileURL];
         if (!sample)
             return nil;
         [sounds addObject:sample];

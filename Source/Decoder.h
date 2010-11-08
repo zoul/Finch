@@ -12,6 +12,6 @@ enum DecoderError
 @interface Decoder : NSObject {}
 
 + (void) registerDecoder: (Class) c forExtension: (NSString*) ext;
-+ (Sample*) decodeFile: (NSString*) name error: (NSError**) error;
++ (Sample*) decodeFile: (NSURL*) fileURL error: (NSError**) error;
 
 @end
