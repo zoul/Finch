@@ -15,25 +15,18 @@ static const int kBulletRounds = 4;
 @implementation Controller
 @synthesize engine, sitar, gun;
 
-- (void) presentError: (NSError*) error
+- (NSURL*) soundURLForName: (NSString*) soundName
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-        message:[error localizedDescription] delegate:nil
-        cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-    [alert show];
-    [alert release];
+    return [[NSBundle mainBundle] URLForResource:soundName withExtension:@"wav"];
 }
 
 - (void) awakeFromNib
 {
     [super awakeFromNib];
     engine = [[Finch alloc] init];
-    sitar = [[Sound alloc] initWithFile:
-        [[NSBundle mainBundle] URLForResource:@"sitar" withExtension:@"wav"]];
-    NSLog(@"Loaded sitar sound, %2.2f seconds.", sitar.duration);
-    gun = [[RevolverSound alloc] initWithFile:
-        [[NSBundle mainBundle] URLForResource:@"shot" withExtension:@"wav"]
-        rounds:kBulletRounds];
+    sitar = [[Sound alloc] initWithFile:[self soundURLForName:@"sitar"]];
+    NSLog(@"Loaded sitar sound, %2.2f seconds.", [sitar duration]);
+    gun = [[RevolverSound alloc] initWithFile:[self soundURLForName:@"shot"] rounds:kBulletRounds];
     NSLog(@"Loaded revolver sound.");
 }
 
