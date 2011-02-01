@@ -1,11 +1,4 @@
-@class Finch, Sound, RevolverSound;
-
-@interface Controller : UIViewController
-{
-    Finch *engine;
-    Sound *sitar;
-    RevolverSound *gun;
-}
+@interface Controller : UIViewController {}
 
 - (IBAction) makeGoodSound: (id) sender;
 - (IBAction) makeBadSound: (id) sender;

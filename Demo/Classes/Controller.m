@@ -6,7 +6,14 @@
 
 static const int kBulletRounds = 4;
 
+@interface Controller ()
+@property(retain) Finch *engine;
+@property(retain) Sound *sitar;
+@property(retain) RevolverSound *gun;
+@end
+
 @implementation Controller
+@synthesize engine, sitar, gun;
 
 - (void) presentError: (NSError*) error
 {
