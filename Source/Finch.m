@@ -17,18 +17,21 @@
     device = alcOpenDevice(NULL);
     if (!device) {
         NSLog(@"Finch: Could not open default OpenAL device.");
+        [self release];
         return nil;
     }
     
     context = alcCreateContext(device, 0);
     if (!context) {
         NSLog(@"Finch: Failed to create OpenAL context for default device.");
+        [self release];
         return nil;
     }
     
-    BOOL success = alcMakeContextCurrent(context);
+    const BOOL success = alcMakeContextCurrent(context);
     if (!success) {
         NSLog(@"Finch: Failed to set current OpenAL context.");
+        [self release];
         return nil;
     }
     
