@@ -2,6 +2,7 @@
 #import "Finch.h"
 #import "Sound.h"
 #import "RevolverSound.h"
+#import <AVFoundation/AVFoundation.h>
 #import <unistd.h>
 
 static const int kBulletRounds = 4;
@@ -20,9 +21,20 @@ static const int kBulletRounds = 4;
     return [[NSBundle mainBundle] URLForResource:soundName withExtension:@"wav"];
 }
 
+- (void) openAudioSession
+{
+    NSError *error = nil;
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayback error:&error];
+    NSAssert(error == nil, @"Failed to set audio session category.");
+    [session setActive:YES error:&error];
+    NSAssert(error == nil, @"Failed to activate audio session.");
+}
+
 - (void) awakeFromNib
 {
     [super awakeFromNib];
+    [self openAudioSession];
     engine = [[Finch alloc] init];
     sitar = [[Sound alloc] initWithFile:[self soundURLForName:@"sitar"]];
     NSLog(@"Loaded sitar sound, %2.2f seconds.", [sitar duration]);
