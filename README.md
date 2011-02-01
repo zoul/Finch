@@ -1,27 +1,28 @@
 About
 =====
 
-Finch is a simple OpenAL-based sound effect player for iPhone. The
-reasons for writing Finch instead of sticking with Apple’s `AVAudioPlayer` are
-described in my [question on Stack Overflow][so]. The goals are simple: (1)
-Play sound effects without much fuss, and (2) do not lag in the `play` method
-as `AVAudioPlayer` does. Finch is not meant to play background music. If you
-want to play background music, you can go with `AVAudioPlayer`. Finch will play
-the sound effects over the background music just fine.
+Finch is a simple OpenAL-based sound effect player for iOS. The reasons for
+writing Finch instead of sticking with Apple’s `AVAudioPlayer` are described in
+my [question on Stack Overflow][so]. The goals are simple: (1) Play sound
+effects without much fuss, and (2) do not lag in the `play` method as
+`AVAudioPlayer` does. Finch is not meant to play background music. If you want
+to play background music, you can go with `AVAudioPlayer`. Finch will play the
+sound effects over the background music just fine.
 
 [so]: http://stackoverflow.com/questions/986983
 
 Howto
 =====
 
-This is beta code. The interface will probably change, but it should be
-fairly easy to keep up with the changes.
+The code is fairly tested. The interface changes from time to time as I don’t
+bother with backward compatibility, but it should be fairly easy to keep up
+with the changes. Basic use case:
 
     #import "Finch.h"
     #import "Sound.h"
     #import "RevolverSound.h"
 
-    // Initializes Audio Session, opens OpenAL device.
+    // Initializes OpenAL
     Finch *soundEngine = [[Finch alloc] init];
     NSBundle *bundle = [NSBundle mainBundle];
 
@@ -32,10 +33,10 @@ fairly easy to keep up with the changes.
         [bundle URLForResource:@"click" withExtension:@"wav"]];
     [click play];
 
-    // For playing multiple instances of the same sample at once.
+    // For playing multiple instances of the same sample at once
     RevolverSound *gun = [[RevolverSound alloc] initWithFile:
         [bundle URLForResource:@"gunshot" withExtension:@"wav"] rounds:10];
-    // Now I have a machinegun, ho-ho-ho.
+    // Now I have a machinegun, ho-ho-ho
     for (int i=1; i<=10; i++)
         [gun play];
 
@@ -43,31 +44,34 @@ Don’t forget to link the application with `AudioToolbox` and `OpenAL`
 frameworks. And please note that Finch does not yet support compressed
 audio. You should be safe with mono or stereo WAV files sampled at 44.100 Hz.
 
-Background Music
-================
+Download the demo project to see more.
 
-Finch is designed to play short uncompressed samples. If you want to
-play background music, you can use the `AVAudioPlayer` class supplied
-by Apple. Finch will mix with the background track just fine.
+Audio Session Primer
+====================
 
-There is one important catch in playing background music, or more precisely, in
-playing compressed audio on iPhone. Each application that wants to work with
-sound on iPhone can choose from several audio session ‘categories’ that affect
-the way your application behaves with respect to sound. If you want to play
-your sound over the system sounds, for example over the iPod sound, you have to
-choose the `AmbientSound` category. The problem is that this category [harms
-MP3 decoding performance][mp3]. This means that if you want to play your own
-background music, you should switch to the `SoloAmbientSound` category, which
-does not mix your sound with the system sound, but does not harm the MP3 decoding
-performance. In Finch you can use the `mixWithSystemSound` property to switch
-between the `SoloAmbientSound` and `AmbientSound` categories:
+Before your application can play any sound whatsoever, you should set up the
+audio session so that the system knows how to work with your sounds – if they
+should be muted by the hardware Mute switch, for example, or if the iPod music
+should play behind your sounds.
 
-    soundEngine.mixWithSystemSound = NO;  // SoloAmbientSound
-    soundEngine.mixWithSystemSound = YES; // AmbientSound
+Finch used to set up the audio session for you, but that’s not the right way to
+do it™, so that in recent versions you have to set the audio session yourself.
+Yes, that’s considered progress :-) The good news is that there is a nice class
+called [`AVAudioSession`][session] shipped by Apple that lets you configure the
+session in no time. The basic code looks like this:
 
-By default Finch will mix with system sound if there is something playing.
+    NSError *error = nil;
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayback error:&error];
+    NSAssert(error == nil, @"Failed to set audio session category.");
+    [session setActive:YES error:&error];
+    NSAssert(error == nil, @"Failed to activate audio session.");
 
-[mp3]: http://stackoverflow.com/questions/1009385
+[session]: http://developer.apple.com/library/ios/documentation/AVFoundation/Reference/AVAudioSession_ClassReference/Reference/Reference.html
+
+The main point is the `AVAudioSessionCategoryPlayback` constant. See the
+`AVAudioSession` documentation for a list of the possible categories and their
+meaning. This matters, you should know which category you are choosing.
 
 Design Notes
 ============
