@@ -1,8 +1,8 @@
 @interface Controller : UIViewController {}
 
-- (IBAction) makeGoodSound: (id) sender;
-- (IBAction) makeBadSound: (id) sender;
-- (IBAction) updateSitarPitchFrom: (id) sender;
+- (IBAction) makeGoodSound;
+- (IBAction) makeBadSound;
+- (IBAction) updateSitarPitchFrom: (UISlider*) slider;
 
 @end
 

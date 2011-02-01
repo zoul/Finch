@@ -40,13 +40,13 @@ static const int kBulletRounds = 4;
 
 #pragma mark Actions
 
-- (IBAction) makeGoodSound: (id) sender
+- (IBAction) makeGoodSound
 {
     NSLog(@"Playing good sound.");
     [sitar play];
 }
 
-- (IBAction) makeBadSound: (id) sender
+- (IBAction) makeBadSound
 {
     NSLog(@"Playing bad sound.");
     for (int i=0; i<kBulletRounds; i++) {
@@ -55,9 +55,9 @@ static const int kBulletRounds = 4;
     }
 }
 
-- (IBAction) updateSitarPitchFrom: (id) sender
+- (IBAction) updateSitarPitchFrom: (UISlider*) slider
 {
-    sitar.pitch = [(UISlider*) sender value];
+    [sitar setPitch:[slider value]];
 }
 
 @end
