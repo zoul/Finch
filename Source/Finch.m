@@ -1,30 +1,37 @@
 #import "Finch.h"
 #import <OpenAL/al.h>
 #import <OpenAL/alc.h>
-#import <AudioToolbox/AudioToolbox.h> 
 
 @interface Finch ()
-
-- (BOOL) openAudioSession;
-- (BOOL) initOpenAL;
-
-@property(assign) UInt32 sessionCategory;
 @property(assign) ALCdevice *device;
 @property(assign) ALCcontext *context;
-@property(assign) BOOL userMusicPlaying;
-
 @end
 
 @implementation Finch
-@synthesize userMusicPlaying, sessionCategory, device, context;
+@synthesize device, context;
 
 - (id) init
 {
     [super init];
-    if (![self openAudioSession])
+    
+    device = alcOpenDevice(NULL);
+    if (!device) {
+        NSLog(@"Finch: Could not open default OpenAL device.");
         return nil;
-    if (![self initOpenAL])
+    }
+    
+    context = alcCreateContext(device, 0);
+    if (!context) {
+        NSLog(@"Finch: Failed to create OpenAL context for default device.");
         return nil;
+    }
+    
+    BOOL success = alcMakeContextCurrent(context);
+    if (!success) {
+        NSLog(@"Finch: Failed to set current OpenAL context.");
+        return nil;
+    }
+    
     return self;
 }
 
@@ -34,105 +41,6 @@
     alcDestroyContext(context);
     alcCloseDevice(device);
     [super dealloc];
-}
-
-#pragma mark Audio Session
-
-- (BOOL) openAudioSession
-{
-    OSStatus errcode;
-    
-    // Initialize the audio session.
-    errcode = AudioSessionInitialize(NULL, NULL, NULL, NULL);
-    if (errcode) {
-        NSLog(@"Error initializing the audio session: %lx", errcode);
-        return NO;
-    }
-
-    // Check if some other sound is already playing.
-    UInt32 userPlayback;
-    UInt32 propertySize = sizeof(userPlayback);
-    AudioSessionGetProperty(
-        kAudioSessionProperty_OtherAudioIsPlaying,
-        &propertySize, &userPlayback);
-    userMusicPlaying = (userPlayback != 0);
-
-    /*
-    This is a hack. AVAudioPlayer (or maybe somebody lower
-    in the audio stack) sometimes refuses to play music, even
-    though the OtherAudioIsPlaying property indicates that no
-    other music is currently playing. It can be fixed by
-    switching to Media Playback session category temporarily.
-    */
-    if (!userMusicPlaying) {
-        self.sessionCategory = kAudioSessionCategory_MediaPlayback;
-        AudioSessionSetActive(YES);
-    }
-
-    [self setMixWithSystemSound:userMusicPlaying];
-        
-    errcode = AudioSessionSetActive(YES);
-    if (errcode) {
-        NSLog(@"Error activating the audio session: %lx", errcode);
-        return NO;
-    }
-    
-    return YES;
-}
-
-#pragma mark Audio Category
-
-- (void) setSessionCategory: (UInt32) cat
-{
-    AudioSessionSetProperty(
-        kAudioSessionProperty_AudioCategory,
-        sizeof(cat), &cat);
-}
-
-- (UInt32) sessionCategory
-{
-    UInt32 propertySize = sizeof(UInt32), cat;
-    AudioSessionGetProperty(
-        kAudioSessionProperty_AudioCategory,
-        &propertySize, &cat);
-    return cat;
-}
-
-- (void) setMixWithSystemSound: (BOOL) mix
-{
-    self.sessionCategory = mix ?
-        kAudioSessionCategory_AmbientSound :
-        kAudioSessionCategory_SoloAmbientSound;
-}
-
-- (BOOL) mixWithSystemSound
-{
-    return (self.sessionCategory == kAudioSessionCategory_AmbientSound);
-}
-
-#pragma mark OpenAL Initialization
-
-- (BOOL) initOpenAL
-{
-    device = alcOpenDevice(NULL);
-    if (!device) {
-        NSLog(@"Could not open default OpenAL device.");
-        return NO;
-    }
-    
-    context = alcCreateContext(device, 0);
-    if (!context) {
-        NSLog(@"Failed to create OpenAL context for default device.");
-        return NO;
-    }
-    
-    BOOL success = alcMakeContextCurrent(context);
-    if (!success) {
-        NSLog(@"Failed to set current OpenAL context.");
-        return NO;
-    }
-    
-    return YES;
 }
 
 @end
