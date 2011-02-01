@@ -5,15 +5,7 @@ enum SampleEndianity
     kBigEndian
 };
 
-@interface Sample : NSObject
-{
-    int channels;
-    int bitsPerChannel;
-    int sampleRate;
-    int endianity;
-    float duration;
-    NSData *data;
-}
+@interface Sample : NSObject {}
 
 @property(assign) int channels;
 @property(assign) int bitsPerChannel;
