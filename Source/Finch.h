@@ -1,12 +1,4 @@
-#import <OpenAL/al.h>
-#import <OpenAL/alc.h>
-
-@interface Finch : NSObject
-{
-    ALCdevice *device;
-    ALCcontext *context;
-    BOOL userMusicPlaying;
-}
+@interface Finch : NSObject {}
 
 // Returns YES if there is some other sound playing,
 // for example the iPod.

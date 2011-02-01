@@ -1,17 +1,22 @@
 #import "Finch.h"
+#import <OpenAL/al.h>
+#import <OpenAL/alc.h>
 #import <AudioToolbox/AudioToolbox.h> 
 
-@interface Finch (Private)
+@interface Finch ()
 
 - (BOOL) openAudioSession;
 - (BOOL) initOpenAL;
 
 @property(assign) UInt32 sessionCategory;
+@property(assign) ALCdevice *device;
+@property(assign) ALCcontext *context;
+@property(assign) BOOL userMusicPlaying;
 
 @end
 
 @implementation Finch
-@synthesize userMusicPlaying;
+@synthesize userMusicPlaying, sessionCategory, device, context;
 
 - (id) init
 {
