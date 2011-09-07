@@ -2,7 +2,6 @@
 #import "Finch.h"
 #import "Sound.h"
 #import "RevolverSound.h"
-#import <AVFoundation/AVFoundation.h>
 #import <unistd.h>
 
 static const int kBulletRounds = 4;

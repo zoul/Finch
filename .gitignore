@@ -1,4 +1,5 @@
 .DS_Store
-Demo/build/
-Demo/Demo.xcodeproj/*.*
+.svn
+project.xcworkspace
+xcuserdata
 *.swp

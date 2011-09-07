@@ -6,7 +6,7 @@
 
 - (void) applicationDidFinishLaunching: (UIApplication*) application
 {
-    [window addSubview:controller.view];
+    [window setRootViewController:controller];
     [window makeKeyAndVisible];
 }
 

@@ -26,7 +26,7 @@
 
 - (void) play
 {
-    [[sounds objectAtIndex:current] play];
+    [(Sound*) [sounds objectAtIndex:current] play];
     current = (current + 1) % [sounds count];
 }
 

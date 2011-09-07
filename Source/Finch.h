@@ -1,2 +1,0 @@
-@interface Finch : NSObject {}
-@end

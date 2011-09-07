@@ -1,4 +1,4 @@
-@interface Controller : UIViewController {}
+@interface Controller : UIViewController
 
 - (IBAction) makeGoodSound;
 - (IBAction) makeBadSound;

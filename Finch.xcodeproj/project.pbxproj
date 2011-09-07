@@ -1,0 +1,475 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D2AA94214174FA000F4071B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA94114174FA000F4071B /* Foundation.framework */; };
+		0D2AA9561417501200F4071B /* Finch.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA94E1417501200F4071B /* Finch.h */; };
+		0D2AA9571417501200F4071B /* Finch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA94F1417501200F4071B /* Finch.m */; };
+		0D2AA9581417501200F4071B /* Reporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA9501417501200F4071B /* Reporter.h */; };
+		0D2AA9591417501200F4071B /* Reporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9511417501200F4071B /* Reporter.m */; };
+		0D2AA95A1417501200F4071B /* RevolverSound.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA9521417501200F4071B /* RevolverSound.h */; };
+		0D2AA95B1417501200F4071B /* RevolverSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9531417501200F4071B /* RevolverSound.m */; };
+		0D2AA95C1417501200F4071B /* Sound.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA9541417501200F4071B /* Sound.h */; };
+		0D2AA95D1417501200F4071B /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9551417501200F4071B /* Sound.m */; };
+		0D2AA95F1417505300F4071B /* prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA95E1417505300F4071B /* prefix.pch */; };
+		0D2AA967141750AE00F4071B /* Decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA961141750AE00F4071B /* Decoder.h */; };
+		0D2AA968141750AE00F4071B /* Decoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA962141750AE00F4071B /* Decoder.m */; };
+		0D2AA969141750AE00F4071B /* PCMDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA963141750AE00F4071B /* PCMDecoder.h */; };
+		0D2AA96A141750AE00F4071B /* PCMDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA964141750AE00F4071B /* PCMDecoder.m */; };
+		0D2AA96B141750AE00F4071B /* Sample.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA965141750AE00F4071B /* Sample.h */; };
+		0D2AA96C141750AE00F4071B /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA966141750AE00F4071B /* Sample.m */; };
+		0D2AA974141750F700F4071B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA973141750F700F4071B /* UIKit.framework */; };
+		0D2AA975141750F800F4071B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA94114174FA000F4071B /* Foundation.framework */; };
+		0D2AA99A1417515A00F4071B /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA98E1417515A00F4071B /* Application.m */; };
+		0D2AA99B1417515A00F4071B /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9901417515A00F4071B /* Controller.m */; };
+		0D2AA99C1417515A00F4071B /* Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2AA9911417515A00F4071B /* Controller.xib */; };
+		0D2AA99D1417515A00F4071B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2AA9921417515A00F4071B /* Default.png */; };
+		0D2AA99E1417515A00F4071B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2AA9931417515A00F4071B /* Icon.png */; };
+		0D2AA99F1417515A00F4071B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2AA9941417515A00F4071B /* Icon@2x.png */; };
+		0D2AA9A11417515A00F4071B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9961417515A00F4071B /* main.m */; };
+		0D2AA9A21417515A00F4071B /* Bootstrap.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2AA9971417515A00F4071B /* Bootstrap.xib */; };
+		0D2AA9A31417515A00F4071B /* shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0D2AA9981417515A00F4071B /* shot.wav */; };
+		0D2AA9A41417515A00F4071B /* sitar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0D2AA9991417515A00F4071B /* sitar.wav */; };
+		0D2AA9A51417521500F4071B /* libFinch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA93E14174FA000F4071B /* libFinch.a */; };
+		0D2AA9A8141752A200F4071B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA9A7141752A200F4071B /* AVFoundation.framework */; };
+		0D2AA9AA141752BE00F4071B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA9A9141752BE00F4071B /* AudioToolbox.framework */; };
+		0D2AA9AC141752D800F4071B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA9AB141752D800F4071B /* OpenAL.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0D2AA9AD1417582F00F4071B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D2AA93514174FA000F4071B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D2AA93D14174FA000F4071B;
+			remoteInfo = Finch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D2AA93E14174FA000F4071B /* libFinch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFinch.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D2AA94114174FA000F4071B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0D2AA94E1417501200F4071B /* Finch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Finch.h; sourceTree = "<group>"; };
+		0D2AA94F1417501200F4071B /* Finch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Finch.m; sourceTree = "<group>"; };
+		0D2AA9501417501200F4071B /* Reporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reporter.h; sourceTree = "<group>"; };
+		0D2AA9511417501200F4071B /* Reporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reporter.m; sourceTree = "<group>"; };
+		0D2AA9521417501200F4071B /* RevolverSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RevolverSound.h; sourceTree = "<group>"; };
+		0D2AA9531417501200F4071B /* RevolverSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RevolverSound.m; sourceTree = "<group>"; };
+		0D2AA9541417501200F4071B /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
+		0D2AA9551417501200F4071B /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sound.m; sourceTree = "<group>"; };
+		0D2AA95E1417505300F4071B /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = SOURCE_ROOT; };
+		0D2AA961141750AE00F4071B /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Decoder.h; path = Decoder/Decoder.h; sourceTree = "<group>"; };
+		0D2AA962141750AE00F4071B /* Decoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Decoder.m; path = Decoder/Decoder.m; sourceTree = "<group>"; };
+		0D2AA963141750AE00F4071B /* PCMDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PCMDecoder.h; path = Decoder/PCMDecoder.h; sourceTree = "<group>"; };
+		0D2AA964141750AE00F4071B /* PCMDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PCMDecoder.m; path = Decoder/PCMDecoder.m; sourceTree = "<group>"; };
+		0D2AA965141750AE00F4071B /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sample.h; path = Decoder/Sample.h; sourceTree = "<group>"; };
+		0D2AA966141750AE00F4071B /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sample.m; path = Decoder/Sample.m; sourceTree = "<group>"; };
+		0D2AA971141750F700F4071B /* Finch Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Finch Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D2AA973141750F700F4071B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0D2AA98D1417515A00F4071B /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Application.h; path = Demo/Application.h; sourceTree = SOURCE_ROOT; };
+		0D2AA98E1417515A00F4071B /* Application.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Application.m; path = Demo/Application.m; sourceTree = SOURCE_ROOT; };
+		0D2AA98F1417515A00F4071B /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Controller.h; path = Demo/Controller.h; sourceTree = SOURCE_ROOT; };
+		0D2AA9901417515A00F4071B /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Controller.m; path = Demo/Controller.m; sourceTree = SOURCE_ROOT; };
+		0D2AA9911417515A00F4071B /* Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Controller.xib; path = Demo/Controller.xib; sourceTree = SOURCE_ROOT; };
+		0D2AA9921417515A00F4071B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Demo/Default.png; sourceTree = SOURCE_ROOT; };
+		0D2AA9931417515A00F4071B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Demo/Icon.png; sourceTree = SOURCE_ROOT; };
+		0D2AA9941417515A00F4071B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Demo/Icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		0D2AA9951417515A00F4071B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demo/Info.plist; sourceTree = SOURCE_ROOT; };
+		0D2AA9961417515A00F4071B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Demo/main.m; sourceTree = SOURCE_ROOT; };
+		0D2AA9971417515A00F4071B /* Bootstrap.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Bootstrap.xib; path = Demo/Bootstrap.xib; sourceTree = SOURCE_ROOT; };
+		0D2AA9981417515A00F4071B /* shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shot.wav; path = Demo/shot.wav; sourceTree = SOURCE_ROOT; };
+		0D2AA9991417515A00F4071B /* sitar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = sitar.wav; path = Demo/sitar.wav; sourceTree = SOURCE_ROOT; };
+		0D2AA9A61417526C00F4071B /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = prefix.pch; path = Demo/prefix.pch; sourceTree = SOURCE_ROOT; };
+		0D2AA9A7141752A200F4071B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0D2AA9A9141752BE00F4071B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0D2AA9AB141752D800F4071B /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0D2AA93B14174FA000F4071B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D2AA94214174FA000F4071B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D2AA96E141750F700F4071B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D2AA9A51417521500F4071B /* libFinch.a in Frameworks */,
+				0D2AA9AC141752D800F4071B /* OpenAL.framework in Frameworks */,
+				0D2AA974141750F700F4071B /* UIKit.framework in Frameworks */,
+				0D2AA975141750F800F4071B /* Foundation.framework in Frameworks */,
+				0D2AA9AA141752BE00F4071B /* AudioToolbox.framework in Frameworks */,
+				0D2AA9A8141752A200F4071B /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D2AA93314174FA000F4071B = {
+			isa = PBXGroup;
+			children = (
+				0D2AA960141750A600F4071B /* Decoder */,
+				0D2AA94314174FA000F4071B /* Finch */,
+				0D2AA978141750F800F4071B /* Demo */,
+				0D2AA94414174FA000F4071B /* Supporting Files */,
+				0D2AA94014174FA000F4071B /* Frameworks */,
+				0D2AA93F14174FA000F4071B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0D2AA93F14174FA000F4071B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0D2AA93E14174FA000F4071B /* libFinch.a */,
+				0D2AA971141750F700F4071B /* Finch Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0D2AA94014174FA000F4071B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D2AA9AB141752D800F4071B /* OpenAL.framework */,
+				0D2AA9A9141752BE00F4071B /* AudioToolbox.framework */,
+				0D2AA9A7141752A200F4071B /* AVFoundation.framework */,
+				0D2AA94114174FA000F4071B /* Foundation.framework */,
+				0D2AA973141750F700F4071B /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0D2AA94314174FA000F4071B /* Finch */ = {
+			isa = PBXGroup;
+			children = (
+				0D2AA94E1417501200F4071B /* Finch.h */,
+				0D2AA94F1417501200F4071B /* Finch.m */,
+				0D2AA9501417501200F4071B /* Reporter.h */,
+				0D2AA9511417501200F4071B /* Reporter.m */,
+				0D2AA9541417501200F4071B /* Sound.h */,
+				0D2AA9551417501200F4071B /* Sound.m */,
+				0D2AA9521417501200F4071B /* RevolverSound.h */,
+				0D2AA9531417501200F4071B /* RevolverSound.m */,
+			);
+			path = Finch;
+			sourceTree = "<group>";
+		};
+		0D2AA94414174FA000F4071B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0D2AA95E1417505300F4071B /* prefix.pch */,
+			);
+			name = "Supporting Files";
+			path = Finch;
+			sourceTree = "<group>";
+		};
+		0D2AA960141750A600F4071B /* Decoder */ = {
+			isa = PBXGroup;
+			children = (
+				0D2AA961141750AE00F4071B /* Decoder.h */,
+				0D2AA962141750AE00F4071B /* Decoder.m */,
+				0D2AA963141750AE00F4071B /* PCMDecoder.h */,
+				0D2AA964141750AE00F4071B /* PCMDecoder.m */,
+				0D2AA965141750AE00F4071B /* Sample.h */,
+				0D2AA966141750AE00F4071B /* Sample.m */,
+			);
+			name = Decoder;
+			sourceTree = "<group>";
+		};
+		0D2AA978141750F800F4071B /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				0D2AA98D1417515A00F4071B /* Application.h */,
+				0D2AA98E1417515A00F4071B /* Application.m */,
+				0D2AA98F1417515A00F4071B /* Controller.h */,
+				0D2AA9901417515A00F4071B /* Controller.m */,
+				0D2AA9911417515A00F4071B /* Controller.xib */,
+				0D2AA9921417515A00F4071B /* Default.png */,
+				0D2AA9931417515A00F4071B /* Icon.png */,
+				0D2AA9941417515A00F4071B /* Icon@2x.png */,
+				0D2AA9951417515A00F4071B /* Info.plist */,
+				0D2AA9A61417526C00F4071B /* prefix.pch */,
+				0D2AA9961417515A00F4071B /* main.m */,
+				0D2AA9971417515A00F4071B /* Bootstrap.xib */,
+				0D2AA9981417515A00F4071B /* shot.wav */,
+				0D2AA9991417515A00F4071B /* sitar.wav */,
+			);
+			name = Demo;
+			path = "Finch Demo";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0D2AA93C14174FA000F4071B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D2AA9561417501200F4071B /* Finch.h in Headers */,
+				0D2AA9581417501200F4071B /* Reporter.h in Headers */,
+				0D2AA95A1417501200F4071B /* RevolverSound.h in Headers */,
+				0D2AA95C1417501200F4071B /* Sound.h in Headers */,
+				0D2AA95F1417505300F4071B /* prefix.pch in Headers */,
+				0D2AA967141750AE00F4071B /* Decoder.h in Headers */,
+				0D2AA969141750AE00F4071B /* PCMDecoder.h in Headers */,
+				0D2AA96B141750AE00F4071B /* Sample.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0D2AA93D14174FA000F4071B /* Finch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D2AA94B14174FA000F4071B /* Build configuration list for PBXNativeTarget "Finch" */;
+			buildPhases = (
+				0D2AA93A14174FA000F4071B /* Sources */,
+				0D2AA93B14174FA000F4071B /* Frameworks */,
+				0D2AA93C14174FA000F4071B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Finch;
+			productName = Finch;
+			productReference = 0D2AA93E14174FA000F4071B /* libFinch.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		0D2AA970141750F700F4071B /* Finch Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D2AA98A141750F800F4071B /* Build configuration list for PBXNativeTarget "Finch Demo" */;
+			buildPhases = (
+				0D2AA96D141750F700F4071B /* Sources */,
+				0D2AA96E141750F700F4071B /* Frameworks */,
+				0D2AA96F141750F700F4071B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0D2AA9AE1417582F00F4071B /* PBXTargetDependency */,
+			);
+			name = "Finch Demo";
+			productName = "Finch Demo";
+			productReference = 0D2AA971141750F700F4071B /* Finch Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0D2AA93514174FA000F4071B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 0D2AA93814174FA000F4071B /* Build configuration list for PBXProject "Finch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0D2AA93314174FA000F4071B;
+			productRefGroup = 0D2AA93F14174FA000F4071B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0D2AA93D14174FA000F4071B /* Finch */,
+				0D2AA970141750F700F4071B /* Finch Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0D2AA96F141750F700F4071B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D2AA99C1417515A00F4071B /* Controller.xib in Resources */,
+				0D2AA99D1417515A00F4071B /* Default.png in Resources */,
+				0D2AA99E1417515A00F4071B /* Icon.png in Resources */,
+				0D2AA99F1417515A00F4071B /* Icon@2x.png in Resources */,
+				0D2AA9A21417515A00F4071B /* Bootstrap.xib in Resources */,
+				0D2AA9A31417515A00F4071B /* shot.wav in Resources */,
+				0D2AA9A41417515A00F4071B /* sitar.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0D2AA93A14174FA000F4071B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D2AA9571417501200F4071B /* Finch.m in Sources */,
+				0D2AA9591417501200F4071B /* Reporter.m in Sources */,
+				0D2AA95B1417501200F4071B /* RevolverSound.m in Sources */,
+				0D2AA95D1417501200F4071B /* Sound.m in Sources */,
+				0D2AA968141750AE00F4071B /* Decoder.m in Sources */,
+				0D2AA96A141750AE00F4071B /* PCMDecoder.m in Sources */,
+				0D2AA96C141750AE00F4071B /* Sample.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D2AA96D141750F700F4071B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D2AA99A1417515A00F4071B /* Application.m in Sources */,
+				0D2AA99B1417515A00F4071B /* Controller.m in Sources */,
+				0D2AA9A11417515A00F4071B /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0D2AA9AE1417582F00F4071B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D2AA93D14174FA000F4071B /* Finch */;
+			targetProxy = 0D2AA9AD1417582F00F4071B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0D2AA94914174FA000F4071B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0D2AA94A14174FA000F4071B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0D2AA94C14174FA000F4071B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Finch.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = prefix.pch;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0D2AA94D14174FA000F4071B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Finch.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = prefix.pch;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		0D2AA98B141750F800F4071B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Demo/prefix.pch;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				INFOPLIST_FILE = Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0D2AA98C141750F800F4071B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Demo/prefix.pch;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				INFOPLIST_FILE = Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0D2AA93814174FA000F4071B /* Build configuration list for PBXProject "Finch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D2AA94914174FA000F4071B /* Debug */,
+				0D2AA94A14174FA000F4071B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D2AA94B14174FA000F4071B /* Build configuration list for PBXNativeTarget "Finch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D2AA94C14174FA000F4071B /* Debug */,
+				0D2AA94D14174FA000F4071B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0D2AA98A141750F800F4071B /* Build configuration list for PBXNativeTarget "Finch Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D2AA98B141750F800F4071B /* Debug */,
+				0D2AA98C141750F800F4071B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0D2AA93514174FA000F4071B /* Project object */;
+}
