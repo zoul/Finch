@@ -1,7 +1,7 @@
-#import "RevolverSound.h"
-#import "Sound.h"
+#import "FIRevolverSound.h"
+#import "FISound.h"
 
-@implementation RevolverSound
+@implementation FIRevolverSound
 
 - (id) initWithFile: (NSURL*) fileURL rounds: (int) max
 {
@@ -9,7 +9,7 @@
     sounds = [[NSMutableArray alloc] init];
     for (int i=0; i<max; i++)
     {
-        Sound *const sample = [[Sound alloc] initWithFile:fileURL];
+        FISound *const sample = [[FISound alloc] initWithFile:fileURL];
         if (!sample)
             return nil;
         [sounds addObject:sample];
@@ -26,7 +26,7 @@
 
 - (void) play
 {
-    [(Sound*) [sounds objectAtIndex:current] play];
+    [(FISound*) [sounds objectAtIndex:current] play];
     current = (current + 1) % [sounds count];
 }
 
@@ -37,7 +37,7 @@
 
 - (void) setGain: (float) val
 {
-    for (Sound *sound in sounds)
+    for (FISound *sound in sounds)
         [sound setGain:val];
 }
 

@@ -7,7 +7,7 @@ enum SoundError {
     kSEInvalidSampleResolution
 };
 
-@interface Sound : NSObject
+@interface FISound : NSObject
 {
     BOOL loop;
     ALuint source, buffer;

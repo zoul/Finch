@@ -1,13 +1,13 @@
-#import "Sound.h"
+#import "FISound.h"
 #import <AudioToolbox/AudioToolbox.h> 
 #import "Decoder.h"
 #import "Sample.h"
-#import "Reporter.h"
+#import "FIErrorReporter.h"
 
 #define CLEAR_ERROR_FLAG alGetError()
 #define DETACH_SOURCE 0
 
-@implementation Sound
+@implementation FISound
 @synthesize loop, duration, gain, pitch;
 
 // Clears the error flag.
@@ -78,7 +78,7 @@
     if (!sample)
         return nil;
     
-    Reporter *reporter = [Reporter forDomain:@"Sound Initialization" error:error];
+    FIErrorReporter *reporter = [FIErrorReporter forDomain:@"Sound Initialization" error:error];
     
     // Check the number of channels
     if (sample.channels != 1 && sample.channels != 2) {

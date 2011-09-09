@@ -1,4 +1,4 @@
-@interface Reporter : NSObject
+@interface FIErrorReporter : NSObject
 {
     NSString *domain;
 }

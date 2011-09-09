@@ -1,5 +1,5 @@
 #import "Decoder.h"
-#import "Reporter.h"
+#import "FIErrorReporter.h"
 
 static NSMutableDictionary *decoders = nil;
 
@@ -29,7 +29,7 @@ static NSMutableDictionary *decoders = nil;
                 decodeFile:fileURL error:error];
     
     // No decoder found
-    Reporter *reporter = [Reporter forDomain:@"Sample Decoder" error:error];
+    FIErrorReporter *reporter = [FIErrorReporter forDomain:@"Sample Decoder" error:error];
     *error = [reporter errorWithCode:kDENoSuitableDecoderFound description:
         [NSString stringWithFormat:@"No suitable decoder found for %@.", fileURL.path]];
     return nil;

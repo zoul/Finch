@@ -1,4 +1,4 @@
-#import "Reporter.h"
+#import "FIErrorReporter.h"
 
 /*
     The dummyError trick is here to safely initialize
@@ -8,7 +8,7 @@
 */
 static NSError *dummyError = nil;
 
-@implementation Reporter
+@implementation FIErrorReporter
 
 #pragma mark Initialization
 

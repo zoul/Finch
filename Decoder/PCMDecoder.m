@@ -1,7 +1,7 @@
 #import "PCMDecoder.h"
 #import <AudioToolbox/AudioToolbox.h> 
 #import "Sample.h"
-#import "Reporter.h"
+#import "FIErrorReporter.h"
 
 @implementation PCMDecoder
 
@@ -10,7 +10,7 @@
     OSStatus errcode = noErr;
     UInt32 propertySize;
     AudioFileID fileId = 0;
-    Reporter *reporter = [Reporter forDomain:@"Sample Decoder" error:error];
+    FIErrorReporter *reporter = [FIErrorReporter forDomain:@"Sample Decoder" error:error];
     
     errcode = AudioFileOpenURL((CFURLRef) fileURL, kAudioFileReadPermission, 0, &fileId);
     if (errcode) {

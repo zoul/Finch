@@ -1,15 +1,15 @@
 #import "Controller.h"
 #import "FISoundEngine.h"
-#import "Sound.h"
-#import "RevolverSound.h"
+#import "FISound.h"
+#import "FIRevolverSound.h"
 #import <unistd.h>
 
 static const int kBulletRounds = 4;
 
 @interface Controller ()
 @property(retain) FISoundEngine *engine;
-@property(retain) Sound *sitar;
-@property(retain) RevolverSound *gun;
+@property(retain) FISound *sitar;
+@property(retain) FIRevolverSound *gun;
 @end
 
 @implementation Controller
@@ -35,9 +35,9 @@ static const int kBulletRounds = 4;
     [super awakeFromNib];
     [self openAudioSession];
     engine = [[FISoundEngine alloc] init];
-    sitar = [[Sound alloc] initWithFile:[self soundURLForName:@"sitar"]];
+    sitar = [[FISound alloc] initWithFile:[self soundURLForName:@"sitar"]];
     NSLog(@"Loaded sitar sound, %2.2f seconds.", [sitar duration]);
-    gun = [[RevolverSound alloc] initWithFile:[self soundURLForName:@"shot"] rounds:kBulletRounds];
+    gun = [[FIRevolverSound alloc] initWithFile:[self soundURLForName:@"shot"] rounds:kBulletRounds];
     NSLog(@"Loaded revolver sound.");
 }
 

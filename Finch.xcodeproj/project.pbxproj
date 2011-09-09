@@ -10,12 +10,12 @@
 		0D2AA94214174FA000F4071B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA94114174FA000F4071B /* Foundation.framework */; };
 		0D2AA9561417501200F4071B /* FISoundEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA94E1417501200F4071B /* FISoundEngine.h */; };
 		0D2AA9571417501200F4071B /* FISoundEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA94F1417501200F4071B /* FISoundEngine.m */; };
-		0D2AA9581417501200F4071B /* Reporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA9501417501200F4071B /* Reporter.h */; };
-		0D2AA9591417501200F4071B /* Reporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9511417501200F4071B /* Reporter.m */; };
-		0D2AA95A1417501200F4071B /* RevolverSound.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA9521417501200F4071B /* RevolverSound.h */; };
-		0D2AA95B1417501200F4071B /* RevolverSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9531417501200F4071B /* RevolverSound.m */; };
-		0D2AA95C1417501200F4071B /* Sound.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA9541417501200F4071B /* Sound.h */; };
-		0D2AA95D1417501200F4071B /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9551417501200F4071B /* Sound.m */; };
+		0D2AA9581417501200F4071B /* FIErrorReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA9501417501200F4071B /* FIErrorReporter.h */; };
+		0D2AA9591417501200F4071B /* FIErrorReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9511417501200F4071B /* FIErrorReporter.m */; };
+		0D2AA95A1417501200F4071B /* FIRevolverSound.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA9521417501200F4071B /* FIRevolverSound.h */; };
+		0D2AA95B1417501200F4071B /* FIRevolverSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9531417501200F4071B /* FIRevolverSound.m */; };
+		0D2AA95C1417501200F4071B /* FISound.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA9541417501200F4071B /* FISound.h */; };
+		0D2AA95D1417501200F4071B /* FISound.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9551417501200F4071B /* FISound.m */; };
 		0D2AA95F1417505300F4071B /* prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA95E1417505300F4071B /* prefix.pch */; };
 		0D2AA967141750AE00F4071B /* Decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA961141750AE00F4071B /* Decoder.h */; };
 		0D2AA968141750AE00F4071B /* Decoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA962141750AE00F4071B /* Decoder.m */; };
@@ -60,12 +60,12 @@
 		0D2AA94114174FA000F4071B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D2AA94E1417501200F4071B /* FISoundEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISoundEngine.h; sourceTree = "<group>"; };
 		0D2AA94F1417501200F4071B /* FISoundEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISoundEngine.m; sourceTree = "<group>"; };
-		0D2AA9501417501200F4071B /* Reporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reporter.h; sourceTree = "<group>"; };
-		0D2AA9511417501200F4071B /* Reporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reporter.m; sourceTree = "<group>"; };
-		0D2AA9521417501200F4071B /* RevolverSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RevolverSound.h; sourceTree = "<group>"; };
-		0D2AA9531417501200F4071B /* RevolverSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RevolverSound.m; sourceTree = "<group>"; };
-		0D2AA9541417501200F4071B /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
-		0D2AA9551417501200F4071B /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sound.m; sourceTree = "<group>"; };
+		0D2AA9501417501200F4071B /* FIErrorReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIErrorReporter.h; sourceTree = "<group>"; };
+		0D2AA9511417501200F4071B /* FIErrorReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FIErrorReporter.m; sourceTree = "<group>"; };
+		0D2AA9521417501200F4071B /* FIRevolverSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIRevolverSound.h; sourceTree = "<group>"; };
+		0D2AA9531417501200F4071B /* FIRevolverSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FIRevolverSound.m; sourceTree = "<group>"; };
+		0D2AA9541417501200F4071B /* FISound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISound.h; sourceTree = "<group>"; };
+		0D2AA9551417501200F4071B /* FISound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISound.m; sourceTree = "<group>"; };
 		0D2AA95E1417505300F4071B /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = SOURCE_ROOT; };
 		0D2AA961141750AE00F4071B /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Decoder.h; path = Decoder/Decoder.h; sourceTree = "<group>"; };
 		0D2AA962141750AE00F4071B /* Decoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Decoder.m; path = Decoder/Decoder.m; sourceTree = "<group>"; };
@@ -165,12 +165,12 @@
 				0D2AA94F1417501200F4071B /* FISoundEngine.m */,
 				0DF32B99141A03150059033C /* FIFactory.h */,
 				0DF32B9A141A03150059033C /* FIFactory.m */,
-				0D2AA9501417501200F4071B /* Reporter.h */,
-				0D2AA9511417501200F4071B /* Reporter.m */,
-				0D2AA9541417501200F4071B /* Sound.h */,
-				0D2AA9551417501200F4071B /* Sound.m */,
-				0D2AA9521417501200F4071B /* RevolverSound.h */,
-				0D2AA9531417501200F4071B /* RevolverSound.m */,
+				0D2AA9501417501200F4071B /* FIErrorReporter.h */,
+				0D2AA9511417501200F4071B /* FIErrorReporter.m */,
+				0D2AA9541417501200F4071B /* FISound.h */,
+				0D2AA9551417501200F4071B /* FISound.m */,
+				0D2AA9521417501200F4071B /* FIRevolverSound.h */,
+				0D2AA9531417501200F4071B /* FIRevolverSound.m */,
 			);
 			path = Finch;
 			sourceTree = "<group>";
@@ -227,9 +227,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D2AA9561417501200F4071B /* FISoundEngine.h in Headers */,
-				0D2AA9581417501200F4071B /* Reporter.h in Headers */,
-				0D2AA95A1417501200F4071B /* RevolverSound.h in Headers */,
-				0D2AA95C1417501200F4071B /* Sound.h in Headers */,
+				0D2AA9581417501200F4071B /* FIErrorReporter.h in Headers */,
+				0D2AA95A1417501200F4071B /* FIRevolverSound.h in Headers */,
+				0D2AA95C1417501200F4071B /* FISound.h in Headers */,
 				0D2AA95F1417505300F4071B /* prefix.pch in Headers */,
 				0D2AA967141750AE00F4071B /* Decoder.h in Headers */,
 				0D2AA969141750AE00F4071B /* PCMDecoder.h in Headers */,
@@ -326,9 +326,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D2AA9571417501200F4071B /* FISoundEngine.m in Sources */,
-				0D2AA9591417501200F4071B /* Reporter.m in Sources */,
-				0D2AA95B1417501200F4071B /* RevolverSound.m in Sources */,
-				0D2AA95D1417501200F4071B /* Sound.m in Sources */,
+				0D2AA9591417501200F4071B /* FIErrorReporter.m in Sources */,
+				0D2AA95B1417501200F4071B /* FIRevolverSound.m in Sources */,
+				0D2AA95D1417501200F4071B /* FISound.m in Sources */,
 				0D2AA968141750AE00F4071B /* Decoder.m in Sources */,
 				0D2AA96A141750AE00F4071B /* PCMDecoder.m in Sources */,
 				0D2AA96C141750AE00F4071B /* Sample.m in Sources */,

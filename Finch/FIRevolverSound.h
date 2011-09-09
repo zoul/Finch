@@ -1,4 +1,4 @@
-#import "Sound.h"
+#import "FISound.h"
 
 /*
     When you send the “play” message to a regular sound
@@ -8,7 +8,7 @@
     simultaneously (think machinegun). This is what this
     class is for.
 */
-@interface RevolverSound : NSObject
+@interface FIRevolverSound : NSObject
 {
     NSMutableArray *sounds;
     int current;
