@@ -5,7 +5,7 @@
 
 - (id) init
 {
-    [super init];
+    self = [super init];
     channels = bitsPerChannel = sampleRate = duration = -1;
     endianity = kEndianityUnknown;
     return self;

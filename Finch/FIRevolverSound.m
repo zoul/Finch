@@ -11,7 +11,7 @@
 
 - (id) initWithVoices: (NSArray*) newVoices
 {
-    [super init];
+    self = [super init];
     [self setVoices:newVoices];
     return self;
 }

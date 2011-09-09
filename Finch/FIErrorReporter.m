@@ -14,7 +14,7 @@ static NSError *dummyError = nil;
 
 - (id) initWithDomain: (NSString*) errDomain error: (NSError**) error
 {
-    [super init];
+    self = [super init];
     domain = [errDomain retain];
     if (error == NULL)
         error = &dummyError;

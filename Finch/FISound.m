@@ -31,7 +31,7 @@
     format: (ALenum) format sampleRate: (ALsizei) frequency
     duration: (float) seconds
 {
-    [super init];
+    self = [super init];
     
     ALCcontext *const currentContext = alcGetCurrentContext();
     if (currentContext == NULL)

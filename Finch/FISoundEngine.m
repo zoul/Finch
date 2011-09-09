@@ -13,7 +13,7 @@
 
 - (id) init
 {
-    [super init];
+    self = [super init];
     [self setLogger:FILoggerNull];
     return self;
 }
