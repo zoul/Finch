@@ -2,7 +2,7 @@
 #import <AudioToolbox/AudioToolbox.h> 
 #import "FISoundSample.h"
 #import "FIErrorReporter.h"
-#import "Decoder.h"
+#import "FIError.h"
 
 @implementation PCMDecoder
 
@@ -21,7 +21,7 @@
     
     errcode = AudioFileOpenURL((CFURLRef) fileURL, kAudioFileReadPermission, 0, &fileId);
     if (errcode) {
-        *error = [reporter errorWithCode:kDEFileReadError];
+        *error = [reporter errorWithCode:FIErrorFileReadFailed];
         return nil;
     }
     
@@ -29,14 +29,14 @@
     propertySize = sizeof(fileFormat);
     errcode = AudioFileGetProperty(fileId, kAudioFilePropertyDataFormat, &propertySize, &fileFormat);
     if (errcode) {
-        *error = [reporter errorWithCode:kDEFileFormatReadError];
+        *error = [reporter errorWithCode:FIErrorFileFormatReadFailed];
         AudioFileClose(fileId);
         return nil;
     }
 
     if (fileFormat.mFormatID != kAudioFormatLinearPCM) { 
         *error = [reporter
-            errorWithCode:kDEInvalidFileFormat
+            errorWithCode:FIErrorInvalidFileFormat
             description:@"Sound file not linear PCM."];
         AudioFileClose(fileId);
         return nil;
@@ -47,7 +47,7 @@
     errcode = AudioFileGetProperty(fileId, kAudioFilePropertyAudioDataByteCount, &propertySize, &fileSize);
     if (errcode) {
         *error = [reporter
-            errorWithCode:kDEFileFormatReadError
+            errorWithCode:FIErrorFileFormatReadFailed
             description:@"Failed to read sound file size."];
         AudioFileClose(fileId);
         return nil;
@@ -58,7 +58,7 @@
     errcode = AudioFileGetProperty(fileId, kAudioFilePropertyEstimatedDuration, &propertySize, &sampleLength);
     if (errcode) {
         *error = [reporter
-            errorWithCode:kDEFileFormatReadError
+            errorWithCode:FIErrorFileFormatReadFailed
             description:@"Failed to read sound length."];
         AudioFileClose(fileId);
         return nil;
@@ -67,7 +67,7 @@
     UInt32 dataSize = (UInt32) fileSize;
     void *data = malloc(dataSize);
     if (!data) {
-        *error = [reporter errorWithCode:kDEMemoryAllocationError];
+        *error = [reporter errorWithCode:FIErrorMemoryAllocationFailed];
         AudioFileClose(fileId);
         return nil;
     }
@@ -75,7 +75,7 @@
     errcode = AudioFileReadBytes(fileId, false, 0, &dataSize, data);
     if (errcode) {
         *error = [reporter
-            errorWithCode:kDEFileFormatReadError
+            errorWithCode:FIErrorFileFormatReadFailed
             description:@"Failed to read sound data."];
         free(data);
         AudioFileClose(fileId);

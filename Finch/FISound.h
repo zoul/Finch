@@ -1,11 +1,5 @@
 @class FISoundSample;
 
-enum SoundError {
-    kSEInvalidNumberOfChannels = 1,
-    kSEInvalidEndianity,
-    kSEInvalidSampleResolution
-};
-
 @interface FISound : NSObject
 
 // Sound length in seconds.

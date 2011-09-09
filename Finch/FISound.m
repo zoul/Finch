@@ -2,7 +2,7 @@
 #import <AudioToolbox/AudioToolbox.h> 
 #import <OpenAL/al.h>
 #import <OpenAL/alc.h>
-#import "Decoder.h"
+#import "FIError.h"
 #import "FISoundSample.h"
 #import "FIErrorReporter.h"
 
@@ -87,19 +87,19 @@
     
     // Check the number of channels
     if (sample.channels != 1 && sample.channels != 2) {
-        *error = [reporter errorWithCode:kSEInvalidNumberOfChannels];
+        *error = [reporter errorWithCode:FIErrorInvalidNumberOfChannels];
         return nil;
     }
     
     // Check sample resolution
     if (sample.bitsPerChannel != 8 && sample.bitsPerChannel != 16) {
-        *error = [reporter errorWithCode:kSEInvalidSampleResolution];
+        *error = [reporter errorWithCode:FIErrorInvalidSampleResolution];
         return nil;
     }
     
     // Check data endianity
     if (sample.endianity != kLittleEndian) {
-        *error = [reporter errorWithCode:kSEInvalidEndianity];
+        *error = [reporter errorWithCode:FIErrorInvalidEndianity];
         return nil;
     }
     
