@@ -12,12 +12,12 @@
 
 - (void) openAudioSession
 {
-    NSError *error = nil;
+    NSError *error = nil; BOOL success = YES;
     AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategoryPlayback error:&error];
-    NSAssert(error == nil, @"Failed to set audio session category.");
-    [session setActive:YES error:&error];
-    NSAssert(error == nil, @"Failed to activate audio session.");
+    success = [session setCategory:AVAudioSessionCategoryPlayback error:&error];
+    NSAssert1(success, @"Failed to set audio session category: %@", error);
+    success = [session setActive:YES error:&error];
+    NSAssert1(success, @"Failed to activate audio session: %@", error);
 }
 
 - (void) applicationDidFinishLaunching: (UIApplication*) application
