@@ -1,10 +1,7 @@
 #import "FISound.h"
-#import <AudioToolbox/AudioToolbox.h> 
-#import <OpenAL/al.h>
-#import <OpenAL/alc.h>
-#import "FIError.h"
 #import "FISoundSample.h"
 #import "FIErrorReporter.h"
+#import "FIError.h"
 
 #define CLEAR_ERROR_FLAG alGetError()
 #define DETACH_SOURCE 0

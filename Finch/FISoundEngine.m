@@ -1,6 +1,4 @@
 #import "FISoundEngine.h"
-#import <OpenAL/al.h>
-#import <OpenAL/alc.h>
 
 @interface FISoundEngine ()
 @property(assign) ALCdevice *device;
