@@ -1,5 +1,6 @@
 #import "Application.h"
 #import "Controller.h"
+#import "FISoundEngine.h"
 #import "FIFactory.h"
 
 @interface Application ()
@@ -10,25 +11,18 @@
 @implementation Application
 @synthesize window, controller, soundFactory, soundEngine;
 
-- (void) openAudioSession
-{
-    NSError *error = nil; BOOL success = YES;
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    success = [session setCategory:AVAudioSessionCategoryPlayback error:&error];
-    NSAssert1(success, @"Failed to set audio session category: %@", error);
-    success = [session setActive:YES error:&error];
-    NSAssert1(success, @"Failed to activate audio session: %@", error);
-}
-
 - (void) applicationDidFinishLaunching: (UIApplication*) application
 {
-    [self openAudioSession];
-    
     soundFactory = [[FIFactory alloc] init];
+    [soundFactory setLogger:FILoggerNSLog];
+
     [self setSoundEngine:[soundFactory buildSoundEngine]];
+    [soundEngine activateAudioSessionWithCategory:AVAudioSessionCategoryPlayback];
+    [soundEngine openAudioDevice];
+
     [controller setSitarSound:[soundFactory buildSoundNamed:@"sitar.wav"]];
     [controller setGunSound:[soundFactory buildSoundNamed:@"shot.wav" rounds:4]];
-    
+
     [window setRootViewController:controller];
     [window makeKeyAndVisible];
 }

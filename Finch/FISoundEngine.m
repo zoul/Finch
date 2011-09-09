@@ -3,47 +3,85 @@
 @interface FISoundEngine ()
 @property(assign) ALCdevice *device;
 @property(assign) ALCcontext *context;
+@property(assign) BOOL isRunning;
 @end
 
 @implementation FISoundEngine
-@synthesize device, context, logger;
+@synthesize device, context, logger, isRunning;
+
+#pragma mark Initialization
 
 - (id) init
 {
     [super init];
     [self setLogger:FILoggerNull];
-    
-    device = alcOpenDevice(NULL);
-    if (!device) {
-        NSLog(@"Finch: Could not open default OpenAL device.");
-        [self release];
-        return nil;
-    }
-    
-    context = alcCreateContext(device, 0);
-    if (!context) {
-        NSLog(@"Finch: Failed to create OpenAL context for default device.");
-        [self release];
-        return nil;
-    }
-    
-    const BOOL success = alcMakeContextCurrent(context);
-    if (!success) {
-        NSLog(@"Finch: Failed to set current OpenAL context.");
-        [self release];
-        return nil;
-    }
-    
     return self;
 }
 
 - (void) dealloc
 {
+    [self closeAudioDevice];
     [logger release];
+    [super dealloc];
+}
+
+#pragma mark OpenAL Device Management
+
+- (BOOL) openAudioDevice
+{
+    logger(@"Opening OpenAL audio device.");
+
+    device = alcOpenDevice(NULL);
+    if (!device) {
+        logger(@"Could not open default OpenAL device.");
+        return NO;
+    }
+    
+    context = alcCreateContext(device, 0);
+    if (!context) {
+        logger(@"Failed to create OpenAL context for default device.");
+        return NO;
+    }
+    
+    const BOOL success = alcMakeContextCurrent(context);
+    if (!success) {
+        logger(@"Failed to set current OpenAL context.");
+        return NO;
+    }
+    
+    [self setIsRunning:YES];
+    return YES;
+}
+
+- (void) closeAudioDevice
+{
+    logger(@"Closing OpenAL audio device.");
     alcMakeContextCurrent(NULL);
     alcDestroyContext(context);
     alcCloseDevice(device);
-    [super dealloc];
+    [self setIsRunning:NO];
+}
+
+#pragma mark Audio Session Convenience
+
+- (BOOL) activateAudioSessionWithCategory: (NSString*) categoryName
+{
+    NSError *error = nil; BOOL success = YES;
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+
+    success = [session setCategory:AVAudioSessionCategoryPlayback error:&error];
+    if (!success) {
+        logger(@"Failed to set audio session category: %@", error);
+        return NO;
+    }
+
+    success = [session setActive:YES error:&error];
+    if (!success) {
+        logger(@"Failed to activate audio session: %@", error);
+        return NO;
+    }
+
+    return YES;
 }
 
 @end
