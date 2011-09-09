@@ -37,8 +37,8 @@ In order to use Finch you have to create a factory first:
 The factory will give you the sound engine:
 
     FISoundEngine *engine = [soundFactory buildSoundEngine];
-    [soundEngine activateAudioSessionWithCategory:AVAudioSessionCategoryPlayback];
-    [soundEngine openAudioDevice];
+    [engine activateAudioSessionWithCategory:AVAudioSessionCategoryPlayback];
+    [engine openAudioDevice];
 
 And also the sounds:
 
