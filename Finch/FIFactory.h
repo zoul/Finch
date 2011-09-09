@@ -10,7 +10,7 @@
 
 - (FISoundEngine*) buildSoundEngine;
 
-- (FISound*) buildSoundNamed: (NSString*) soundName;
-- (FISound*) buildSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices;
+- (FISound*) loadSoundNamed: (NSString*) soundName;
+- (FISound*) loadSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices;
 
 @end

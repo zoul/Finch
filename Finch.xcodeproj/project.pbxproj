@@ -10,6 +10,21 @@
 		0D1BA64D141A41EB004A5A9F /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA9AB141752D800F4071B /* OpenAL.framework */; };
 		0D1BA64E141A41EB004A5A9F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA9A9141752BE00F4071B /* AudioToolbox.framework */; };
 		0D1BA64F141A41EB004A5A9F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA9A7141752A200F4071B /* AVFoundation.framework */; };
+		0D1BA658141A45B6004A5A9F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1BA657141A45B6004A5A9F /* SenTestingKit.framework */; };
+		0D1BA659141A45B6004A5A9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA973141750F700F4071B /* UIKit.framework */; };
+		0D1BA65A141A45B6004A5A9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA94114174FA000F4071B /* Foundation.framework */; };
+		0D1BA66C141A4695004A5A9F /* FIFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1BA66B141A4695004A5A9F /* FIFactoryTests.m */; };
+		0D1BA66D141A46BC004A5A9F /* FIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF32B9A141A03150059033C /* FIFactory.m */; };
+		0D1BA66E141A46D3004A5A9F /* FILogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF32B9E141A03AC0059033C /* FILogger.m */; };
+		0D1BA66F141A46D3004A5A9F /* FISoundEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA94F1417501200F4071B /* FISoundEngine.m */; };
+		0D1BA670141A46D3004A5A9F /* FIErrorReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9511417501200F4071B /* FIErrorReporter.m */; };
+		0D1BA671141A46D3004A5A9F /* FISound.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9551417501200F4071B /* FISound.m */; };
+		0D1BA672141A46D3004A5A9F /* FIRevolverSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9531417501200F4071B /* FIRevolverSound.m */; };
+		0D1BA673141A46D7004A5A9F /* FISoundSample.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA966141750AE00F4071B /* FISoundSample.m */; };
+		0D1BA674141A46D7004A5A9F /* FIPCMDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA964141750AE00F4071B /* FIPCMDecoder.m */; };
+		0D1BA675141A46FE004A5A9F /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA9AB141752D800F4071B /* OpenAL.framework */; };
+		0D1BA676141A4700004A5A9F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA9A9141752BE00F4071B /* AudioToolbox.framework */; };
+		0D1BA677141A4702004A5A9F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA9A7141752A200F4071B /* AVFoundation.framework */; };
 		0D2AA94214174FA000F4071B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA94114174FA000F4071B /* Foundation.framework */; };
 		0D2AA9561417501200F4071B /* FISoundEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA94E1417501200F4071B /* FISoundEngine.h */; };
 		0D2AA9571417501200F4071B /* FISoundEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA94F1417501200F4071B /* FISoundEngine.m */; };
@@ -49,6 +64,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0D1BA668141A45D3004A5A9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D2AA93514174FA000F4071B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D1BA655141A45B6004A5A9F;
+			remoteInfo = Tests;
+		};
 		0D2AA9AD1417582F00F4071B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0D2AA93514174FA000F4071B /* Project object */;
@@ -59,6 +81,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D1BA656141A45B6004A5A9F /* Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D1BA657141A45B6004A5A9F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		0D1BA664141A45B6004A5A9F /* prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = "<group>"; };
+		0D1BA66B141A4695004A5A9F /* FIFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FIFactoryTests.m; sourceTree = "<group>"; };
 		0D2AA93E14174FA000F4071B /* libFinch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFinch.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2AA94114174FA000F4071B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D2AA94E1417501200F4071B /* FISoundEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISoundEngine.h; sourceTree = "<group>"; };
@@ -102,6 +128,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0D1BA652141A45B6004A5A9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D1BA658141A45B6004A5A9F /* SenTestingKit.framework in Frameworks */,
+				0D1BA659141A45B6004A5A9F /* UIKit.framework in Frameworks */,
+				0D1BA65A141A45B6004A5A9F /* Foundation.framework in Frameworks */,
+				0D1BA675141A46FE004A5A9F /* OpenAL.framework in Frameworks */,
+				0D1BA677141A4702004A5A9F /* AVFoundation.framework in Frameworks */,
+				0D1BA676141A4700004A5A9F /* AudioToolbox.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0D2AA93B14174FA000F4071B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,12 +168,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D1BA65B141A45B6004A5A9F /* Test Support */ = {
+			isa = PBXGroup;
+			children = (
+				0D1BA664141A45B6004A5A9F /* prefix.pch */,
+			);
+			name = "Test Support";
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		0D2AA93314174FA000F4071B = {
 			isa = PBXGroup;
 			children = (
 				0D2AA960141750A600F4071B /* Decoder */,
 				0D2AA94314174FA000F4071B /* Finch */,
 				0D2AA94414174FA000F4071B /* Supporting Files */,
+				0D1BA65B141A45B6004A5A9F /* Test Support */,
 				0D2AA978141750F800F4071B /* Demo */,
 				0D2AA94014174FA000F4071B /* Frameworks */,
 				0D2AA93F14174FA000F4071B /* Products */,
@@ -146,6 +195,7 @@
 			children = (
 				0D2AA93E14174FA000F4071B /* libFinch.a */,
 				0D2AA971141750F700F4071B /* Finch Demo.app */,
+				0D1BA656141A45B6004A5A9F /* Tests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,6 +208,7 @@
 				0D2AA9A7141752A200F4071B /* AVFoundation.framework */,
 				0D2AA94114174FA000F4071B /* Foundation.framework */,
 				0D2AA973141750F700F4071B /* UIKit.framework */,
+				0D1BA657141A45B6004A5A9F /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -178,6 +229,7 @@
 				0D2AA9531417501200F4071B /* FIRevolverSound.m */,
 				0DF32B99141A03150059033C /* FIFactory.h */,
 				0DF32B9A141A03150059033C /* FIFactory.m */,
+				0D1BA66B141A4695004A5A9F /* FIFactoryTests.m */,
 			);
 			path = Finch;
 			sourceTree = "<group>";
@@ -249,6 +301,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0D1BA655141A45B6004A5A9F /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D1BA665141A45B6004A5A9F /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				0D1BA651141A45B6004A5A9F /* Sources */,
+				0D1BA652141A45B6004A5A9F /* Frameworks */,
+				0D1BA653141A45B6004A5A9F /* Resources */,
+				0D1BA654141A45B6004A5A9F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = 0D1BA656141A45B6004A5A9F /* Tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		0D2AA93D14174FA000F4071B /* Finch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D2AA94B14174FA000F4071B /* Build configuration list for PBXNativeTarget "Finch" */;
@@ -260,6 +330,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0D1BA669141A45D3004A5A9F /* PBXTargetDependency */,
 			);
 			name = Finch;
 			productName = Finch;
@@ -305,12 +376,20 @@
 			projectRoot = "";
 			targets = (
 				0D2AA93D14174FA000F4071B /* Finch */,
+				0D1BA655141A45B6004A5A9F /* Tests */,
 				0D2AA970141750F700F4071B /* Finch Demo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0D1BA653141A45B6004A5A9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0D2AA96F141750F700F4071B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -327,7 +406,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0D1BA654141A45B6004A5A9F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		0D1BA651141A45B6004A5A9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D1BA66C141A4695004A5A9F /* FIFactoryTests.m in Sources */,
+				0D1BA66D141A46BC004A5A9F /* FIFactory.m in Sources */,
+				0D1BA66E141A46D3004A5A9F /* FILogger.m in Sources */,
+				0D1BA66F141A46D3004A5A9F /* FISoundEngine.m in Sources */,
+				0D1BA670141A46D3004A5A9F /* FIErrorReporter.m in Sources */,
+				0D1BA671141A46D3004A5A9F /* FISound.m in Sources */,
+				0D1BA672141A46D3004A5A9F /* FIRevolverSound.m in Sources */,
+				0D1BA673141A46D7004A5A9F /* FISoundSample.m in Sources */,
+				0D1BA674141A46D7004A5A9F /* FIPCMDecoder.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0D2AA93A14174FA000F4071B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -356,6 +467,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0D1BA669141A45D3004A5A9F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D1BA655141A45B6004A5A9F /* Tests */;
+			targetProxy = 0D1BA668141A45D3004A5A9F /* PBXContainerItemProxy */;
+		};
 		0D2AA9AE1417582F00F4071B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0D2AA93D14174FA000F4071B /* Finch */;
@@ -364,6 +480,36 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0D1BA666141A45B6004A5A9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Tests/prefix.pch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		0D1BA667141A45B6004A5A9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Tests/prefix.pch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		0D2AA94914174FA000F4071B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -466,6 +612,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0D1BA665141A45B6004A5A9F /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D1BA666141A45B6004A5A9F /* Debug */,
+				0D1BA667141A45B6004A5A9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		0D2AA93814174FA000F4071B /* Build configuration list for PBXProject "Finch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

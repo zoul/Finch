@@ -34,7 +34,7 @@
     return [engine autorelease];
 }
 
-- (FISound*) buildSoundNamed: (NSString*) soundName
+- (FISound*) loadSoundNamed: (NSString*) soundName
 {
     NSString *path = [soundBundle pathForResource:soundName ofType:nil];
     id <FISoundDecoder> decoder = [self decoderForFileAtPath:path];
@@ -43,11 +43,15 @@
     return [sound autorelease]; 
 }
 
-- (FISound*) buildSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices
+- (FISound*) loadSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices
 {
     NSMutableArray *sounds = [NSMutableArray array];
-    for (NSUInteger i=0; i<voices; i++)
-        [sounds addObject:[self buildSoundNamed:soundName]];
+    for (NSUInteger i=0; i<voices; i++) {
+        FISound *voice = [self loadSoundNamed:soundName];
+        if (voice == nil)
+            return nil;
+        [sounds addObject:voice];
+    }
     return (id) [[[FIRevolverSound alloc] initWithVoices:sounds] autorelease];
 }
 
