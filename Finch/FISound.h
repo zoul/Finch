@@ -1,5 +1,4 @@
-#import <OpenAL/al.h>
-#import <OpenAL/alc.h>
+@class FISoundSample;
 
 enum SoundError {
     kSEInvalidNumberOfChannels = 1,
@@ -20,19 +19,7 @@ enum SoundError {
 // Sound pitch.
 @property(assign, nonatomic) float pitch;
 
-// Designated initializer. The format
-// is AL_FORMAT_{MONO,STEREO}{8,16}.
-- (id) initWithData: (const ALvoid*) data size: (ALsizei) size
-    format: (ALenum) format sampleRate: (ALsizei) frequency
-    duration: (float) seconds;
-    
-// Convenience initializer, will decode the
-// sound for you using the Decoder class.
-- (id) initWithFile: (NSURL*) fileURL error: (NSError**) error;
-
-// Just as the one above, logs errors using NSLog
-// instead of reporting through NSError.
-- (id) initWithFile: (NSURL*) fileURL;
+- (id) initWithSample: (FISoundSample*) sample error: (NSError**) error;
 
 - (void) play;
 - (void) stop;

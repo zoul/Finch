@@ -1,7 +1,9 @@
 #import "FISound.h"
 #import <AudioToolbox/AudioToolbox.h> 
+#import <OpenAL/al.h>
+#import <OpenAL/alc.h>
 #import "Decoder.h"
-#import "Sample.h"
+#import "FISoundSample.h"
 #import "FIErrorReporter.h"
 
 #define CLEAR_ERROR_FLAG alGetError()
@@ -76,9 +78,8 @@
     [super dealloc];
 }
 
-- (id) initWithFile: (NSURL*) fileURL error: (NSError**) error;
+- (id) initWithSample: (FISoundSample*) sample error: (NSError**) error
 {
-    Sample *sample = [Decoder decodeFile:fileURL error:error];
     if (!sample)
         return nil;
     
@@ -107,15 +108,6 @@
         (sample.bitsPerChannel == 16 ? AL_FORMAT_STEREO16 : AL_FORMAT_STEREO8);
     return [self initWithData:sample.data.bytes size:sample.data.length
         format:format sampleRate:sample.sampleRate duration:sample.duration];
-}
-
-- (id) initWithFile: (NSURL*) fileURL
-{
-    NSError *error = nil;
-    id instance = [self initWithFile:fileURL error:&error];
-    if (error)
-        NSLog(@"There was an error loading a sound: %@", [error localizedDescription]);
-    return instance;
 }
 
 #pragma mark Playback Controls

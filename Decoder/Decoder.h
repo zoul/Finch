@@ -1,4 +1,4 @@
-@class Sample;
+@class FISoundSample;
 
 enum DecoderError
 {
@@ -12,6 +12,6 @@ enum DecoderError
 @interface Decoder : NSObject {}
 
 + (void) registerDecoder: (Class) c forExtension: (NSString*) ext;
-+ (Sample*) decodeFile: (NSURL*) fileURL error: (NSError**) error;
++ (FISoundSample*) decodeFile: (NSURL*) fileURL error: (NSError**) error;
 
 @end

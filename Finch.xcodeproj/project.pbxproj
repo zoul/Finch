@@ -21,8 +21,8 @@
 		0D2AA968141750AE00F4071B /* Decoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA962141750AE00F4071B /* Decoder.m */; };
 		0D2AA969141750AE00F4071B /* PCMDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA963141750AE00F4071B /* PCMDecoder.h */; };
 		0D2AA96A141750AE00F4071B /* PCMDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA964141750AE00F4071B /* PCMDecoder.m */; };
-		0D2AA96B141750AE00F4071B /* Sample.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA965141750AE00F4071B /* Sample.h */; };
-		0D2AA96C141750AE00F4071B /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA966141750AE00F4071B /* Sample.m */; };
+		0D2AA96B141750AE00F4071B /* FISoundSample.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA965141750AE00F4071B /* FISoundSample.h */; };
+		0D2AA96C141750AE00F4071B /* FISoundSample.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA966141750AE00F4071B /* FISoundSample.m */; };
 		0D2AA974141750F700F4071B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA973141750F700F4071B /* UIKit.framework */; };
 		0D2AA975141750F800F4071B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA94114174FA000F4071B /* Foundation.framework */; };
 		0D2AA99A1417515A00F4071B /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA98E1417515A00F4071B /* Application.m */; };
@@ -43,6 +43,7 @@
 		0DF32B9C141A03150059033C /* FIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF32B9A141A03150059033C /* FIFactory.m */; };
 		0DF32B9F141A03AC0059033C /* FILogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DF32B9D141A03AB0059033C /* FILogger.h */; };
 		0DF32BA0141A03AC0059033C /* FILogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF32B9E141A03AC0059033C /* FILogger.m */; };
+		0DF32BA2141A0AA10059033C /* FISoundDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DF32BA1141A0AA10059033C /* FISoundDecoder.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,8 +72,8 @@
 		0D2AA962141750AE00F4071B /* Decoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Decoder.m; path = Decoder/Decoder.m; sourceTree = "<group>"; };
 		0D2AA963141750AE00F4071B /* PCMDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PCMDecoder.h; path = Decoder/PCMDecoder.h; sourceTree = "<group>"; };
 		0D2AA964141750AE00F4071B /* PCMDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PCMDecoder.m; path = Decoder/PCMDecoder.m; sourceTree = "<group>"; };
-		0D2AA965141750AE00F4071B /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sample.h; path = Decoder/Sample.h; sourceTree = "<group>"; };
-		0D2AA966141750AE00F4071B /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sample.m; path = Decoder/Sample.m; sourceTree = "<group>"; };
+		0D2AA965141750AE00F4071B /* FISoundSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FISoundSample.h; path = Decoder/FISoundSample.h; sourceTree = "<group>"; };
+		0D2AA966141750AE00F4071B /* FISoundSample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FISoundSample.m; path = Decoder/FISoundSample.m; sourceTree = "<group>"; };
 		0D2AA971141750F700F4071B /* Finch Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Finch Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2AA973141750F700F4071B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0D2AA98D1417515A00F4071B /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Application.h; path = Demo/Application.h; sourceTree = SOURCE_ROOT; };
@@ -96,6 +97,7 @@
 		0DF32B9A141A03150059033C /* FIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FIFactory.m; sourceTree = "<group>"; };
 		0DF32B9D141A03AB0059033C /* FILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FILogger.h; sourceTree = "<group>"; };
 		0DF32B9E141A03AC0059033C /* FILogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FILogger.m; sourceTree = "<group>"; };
+		0DF32BA1141A0AA10059033C /* FISoundDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FISoundDecoder.h; path = Decoder/FISoundDecoder.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,14 +165,14 @@
 				0DF32B9E141A03AC0059033C /* FILogger.m */,
 				0D2AA94E1417501200F4071B /* FISoundEngine.h */,
 				0D2AA94F1417501200F4071B /* FISoundEngine.m */,
-				0DF32B99141A03150059033C /* FIFactory.h */,
-				0DF32B9A141A03150059033C /* FIFactory.m */,
 				0D2AA9501417501200F4071B /* FIErrorReporter.h */,
 				0D2AA9511417501200F4071B /* FIErrorReporter.m */,
 				0D2AA9541417501200F4071B /* FISound.h */,
 				0D2AA9551417501200F4071B /* FISound.m */,
 				0D2AA9521417501200F4071B /* FIRevolverSound.h */,
 				0D2AA9531417501200F4071B /* FIRevolverSound.m */,
+				0DF32B99141A03150059033C /* FIFactory.h */,
+				0DF32B9A141A03150059033C /* FIFactory.m */,
 			);
 			path = Finch;
 			sourceTree = "<group>";
@@ -187,12 +189,13 @@
 		0D2AA960141750A600F4071B /* Decoder */ = {
 			isa = PBXGroup;
 			children = (
+				0D2AA965141750AE00F4071B /* FISoundSample.h */,
+				0D2AA966141750AE00F4071B /* FISoundSample.m */,
+				0DF32BA1141A0AA10059033C /* FISoundDecoder.h */,
 				0D2AA961141750AE00F4071B /* Decoder.h */,
 				0D2AA962141750AE00F4071B /* Decoder.m */,
 				0D2AA963141750AE00F4071B /* PCMDecoder.h */,
 				0D2AA964141750AE00F4071B /* PCMDecoder.m */,
-				0D2AA965141750AE00F4071B /* Sample.h */,
-				0D2AA966141750AE00F4071B /* Sample.m */,
 			);
 			name = Decoder;
 			sourceTree = "<group>";
@@ -233,9 +236,10 @@
 				0D2AA95F1417505300F4071B /* prefix.pch in Headers */,
 				0D2AA967141750AE00F4071B /* Decoder.h in Headers */,
 				0D2AA969141750AE00F4071B /* PCMDecoder.h in Headers */,
-				0D2AA96B141750AE00F4071B /* Sample.h in Headers */,
+				0D2AA96B141750AE00F4071B /* FISoundSample.h in Headers */,
 				0DF32B9B141A03150059033C /* FIFactory.h in Headers */,
 				0DF32B9F141A03AC0059033C /* FILogger.h in Headers */,
+				0DF32BA2141A0AA10059033C /* FISoundDecoder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,7 +335,7 @@
 				0D2AA95D1417501200F4071B /* FISound.m in Sources */,
 				0D2AA968141750AE00F4071B /* Decoder.m in Sources */,
 				0D2AA96A141750AE00F4071B /* PCMDecoder.m in Sources */,
-				0D2AA96C141750AE00F4071B /* Sample.m in Sources */,
+				0D2AA96C141750AE00F4071B /* FISoundSample.m in Sources */,
 				0DF32B9C141A03150059033C /* FIFactory.m in Sources */,
 				0DF32BA0141A03AC0059033C /* FILogger.m in Sources */,
 			);

@@ -1,16 +1,23 @@
 #import "PCMDecoder.h"
 #import <AudioToolbox/AudioToolbox.h> 
-#import "Sample.h"
+#import "FISoundSample.h"
 #import "FIErrorReporter.h"
+#import "Decoder.h"
 
 @implementation PCMDecoder
 
-+ (Sample*) decodeFile: (NSURL*) fileURL error: (NSError**) error
+- (NSSet*) supportedFileExtensions
+{
+    return [NSSet setWithObjects:@"wav", @"caf", nil];
+}
+
+- (FISoundSample*) decodeFileAtPath: (NSString*) path error: (NSError**) error
 {
     OSStatus errcode = noErr;
     UInt32 propertySize;
     AudioFileID fileId = 0;
     FIErrorReporter *reporter = [FIErrorReporter forDomain:@"Sample Decoder" error:error];
+    NSURL *fileURL = [NSURL fileURLWithPath:path];
     
     errcode = AudioFileOpenURL((CFURLRef) fileURL, kAudioFileReadPermission, 0, &fileId);
     if (errcode) {
@@ -75,7 +82,7 @@
         return nil;
     }
 
-    Sample *sample = [[Sample alloc] init];
+    FISoundSample *sample = [[FISoundSample alloc] init];
     [sample setChannels:fileFormat.mChannelsPerFrame];
     [sample setEndianity:TestAudioFormatNativeEndian(fileFormat) ? kLittleEndian : kBigEndian];
     [sample setBitsPerChannel:fileFormat.mBitsPerChannel];
@@ -85,12 +92,6 @@
     
     AudioFileClose(fileId);
     return [sample autorelease];
-}
-
-+ (void) load
-{
-    [super registerDecoder:[self class] forExtension:@"wav"];
-    [super registerDecoder:[self class] forExtension:@"caf"];
 }
 
 @end

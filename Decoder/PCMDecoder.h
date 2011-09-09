@@ -1,5 +1,4 @@
-#import "Decoder.h"
+#import "FISoundDecoder.h"
 
-@interface PCMDecoder : Decoder {}
-
+@interface PCMDecoder : NSObject <FISoundDecoder>
 @end

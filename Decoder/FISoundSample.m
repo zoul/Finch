@@ -1,6 +1,6 @@
-#import "Sample.h"
+#import "FISoundSample.h"
 
-@implementation Sample
+@implementation FISoundSample
 @synthesize channels, bitsPerChannel, sampleRate, endianity, duration, data;
 
 - (id) init

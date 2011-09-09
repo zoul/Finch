@@ -5,7 +5,7 @@ enum SampleEndianity
     kBigEndian
 };
 
-@interface Sample : NSObject {}
+@interface FISoundSample : NSObject {}
 
 @property(assign) int channels;
 @property(assign) int bitsPerChannel;

@@ -2,25 +2,17 @@
 #import "FISound.h"
 
 @interface FIRevolverSound ()
-@property(retain) NSMutableArray *sounds;
+@property(retain) NSArray *sounds;
 @property(assign) NSUInteger current;
 @end
 
 @implementation FIRevolverSound
 @synthesize sounds, current;
 
-- (id) initWithFile: (NSURL*) fileURL rounds: (int) max
+- (id) initWithSounds: (NSArray*) newSounds
 {
     [super init];
-    sounds = [[NSMutableArray alloc] init];
-    for (int i=0; i<max; i++)
-    {
-        FISound *const sample = [[FISound alloc] initWithFile:fileURL];
-        if (!sample)
-            return nil;
-        [sounds addObject:sample];
-        [sample release];
-    }
+    [self setSounds:newSounds];
     return self;
 }
 

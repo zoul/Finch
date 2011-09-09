@@ -17,7 +17,7 @@ static NSMutableDictionary *decoders = nil;
     [decoders setObject:c forKey:ext];
 }
 
-+ (Sample*) decodeFile: (NSURL*) fileURL error: (NSError**) error
++ (FISoundSample*) decodeFile: (NSURL*) fileURL error: (NSError**) error
 {
     NSAssert([self class] == [Decoder class],
         @"Decoder subclasses have to override this method.");
