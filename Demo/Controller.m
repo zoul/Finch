@@ -26,8 +26,7 @@
 
 - (IBAction) updateSoundPitchFrom: (UISlider*) slider
 {
-    [sitarSound setPitch:[slider value]];
-    [gunSound setPitch:[slider value]];
+    sitarSound.pitch = gunSound.pitch = slider.value;
 }
 
 @end
