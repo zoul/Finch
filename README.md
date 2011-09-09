@@ -67,6 +67,20 @@ And please note that Finch does not yet support compressed audio. You should be
 safe with mono or stereo WAV files sampled at 44.1 kHz. There is a demo target
 inside the project, take a look at it to see more.
 
+Tips
+====
+
+* You can turn library logging on/off by setting the `logger` property of
+the Finch factory. There are two loggers (`FILoggerNull` and `FILoggerNSLog`)
+already included for your convenience and you can easily write your own.
+
+* You can use the sound classes independently on the sound engine class,
+for example if you already have some own OpenAL initialization code in place.
+
+* You can plug in your own decoder if you want to support some other audio
+formats, see the `FISoundDecoder` protocol and the `soundDecoders` property
+of the factory class.
+
 Links
 =====
 
