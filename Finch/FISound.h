@@ -8,11 +8,6 @@ enum SoundError {
 };
 
 @interface FISound : NSObject
-{
-    BOOL loop;
-    ALuint source, buffer;
-    float gain, pitch, duration;
-}
 
 // Sound length in seconds.
 @property(readonly) float duration;

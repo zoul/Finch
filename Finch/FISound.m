@@ -7,8 +7,12 @@
 #define CLEAR_ERROR_FLAG alGetError()
 #define DETACH_SOURCE 0
 
+@interface FISound ()
+@property(assign) ALuint source, buffer;
+@end
+
 @implementation FISound
-@synthesize loop, duration, gain, pitch;
+@synthesize loop, duration, gain, pitch, source, buffer;
 
 // Clears the error flag.
 - (BOOL) checkSuccessOrLog: (NSString*) msg
