@@ -1,18 +1,19 @@
-#import "Finch.h"
+#import "FISoundEngine.h"
 #import <OpenAL/al.h>
 #import <OpenAL/alc.h>
 
-@interface Finch ()
+@interface FISoundEngine ()
 @property(assign) ALCdevice *device;
 @property(assign) ALCcontext *context;
 @end
 
-@implementation Finch
-@synthesize device, context;
+@implementation FISoundEngine
+@synthesize device, context, logger;
 
 - (id) init
 {
     [super init];
+    [self setLogger:FILoggerNull];
     
     device = alcOpenDevice(NULL);
     if (!device) {
@@ -40,6 +41,7 @@
 
 - (void) dealloc
 {
+    [logger release];
     alcMakeContextCurrent(NULL);
     alcDestroyContext(context);
     alcCloseDevice(device);

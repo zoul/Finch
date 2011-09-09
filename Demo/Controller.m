@@ -1,5 +1,5 @@
 #import "Controller.h"
-#import "Finch.h"
+#import "FISoundEngine.h"
 #import "Sound.h"
 #import "RevolverSound.h"
 #import <unistd.h>
@@ -7,7 +7,7 @@
 static const int kBulletRounds = 4;
 
 @interface Controller ()
-@property(retain) Finch *engine;
+@property(retain) FISoundEngine *engine;
 @property(retain) Sound *sitar;
 @property(retain) RevolverSound *gun;
 @end
@@ -34,7 +34,7 @@ static const int kBulletRounds = 4;
 {
     [super awakeFromNib];
     [self openAudioSession];
-    engine = [[Finch alloc] init];
+    engine = [[FISoundEngine alloc] init];
     sitar = [[Sound alloc] initWithFile:[self soundURLForName:@"sitar"]];
     NSLog(@"Loaded sitar sound, %2.2f seconds.", [sitar duration]);
     gun = [[RevolverSound alloc] initWithFile:[self soundURLForName:@"shot"] rounds:kBulletRounds];

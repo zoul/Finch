@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0D2AA94214174FA000F4071B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA94114174FA000F4071B /* Foundation.framework */; };
-		0D2AA9561417501200F4071B /* Finch.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA94E1417501200F4071B /* Finch.h */; };
-		0D2AA9571417501200F4071B /* Finch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA94F1417501200F4071B /* Finch.m */; };
+		0D2AA9561417501200F4071B /* FISoundEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA94E1417501200F4071B /* FISoundEngine.h */; };
+		0D2AA9571417501200F4071B /* FISoundEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA94F1417501200F4071B /* FISoundEngine.m */; };
 		0D2AA9581417501200F4071B /* Reporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA9501417501200F4071B /* Reporter.h */; };
 		0D2AA9591417501200F4071B /* Reporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9511417501200F4071B /* Reporter.m */; };
 		0D2AA95A1417501200F4071B /* RevolverSound.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA9521417501200F4071B /* RevolverSound.h */; };
@@ -39,6 +39,10 @@
 		0D2AA9A8141752A200F4071B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA9A7141752A200F4071B /* AVFoundation.framework */; };
 		0D2AA9AA141752BE00F4071B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA9A9141752BE00F4071B /* AudioToolbox.framework */; };
 		0D2AA9AC141752D800F4071B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA9AB141752D800F4071B /* OpenAL.framework */; };
+		0DF32B9B141A03150059033C /* FIFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DF32B99141A03150059033C /* FIFactory.h */; };
+		0DF32B9C141A03150059033C /* FIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF32B9A141A03150059033C /* FIFactory.m */; };
+		0DF32B9F141A03AC0059033C /* FILogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DF32B9D141A03AB0059033C /* FILogger.h */; };
+		0DF32BA0141A03AC0059033C /* FILogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF32B9E141A03AC0059033C /* FILogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +58,8 @@
 /* Begin PBXFileReference section */
 		0D2AA93E14174FA000F4071B /* libFinch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFinch.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2AA94114174FA000F4071B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		0D2AA94E1417501200F4071B /* Finch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Finch.h; sourceTree = "<group>"; };
-		0D2AA94F1417501200F4071B /* Finch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Finch.m; sourceTree = "<group>"; };
+		0D2AA94E1417501200F4071B /* FISoundEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISoundEngine.h; sourceTree = "<group>"; };
+		0D2AA94F1417501200F4071B /* FISoundEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISoundEngine.m; sourceTree = "<group>"; };
 		0D2AA9501417501200F4071B /* Reporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reporter.h; sourceTree = "<group>"; };
 		0D2AA9511417501200F4071B /* Reporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reporter.m; sourceTree = "<group>"; };
 		0D2AA9521417501200F4071B /* RevolverSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RevolverSound.h; sourceTree = "<group>"; };
@@ -88,6 +92,10 @@
 		0D2AA9A7141752A200F4071B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0D2AA9A9141752BE00F4071B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0D2AA9AB141752D800F4071B /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		0DF32B99141A03150059033C /* FIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIFactory.h; sourceTree = "<group>"; };
+		0DF32B9A141A03150059033C /* FIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FIFactory.m; sourceTree = "<group>"; };
+		0DF32B9D141A03AB0059033C /* FILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FILogger.h; sourceTree = "<group>"; };
+		0DF32B9E141A03AC0059033C /* FILogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FILogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +128,8 @@
 			children = (
 				0D2AA960141750A600F4071B /* Decoder */,
 				0D2AA94314174FA000F4071B /* Finch */,
-				0D2AA978141750F800F4071B /* Demo */,
 				0D2AA94414174FA000F4071B /* Supporting Files */,
+				0D2AA978141750F800F4071B /* Demo */,
 				0D2AA94014174FA000F4071B /* Frameworks */,
 				0D2AA93F14174FA000F4071B /* Products */,
 			);
@@ -151,8 +159,12 @@
 		0D2AA94314174FA000F4071B /* Finch */ = {
 			isa = PBXGroup;
 			children = (
-				0D2AA94E1417501200F4071B /* Finch.h */,
-				0D2AA94F1417501200F4071B /* Finch.m */,
+				0DF32B9D141A03AB0059033C /* FILogger.h */,
+				0DF32B9E141A03AC0059033C /* FILogger.m */,
+				0D2AA94E1417501200F4071B /* FISoundEngine.h */,
+				0D2AA94F1417501200F4071B /* FISoundEngine.m */,
+				0DF32B99141A03150059033C /* FIFactory.h */,
+				0DF32B9A141A03150059033C /* FIFactory.m */,
 				0D2AA9501417501200F4071B /* Reporter.h */,
 				0D2AA9511417501200F4071B /* Reporter.m */,
 				0D2AA9541417501200F4071B /* Sound.h */,
@@ -214,7 +226,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D2AA9561417501200F4071B /* Finch.h in Headers */,
+				0D2AA9561417501200F4071B /* FISoundEngine.h in Headers */,
 				0D2AA9581417501200F4071B /* Reporter.h in Headers */,
 				0D2AA95A1417501200F4071B /* RevolverSound.h in Headers */,
 				0D2AA95C1417501200F4071B /* Sound.h in Headers */,
@@ -222,6 +234,8 @@
 				0D2AA967141750AE00F4071B /* Decoder.h in Headers */,
 				0D2AA969141750AE00F4071B /* PCMDecoder.h in Headers */,
 				0D2AA96B141750AE00F4071B /* Sample.h in Headers */,
+				0DF32B9B141A03150059033C /* FIFactory.h in Headers */,
+				0DF32B9F141A03AC0059033C /* FILogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,13 +325,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D2AA9571417501200F4071B /* Finch.m in Sources */,
+				0D2AA9571417501200F4071B /* FISoundEngine.m in Sources */,
 				0D2AA9591417501200F4071B /* Reporter.m in Sources */,
 				0D2AA95B1417501200F4071B /* RevolverSound.m in Sources */,
 				0D2AA95D1417501200F4071B /* Sound.m in Sources */,
 				0D2AA968141750AE00F4071B /* Decoder.m in Sources */,
 				0D2AA96A141750AE00F4071B /* PCMDecoder.m in Sources */,
 				0D2AA96C141750AE00F4071B /* Sample.m in Sources */,
+				0DF32B9C141A03150059033C /* FIFactory.m in Sources */,
+				0DF32BA0141A03AC0059033C /* FILogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +476,7 @@
 				0D2AA94D14174FA000F4071B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D2AA98A141750F800F4071B /* Build configuration list for PBXNativeTarget "Finch Demo" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +485,7 @@
 				0D2AA98C141750F800F4071B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
