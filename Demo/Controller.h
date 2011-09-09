@@ -5,8 +5,8 @@
 @property(retain) FISound *sitarSound;
 @property(retain) FIRevolverSound *gunSound;
 
-- (IBAction) makeGoodSound;
-- (IBAction) makeBadSound;
+- (IBAction) playSitarSound;
+- (IBAction) playGunSound;
 - (IBAction) updateSitarPitchFrom: (UISlider*) slider;
 
 @end

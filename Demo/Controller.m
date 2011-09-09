@@ -1,7 +1,6 @@
 #import "Controller.h"
 #import "FISound.h"
 #import "FIRevolverSound.h"
-#import <unistd.h>
 
 @implementation Controller
 @synthesize sitarSound, gunSound;
@@ -13,14 +12,12 @@
     [super dealloc];
 }
 
-#pragma mark Actions
-
-- (IBAction) makeGoodSound
+- (IBAction) playSitarSound
 {
     [sitarSound play];
 }
 
-- (IBAction) makeBadSound
+- (IBAction) playGunSound
 {
     for (int i=0; i<4; i++) {
         [gunSound play];
