@@ -67,15 +67,6 @@ And please note that Finch does not yet support compressed audio. You should be
 safe with mono or stereo WAV files sampled at 44.1 kHz. There is a demo target
 inside the project, take a look at it to see more.
 
-License
-=======
-
-Licensed under the [MIT License][license]. Essentially you can do with this
-software whatever you like, provided that you keep the copyright notice and
-the license text along.
-
-[license]: http://www.opensource.org/licenses/mit-license.php
-
 Links
 =====
 
@@ -88,6 +79,15 @@ Some links you might find useful:
 [git]: http://github.com/zoul/Finch/
 [dump]: http://www.subfurther.com/blog/?p=602
 [guide]: http://connect.creativelabs.com/openal/Documentation/OpenAL_Programmers_Guide.pdf
+
+License
+=======
+
+Licensed under the [MIT License][license]. Essentially you can do with this
+software whatever you like, provided that you keep the copyright notice and
+the license text along.
+
+[license]: http://www.opensource.org/licenses/mit-license.php
 
 Author & Support
 ================
