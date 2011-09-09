@@ -43,12 +43,12 @@
     return [sound autorelease]; 
 }
 
-- (FIRevolverSound*) buildSoundNamed: (NSString*) soundName rounds: (NSUInteger) rounds
+- (FISound*) buildSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices
 {
     NSMutableArray *sounds = [NSMutableArray array];
-    for (NSUInteger i=0; i<rounds; i++)
+    for (NSUInteger i=0; i<voices; i++)
         [sounds addObject:[self buildSoundNamed:soundName]];
-    return [[[FIRevolverSound alloc] initWithSounds:sounds] autorelease];
+    return (id) [[[FIRevolverSound alloc] initWithVoices:sounds] autorelease];
 }
 
 #pragma mark Initalization

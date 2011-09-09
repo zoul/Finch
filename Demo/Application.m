@@ -21,7 +21,7 @@
     [soundEngine openAudioDevice];
 
     [controller setSitarSound:[soundFactory buildSoundNamed:@"sitar.wav"]];
-    [controller setGunSound:[soundFactory buildSoundNamed:@"shot.wav" rounds:4]];
+    [controller setGunSound:[soundFactory buildSoundNamed:@"shot.wav" maxPolyphony:4]];
 
     [window setRootViewController:controller];
     [window makeKeyAndVisible];

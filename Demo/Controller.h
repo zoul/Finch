@@ -3,11 +3,11 @@
 @interface Controller : UIViewController
 
 @property(retain) FISound *sitarSound;
-@property(retain) FIRevolverSound *gunSound;
+@property(retain) FISound *gunSound;
 
 - (IBAction) playSitarSound;
 - (IBAction) playGunSound;
-- (IBAction) updateSitarPitchFrom: (UISlider*) slider;
+- (IBAction) updateSoundPitchFrom: (UISlider*) slider;
 
 @end
 

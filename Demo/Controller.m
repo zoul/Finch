@@ -1,6 +1,5 @@
 #import "Controller.h"
 #import "FISound.h"
-#import "FIRevolverSound.h"
 
 @implementation Controller
 @synthesize sitarSound, gunSound;
@@ -25,9 +24,10 @@
     }
 }
 
-- (IBAction) updateSitarPitchFrom: (UISlider*) slider
+- (IBAction) updateSoundPitchFrom: (UISlider*) slider
 {
     [sitarSound setPitch:[slider value]];
+    [gunSound setPitch:[slider value]];
 }
 
 @end

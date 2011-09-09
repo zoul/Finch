@@ -2,46 +2,52 @@
 #import "FISound.h"
 
 @interface FIRevolverSound ()
-@property(retain) NSArray *sounds;
+@property(retain) NSArray *voices;
 @property(assign) NSUInteger current;
 @end
 
 @implementation FIRevolverSound
-@synthesize sounds, current;
+@synthesize voices, current;
 
-- (id) initWithSounds: (NSArray*) newSounds
+- (id) initWithVoices: (NSArray*) newVoices
 {
     [super init];
-    [self setSounds:newSounds];
+    [self setVoices:newVoices];
     return self;
 }
 
 - (void) dealloc
 {
-    [sounds release];
+    [voices release];
     [super dealloc];
 }
 
+#pragma mark Sound Controls
+
 - (void) play
 {
-    [(FISound*) [sounds objectAtIndex:current] play];
-    current = (current + 1) % [sounds count];
+    [(FISound*) [voices objectAtIndex:current] play];
+    current = (current + 1) % [voices count];
 }
 
 - (void) stop
 {
-    [[sounds objectAtIndex:current] stop];
+    [[voices objectAtIndex:current] stop];
 }
 
-- (void) setGain: (float) val
+#pragma mark Sound Properties
+
+- (void) forwardInvocation: (NSInvocation*) invocation
 {
-    for (FISound *sound in sounds)
-        [sound setGain:val];
+    for (FISound *voice in voices)
+        [invocation invokeWithTarget:voice];
 }
 
-- (float) gain
+- (NSMethodSignature*) methodSignatureForSelector: (SEL) selector
 {
-    return [[sounds lastObject] gain];
+    NSMethodSignature *our = [super methodSignatureForSelector:selector];
+    NSMethodSignature *voiced = [[voices lastObject] methodSignatureForSelector:selector];
+    return our ? our : voiced;
 }
 
 @end

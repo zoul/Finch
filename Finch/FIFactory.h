@@ -10,7 +10,7 @@
 
 - (FISoundEngine*) buildSoundEngine;
 
-- (FIRevolverSound*) buildSoundNamed: (NSString*) soundName rounds: (NSUInteger) rounds;
 - (FISound*) buildSoundNamed: (NSString*) soundName;
+- (FISound*) buildSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices;
 
 @end
