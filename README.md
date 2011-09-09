@@ -11,88 +11,61 @@ sound effects over the background music just fine.
 
 [so]: http://stackoverflow.com/questions/986983
 
-Howto
+Installing
+==========
+
+Finch is a static library. Your best bet is to use the “workspace” Xcode 4
+feature, adding the Finch project into your project’s workspace and linking the
+appropriate target against `libFinch`. The only remaining thing is taking care
+of headers. This is a bit clumsy (see [another SO question][headers]), but in
+essence you can put Finch into a folder inside your project (say `Support`) and
+set the user header search path to this folder and below (`Support/**`).
+
+[headers]: http://stackoverflow.com/questions/6289999
+
+Using
 =====
 
-The code is fairly tested. The interface changes from time to time as I don’t
-bother with backward compatibility, but it should be fairly easy to keep up
-with the changes. Basic use case:
+In order to use Finch you have to create a factory first:
 
-    #import "Finch.h"
-    #import "Sound.h"
-    #import "RevolverSound.h"
+    #import "FISoundEngine.h"
+    #import "FIFactory.h"
+    #import "FISound.h"
 
-    // Initializes OpenAL
-    Finch *soundEngine = [[Finch alloc] init];
-    NSBundle *bundle = [NSBundle mainBundle];
+    FIFactory *soundFactory = [[FIFactory alloc] init];
 
-    // Simple sound, only one instance can play at a time.
-    // If you call ‘play’ and the sound is still playing,
-    // it will start from the beginning.
-    Sound *click = [[Sound alloc] initWithFile:
-        [bundle URLForResource:@"click" withExtension:@"wav"]];
-    [click play];
+The factory will give you the sound engine:
 
-    // For playing multiple instances of the same sample at once
-    RevolverSound *gun = [[RevolverSound alloc] initWithFile:
-        [bundle URLForResource:@"gunshot" withExtension:@"wav"] rounds:10];
-    // Now I have a machinegun, ho-ho-ho
-    for (int i=1; i<=10; i++)
-        [gun play];
+    FISoundEngine *engine = [soundFactory buildSoundEngine];
+    [soundEngine activateAudioSessionWithCategory:AVAudioSessionCategoryPlayback];
+    [soundEngine openAudioDevice];
 
-Don’t forget to link the application with `AudioToolbox` and `OpenAL`
-frameworks. And please note that Finch does not yet support compressed
-audio. You should be safe with mono or stereo WAV files sampled at 44.100 Hz.
+And also the sounds:
 
-Download the demo project to see more.
+    FISound *soundA = [soundFactory loadSoundNamed:@"sitar.wav"];
+    FISound *soundB = [soundFactory loadSoundNamed:@"gun.wav" maxPolyphony:4];
+    [soundA play];
 
-Audio Session Primer
-====================
+Sound loaded without the `maxPolyphony` argument will only play with one
+“voice” at a time. If you call `play` before such sound is finished, it will
+play again from the start:
 
-Before your application can play any sound whatsoever, you should set up the
-audio session so that the system knows how to work with your sounds – if they
-should be muted by the hardware Mute switch, for example, or if the iPod music
-should play behind your sounds.
+    -----------------> time
+    ra
+      ra
+        rapid fire!
 
-Finch used to set up the audio session for you, but that’s not the right way to
-do it™, so that in recent versions you have to set the audio session yourself.
-Yes, that’s considered progress :-) The good news is that there is a nice class
-called [`AVAudioSession`][session] shipped by Apple that lets you configure the
-session in no time. The basic code looks like this:
+If you wish to overlay multiple instances of the sound, set the `maxPolyphony`
+argument to maximum number of sounds that you need to layer:
 
-    NSError *error = nil;
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategoryPlayback error:&error];
-    NSAssert(error == nil, @"Failed to set audio session category.");
-    [session setActive:YES error:&error];
-    NSAssert(error == nil, @"Failed to activate audio session.");
+    -----------------> time
+    rapid fire!
+      rapid fire!
+        rapid fire!
 
-[session]: http://developer.apple.com/library/ios/documentation/AVFoundation/Reference/AVAudioSession_ClassReference/Reference/Reference.html
-
-The main point is the `AVAudioSessionCategoryPlayback` constant. See the
-`AVAudioSession` documentation for a list of the possible categories and their
-meaning. This matters, you should know which category you are choosing.
-
-Design Notes
-============
-
-Finch has been designed so that its components can be used separately. If you
-want to, you can initialize the OpenAL yourself and only use the `Sound` class.
-And if you want to, you can use just the `Decoder` to get raw PCM data from WAV
-and CAF files without having to import the `Finch` and `Sound` classes. You can
-also come up with the PCM data yourself and pass it to OpenAL using the designated
-initializer of the `Sound` class:
-
-    - (id) initWithData: (const ALvoid*) data size: (ALsizei) size
-        format: (ALenum) format sampleRate: (ALsizei) frequency
-        duration: (float) seconds;
-
-Bugs, Gotchas
-=============
-
-Many people are having problems with OpenAL sound in the simulator. I have not
-found a definitive answer from Apple, but it seems that OpenAL quite often does
-not work in the simulator.
+And please note that Finch does not yet support compressed audio. You should be
+safe with mono or stereo WAV files sampled at 44.1 kHz. There is a demo target
+inside the project, take a look at it to see more.
 
 License
 =======
