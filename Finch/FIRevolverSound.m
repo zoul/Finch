@@ -1,7 +1,13 @@
 #import "FIRevolverSound.h"
 #import "FISound.h"
 
+@interface FIRevolverSound ()
+@property(retain) NSMutableArray *sounds;
+@property(assign) NSUInteger current;
+@end
+
 @implementation FIRevolverSound
+@synthesize sounds, current;
 
 - (id) initWithFile: (NSURL*) fileURL rounds: (int) max
 {

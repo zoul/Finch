@@ -9,10 +9,6 @@
     class is for.
 */
 @interface FIRevolverSound : NSObject
-{
-    NSMutableArray *sounds;
-    int current;
-}
 
 @property(assign) float gain;
 
