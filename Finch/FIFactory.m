@@ -2,7 +2,7 @@
 #import "FISoundEngine.h"
 #import "FISoundSample.h"
 #import "FIRevolverSound.h"
-#import "PCMDecoder.h"
+#import "FIPCMDecoder.h"
 #import "FISound.h"
 
 @implementation FIFactory
@@ -12,7 +12,7 @@
 
 - (NSSet*) buildDefaultSoundDecoders
 {
-    PCMDecoder *decoder = [[PCMDecoder alloc] init];
+    FIPCMDecoder *decoder = [[FIPCMDecoder alloc] init];
     return [NSSet setWithObject:[decoder autorelease]];
 }
 

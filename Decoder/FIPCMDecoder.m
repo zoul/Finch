@@ -1,10 +1,10 @@
-#import "PCMDecoder.h"
+#import "FIPCMDecoder.h"
 #import <AudioToolbox/AudioToolbox.h> 
 #import "FISoundSample.h"
 #import "FIErrorReporter.h"
 #import "FIError.h"
 
-@implementation PCMDecoder
+@implementation FIPCMDecoder
 
 - (NSSet*) supportedFileExtensions
 {
