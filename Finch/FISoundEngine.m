@@ -69,6 +69,7 @@
     NSError *error = nil; BOOL success = YES;
     AVAudioSession *session = [AVAudioSession sharedInstance];
 
+    logger(@"Activating audio session “%@”.", categoryName);
     success = [session setCategory:categoryName error:&error];
     if (!success) {
         logger(@"Failed to set audio session category: %@", error);
