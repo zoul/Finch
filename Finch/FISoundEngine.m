@@ -84,4 +84,13 @@
     return YES;
 }
 
+- (void) deactivateAudioSession
+{
+    NSError *error = nil;
+    BOOL success = [[AVAudioSession sharedInstance] setActive:NO error:&error];
+    if (!success) {
+        logger(@"Failed to deactivate audio session: %@", error);
+    }
+}
+
 @end

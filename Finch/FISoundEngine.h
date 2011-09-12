@@ -6,6 +6,7 @@
 @property(readonly) BOOL isRunning;
 
 - (BOOL) activateAudioSessionWithCategory: (NSString*) categoryName;
+- (void) deactivateAudioSession;
 
 - (BOOL) openAudioDevice;
 - (void) closeAudioDevice;
