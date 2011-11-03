@@ -84,19 +84,25 @@
     
     // Check the number of channels
     if (sample.channels != 1 && sample.channels != 2) {
-        *error = [reporter errorWithCode:FIErrorInvalidNumberOfChannels];
+				if (error) {
+					*error = [reporter errorWithCode:FIErrorInvalidNumberOfChannels];
+				}
         return nil;
     }
     
     // Check sample resolution
     if (sample.bitsPerChannel != 8 && sample.bitsPerChannel != 16) {
-        *error = [reporter errorWithCode:FIErrorInvalidSampleResolution];
+				if (error) {
+					*error = [reporter errorWithCode:FIErrorInvalidSampleResolution];
+				}
         return nil;
     }
     
     // Check data endianity
     if (sample.endianity != kLittleEndian) {
-        *error = [reporter errorWithCode:FIErrorInvalidEndianity];
+				if (error) {
+					*error = [reporter errorWithCode:FIErrorInvalidEndianity];
+				}
         return nil;
     }
     
