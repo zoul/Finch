@@ -4,7 +4,6 @@
 
 @interface FIFactory : NSObject
 
-@property(retain) NSSet *soundDecoders;
 @property(retain) NSBundle *soundBundle;
 @property(copy) FILogger logger;
 

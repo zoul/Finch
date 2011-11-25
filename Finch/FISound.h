@@ -1,4 +1,4 @@
-@class FISoundSample;
+@class FISample;
 
 @interface FISound : NSObject
 
@@ -9,7 +9,7 @@
 @property(assign, nonatomic) float gain;
 @property(assign, nonatomic) float pitch;
 
-- (id) initWithSample: (FISoundSample*) sample error: (NSError**) error;
+- (id) initWithSample: (FISample*) sample error: (NSError**) error;
 
 - (void) play;
 - (void) stop;

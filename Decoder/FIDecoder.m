@@ -1,53 +1,46 @@
-#import "FIPCMDecoder.h"
-#import "FISoundSample.h"
-#import "FIErrorReporter.h"
+#import "FIDecoder.h"
+#import "FISample.h"
 #import "FIError.h"
 
-@implementation FIPCMDecoder
+@implementation FIDecoder
 
-- (NSSet*) supportedFileExtensions
+- (FISample*) decodeSampleAtPath: (NSString*) path error: (NSError**) error
 {
-    return [NSSet setWithObjects:@"wav", @"caf", nil];
-}
+    NSParameterAssert(path);
 
-- (FISoundSample*) decodeFileAtPath: (NSString*) path error: (NSError**) error
-{
     OSStatus errcode = noErr;
     UInt32 propertySize;
     AudioFileID fileId = 0;
-    FIErrorReporter *reporter = [FIErrorReporter forDomain:@"Sample Decoder" error:error];
     NSURL *fileURL = [NSURL fileURLWithPath:path];
-    
+    error = error ? error : &(NSError*){ nil };
+
     errcode = AudioFileOpenURL((CFURLRef) fileURL, kAudioFileReadPermission, 0, &fileId);
     if (errcode) {
-        *error = [reporter errorWithCode:FIErrorFileReadFailed];
+        *error = [NSError errorWithDomain:FIErrorDomain code:FIErrorFileReadFailed userInfo:nil];
         return nil;
     }
-    
+
     AudioStreamBasicDescription fileFormat;
     propertySize = sizeof(fileFormat);
     errcode = AudioFileGetProperty(fileId, kAudioFilePropertyDataFormat, &propertySize, &fileFormat);
     if (errcode) {
-        *error = [reporter errorWithCode:FIErrorFileFormatReadFailed];
+        *error = [NSError errorWithDomain:FIErrorDomain code:FIErrorFileFormatReadFailed userInfo:nil];
         AudioFileClose(fileId);
         return nil;
     }
 
-    if (fileFormat.mFormatID != kAudioFormatLinearPCM) { 
-        *error = [reporter
-            errorWithCode:FIErrorInvalidFileFormat
-            description:@"Sound file not linear PCM."];
+    // TODO: Is this needed?
+    if (fileFormat.mFormatID != kAudioFormatLinearPCM) {
+        *error = [NSError errorWithDomain:FIErrorDomain code:FIErrorInvalidFileFormat userInfo:nil];
         AudioFileClose(fileId);
         return nil;
     }
-    
+
     UInt64 fileSize = 0;
     propertySize = sizeof(fileSize);
     errcode = AudioFileGetProperty(fileId, kAudioFilePropertyAudioDataByteCount, &propertySize, &fileSize);
     if (errcode) {
-        *error = [reporter
-            errorWithCode:FIErrorFileFormatReadFailed
-            description:@"Failed to read sound file size."];
+        *error = [NSError errorWithDomain:FIErrorDomain code:FIErrorFileFormatReadFailed userInfo:nil];
         AudioFileClose(fileId);
         return nil;
     }
@@ -56,9 +49,7 @@
     propertySize = sizeof(sampleLength);
     errcode = AudioFileGetProperty(fileId, kAudioFilePropertyEstimatedDuration, &propertySize, &sampleLength);
     if (errcode) {
-        *error = [reporter
-            errorWithCode:FIErrorFileFormatReadFailed
-            description:@"Failed to read sound length."];
+        *error = [NSError errorWithDomain:FIErrorDomain code:FIErrorFileFormatReadFailed userInfo:nil];
         AudioFileClose(fileId);
         return nil;
     }
@@ -66,30 +57,29 @@
     UInt32 dataSize = (UInt32) fileSize;
     void *data = malloc(dataSize);
     if (!data) {
-        *error = [reporter errorWithCode:FIErrorMemoryAllocationFailed];
-        AudioFileClose(fileId);
-        return nil;
-    }
-    
-    errcode = AudioFileReadBytes(fileId, false, 0, &dataSize, data);
-    if (errcode) {
-        *error = [reporter
-            errorWithCode:FIErrorFileFormatReadFailed
-            description:@"Failed to read sound data."];
-        free(data);
+        *error = [NSError errorWithDomain:FIErrorDomain code:FIErrorMemoryAllocationFailed userInfo:nil];
         AudioFileClose(fileId);
         return nil;
     }
 
-    FISoundSample *sample = [[FISoundSample alloc] init];
-    [sample setChannels:fileFormat.mChannelsPerFrame];
-    [sample setEndianity:TestAudioFormatNativeEndian(fileFormat) ? kLittleEndian : kBigEndian];
+    errcode = AudioFileReadBytes(fileId, false, 0, &dataSize, data);
+    if (errcode) {
+        *error = [NSError errorWithDomain:FIErrorDomain code:FIErrorFileFormatReadFailed userInfo:nil];
+        AudioFileClose(fileId);
+        free(data);
+        return nil;
+    }
+
+    AudioFileClose(fileId);
+
+    FISample *sample = [[FISample alloc] init];
+    [sample setNumberOfChannels:fileFormat.mChannelsPerFrame];
+    [sample setHasNativeEndianity:TestAudioFormatNativeEndian(fileFormat)];
     [sample setBitsPerChannel:fileFormat.mBitsPerChannel];
     [sample setSampleRate:fileFormat.mSampleRate];
     [sample setDuration:sampleLength];
     [sample setData:[NSData dataWithBytesNoCopy:data length:dataSize freeWhenDone:YES]];
-    
-    AudioFileClose(fileId);
+
     return [sample autorelease];
 }
 
