@@ -77,10 +77,6 @@ already included for your convenience and you can easily write your own.
 * You can use the sound classes independently on the sound engine class,
 for example if you already have some own OpenAL initialization code in place.
 
-* You can plug in your own decoder if you want to support some other audio
-formats, see the `FISoundDecoder` protocol and the `soundDecoders` property
-of the factory class.
-
 Links
 =====
 
