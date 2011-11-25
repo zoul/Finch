@@ -29,7 +29,6 @@
         return nil;
     }
 
-    // TODO: Is this needed?
     if (fileFormat.mFormatID != kAudioFormatLinearPCM) {
         *error = [NSError errorWithDomain:FIErrorDomain code:FIErrorInvalidFileFormat userInfo:nil];
         AudioFileClose(fileId);
