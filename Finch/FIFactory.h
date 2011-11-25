@@ -1,6 +1,6 @@
 #import "FILogger.h"
 
-@class FISoundEngine, FISound, FIRevolverSound;
+@class FISoundEngine, FISound;
 
 @interface FIFactory : NSObject
 
