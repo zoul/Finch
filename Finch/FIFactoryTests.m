@@ -1,7 +1,7 @@
 #import "FIFactory.h"
 
 @interface FIFactoryTests : SenTestCase
-@property(retain) FIFactory *factory;
+@property(strong) FIFactory *factory;
 @end
 
 @implementation FIFactoryTests
@@ -21,13 +21,13 @@
 - (void) setUp
 {
     [super setUp];
-    factory = [[FIFactory alloc] init];
+    [self setFactory:[[FIFactory alloc] init]];
     [factory setSoundBundle:[NSBundle bundleForClass:[self class]]];
 }
 
 - (void) tearDown
 {
-    [factory release];
+    [self setFactory:nil];
     [super tearDown];
 }
 

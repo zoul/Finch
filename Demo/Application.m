@@ -4,8 +4,8 @@
 #import "FIFactory.h"
 
 @interface Application ()
-@property(retain) FIFactory *soundFactory;
-@property(retain) FISoundEngine *soundEngine;
+@property(strong) FIFactory *soundFactory;
+@property(strong) FISoundEngine *soundEngine;
 @end
 
 @implementation Application
@@ -25,15 +25,6 @@
 
     [window setRootViewController:controller];
     [window makeKeyAndVisible];
-}
-
-- (void) dealloc
-{
-    [soundFactory release];
-    [soundEngine release];
-    [controller release];
-    [window release];
-    [super dealloc];
 }
 
 @end

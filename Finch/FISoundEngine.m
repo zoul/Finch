@@ -22,9 +22,6 @@
 - (void) dealloc
 {
     [self closeAudioDevice];
-    [logger release];
-    [audioSession release];
-    [super dealloc];
 }
 
 #pragma mark OpenAL Device Management

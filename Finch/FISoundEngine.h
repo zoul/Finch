@@ -4,7 +4,7 @@
 
 @property(copy) FILogger logger;
 @property(readonly) BOOL isRunning;
-@property(retain) AVAudioSession *audioSession;
+@property(strong) AVAudioSession *audioSession;
 
 - (BOOL) activateAudioSessionWithCategory: (NSString*) categoryName;
 - (void) deactivateAudioSession;

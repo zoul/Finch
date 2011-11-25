@@ -14,7 +14,7 @@
     NSURL *fileURL = [NSURL fileURLWithPath:path];
     error = error ? error : &(NSError*){ nil };
 
-    errcode = AudioFileOpenURL((CFURLRef) fileURL, kAudioFileReadPermission, 0, &fileId);
+    errcode = AudioFileOpenURL((__bridge CFURLRef) fileURL, kAudioFileReadPermission, 0, &fileId);
     if (errcode) {
         *error = [NSError errorWithDomain:FIErrorDomain code:FIErrorFileReadFailed userInfo:nil];
         return nil;
@@ -80,7 +80,7 @@
     [sample setDuration:sampleLength];
     [sample setData:[NSData dataWithBytesNoCopy:data length:dataSize freeWhenDone:YES]];
 
-    return [sample autorelease];
+    return sample;
 }
 
 @end

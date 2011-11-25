@@ -2,7 +2,7 @@
 #import "FISound.h"
 
 @interface FIRevolverSound ()
-@property(retain) NSArray *voices;
+@property(strong) NSArray *voices;
 @property(assign) NSUInteger current;
 @end
 
@@ -14,12 +14,6 @@
     self = [super init];
     [self setVoices:newVoices];
     return self;
-}
-
-- (void) dealloc
-{
-    [voices release];
-    [super dealloc];
 }
 
 #pragma mark Sound Controls

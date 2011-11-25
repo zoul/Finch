@@ -4,13 +4,6 @@
 @implementation Controller
 @synthesize sitarSound, gunSound;
 
-- (void) dealloc
-{
-    [sitarSound release];
-    [gunSound release];
-    [super dealloc];
-}
-
 - (IBAction) playSitarSound
 {
     [sitarSound play];

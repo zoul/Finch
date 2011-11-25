@@ -2,8 +2,8 @@
 
 @interface Controller : UIViewController
 
-@property(retain) FISound *sitarSound;
-@property(retain) FISound *gunSound;
+@property(strong) FISound *sitarSound;
+@property(strong) FISound *gunSound;
 
 - (IBAction) playSitarSound;
 - (IBAction) playGunSound;

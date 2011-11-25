@@ -2,8 +2,8 @@
 
 @interface Application : NSObject <UIApplicationDelegate>
 
-@property(retain, nonatomic) IBOutlet UIWindow *window;
-@property(retain, nonatomic) IBOutlet Controller *controller;
+@property(strong, nonatomic) IBOutlet UIWindow *window;
+@property(strong, nonatomic) IBOutlet Controller *controller;
 
 @end
 

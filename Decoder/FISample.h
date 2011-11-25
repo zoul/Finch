@@ -7,7 +7,7 @@
 @property(assign) NSUInteger bitsPerChannel;
 @property(assign) NSUInteger sampleRate;
 
-@property(retain) NSData *data;
+@property(strong) NSData *data;
 
 - (ALenum) openALFormat;
 

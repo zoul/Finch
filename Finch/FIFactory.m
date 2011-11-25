@@ -6,7 +6,7 @@
 #import "FISound.h"
 
 @interface FIFactory ()
-@property(retain) FIDecoder *decoder;
+@property(strong) FIDecoder *decoder;
 @end
 
 @implementation FIFactory
@@ -18,7 +18,7 @@
 {
     FISoundEngine *engine = [[FISoundEngine alloc] init];
     [engine setLogger:logger];
-    return [engine autorelease];
+    return engine;
 }
 
 - (FISound*) loadSoundNamed: (NSString*) soundName
@@ -28,8 +28,7 @@
         return nil;
     }
     FISample *sample = [decoder decodeSampleAtPath:path error:NULL];
-    FISound *sound = [[FISound alloc] initWithSample:sample error:NULL];
-    return [sound autorelease]; 
+    return [[FISound alloc] initWithSample:sample error:NULL];
 }
 
 - (FISound*) loadSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices
@@ -41,7 +40,7 @@
             return nil;
         [sounds addObject:voice];
     }
-    return (id) [[[FIRevolverSound alloc] initWithVoices:sounds] autorelease];
+    return (id) [[FIRevolverSound alloc] initWithVoices:sounds];
 }
 
 #pragma mark Initalization
@@ -51,16 +50,8 @@
     self = [super init];
     [self setLogger:FILoggerNull];
     [self setSoundBundle:[NSBundle mainBundle]];
-    [self setDecoder:[[[FIDecoder alloc] init] autorelease]];
+    [self setDecoder:[[FIDecoder alloc] init]];
     return self;
-}
-
-- (void) dealloc
-{
-    [soundBundle release];
-    [decoder release];
-    [logger release];
-    [super dealloc];
 }
 
 @end

@@ -3,12 +3,6 @@
 @implementation FISample
 @synthesize duration, hasNativeEndianity, numberOfChannels, bitsPerChannel, sampleRate, data;
 
-- (void) dealloc
-{
-    [data release];
-    [super dealloc];
-}
-
 - (ALenum) openALFormat
 {
     return numberOfChannels == 1 ?

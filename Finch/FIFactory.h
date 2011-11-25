@@ -4,7 +4,7 @@
 
 @interface FIFactory : NSObject
 
-@property(retain) NSBundle *soundBundle;
+@property(strong) NSBundle *soundBundle;
 @property(copy) FILogger logger;
 
 - (FISoundEngine*) buildSoundEngine;

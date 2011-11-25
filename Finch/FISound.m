@@ -58,13 +58,11 @@
     self = [super init];
     
     if (![self checkFormatConstaintsForSample:sample error:error]) {
-        [self release];
         return nil;
     }
 
     if (!alcGetCurrentContext()) {
         NSLog(@"OpenAL context not set, did you initialize Finch?");
-        [self release];
         return nil;
     }
     
@@ -72,7 +70,6 @@
     CLEAR_ERROR_FLAG;
     alGenBuffers(1, &buffer);
     if (![self checkSuccessOrLog:@"Failed to allocate OpenAL buffer"]) {
-        [self release];
         return nil;
     }
 
@@ -81,7 +78,6 @@
     alBufferData(buffer, [sample openALFormat], [[sample data] bytes],
         [[sample data] length], [sample sampleRate]);
     if (![self checkSuccessOrLog:@"Failed to fill OpenAL buffers"]) {
-        [self release];
         return nil;
     }
     
@@ -90,7 +86,6 @@
     alGenSources(1, &source);
     alSourcei(source, AL_BUFFER, buffer);
     if (![self checkSuccessOrLog:@"Failed to create OpenAL source"]) {
-        [self release];
         return nil;
     }
 
@@ -107,7 +102,6 @@
     alDeleteBuffers(1, &buffer), buffer = 0;
     alDeleteSources(1, &source), source = 0;
     [self checkSuccessOrLog:@"Failed to clean up after sound"];
-    [super dealloc];
 }
 
 #pragma mark Playback Controls
