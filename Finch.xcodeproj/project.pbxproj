@@ -30,7 +30,6 @@
 		0D2AA95B1417501200F4071B /* FIRevolverSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9531417501200F4071B /* FIRevolverSound.m */; };
 		0D2AA95C1417501200F4071B /* FISound.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA9541417501200F4071B /* FISound.h */; };
 		0D2AA95D1417501200F4071B /* FISound.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9551417501200F4071B /* FISound.m */; };
-		0D2AA95F1417505300F4071B /* prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA95E1417505300F4071B /* prefix.pch */; };
 		0D2AA969141750AE00F4071B /* FIDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D2AA963141750AE00F4071B /* FIDecoder.h */; };
 		0D2AA96A141750AE00F4071B /* FIDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA964141750AE00F4071B /* FIDecoder.m */; };
 		0D2AA974141750F700F4071B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA973141750F700F4071B /* UIKit.framework */; };
@@ -59,6 +58,7 @@
 		0DFC9E5F147FC5FF00FC2066 /* FISample.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DFC9E5D147FC5FF00FC2066 /* FISample.h */; };
 		0DFC9E60147FC5FF00FC2066 /* FISample.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC9E5E147FC5FF00FC2066 /* FISample.m */; };
 		0DFC9E61147FC5FF00FC2066 /* FISample.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC9E5E147FC5FF00FC2066 /* FISample.m */; };
+		0DFC9E68147FDD6100FC2066 /* prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0DFC9E67147FDD6000FC2066 /* prefix.pch */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +91,6 @@
 		0D2AA9531417501200F4071B /* FIRevolverSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FIRevolverSound.m; sourceTree = "<group>"; };
 		0D2AA9541417501200F4071B /* FISound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISound.h; sourceTree = "<group>"; };
 		0D2AA9551417501200F4071B /* FISound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISound.m; sourceTree = "<group>"; };
-		0D2AA95E1417505300F4071B /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = SOURCE_ROOT; };
 		0D2AA963141750AE00F4071B /* FIDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FIDecoder.h; path = Decoder/FIDecoder.h; sourceTree = "<group>"; };
 		0D2AA964141750AE00F4071B /* FIDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FIDecoder.m; path = Decoder/FIDecoder.m; sourceTree = "<group>"; };
 		0D2AA971141750F700F4071B /* Finch Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Finch Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +120,7 @@
 		0DFC9E55147FBC9800FC2066 /* FIError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FIError.m; path = Finch/FIError.m; sourceTree = "<group>"; };
 		0DFC9E5D147FC5FF00FC2066 /* FISample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FISample.h; path = Decoder/FISample.h; sourceTree = "<group>"; };
 		0DFC9E5E147FC5FF00FC2066 /* FISample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FISample.m; path = Decoder/FISample.m; sourceTree = "<group>"; };
+		0DFC9E67147FDD6000FC2066 /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +179,6 @@
 				0DFC9E54147FBBD600FC2066 /* Support */,
 				0D2AA960141750A600F4071B /* Sample Decoder */,
 				0D2AA94314174FA000F4071B /* Finch */,
-				0D2AA94414174FA000F4071B /* Supporting Files */,
 				0D1BA65B141A45B6004A5A9F /* Test Support */,
 				0D2AA978141750F800F4071B /* Demo */,
 				0D2AA94014174FA000F4071B /* Frameworks */,
@@ -222,16 +221,8 @@
 				0DF32B99141A03150059033C /* FIFactory.h */,
 				0DF32B9A141A03150059033C /* FIFactory.m */,
 				0D1BA66B141A4695004A5A9F /* FIFactoryTests.m */,
+				0DFC9E67147FDD6000FC2066 /* prefix.pch */,
 			);
-			path = Finch;
-			sourceTree = "<group>";
-		};
-		0D2AA94414174FA000F4071B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				0D2AA95E1417505300F4071B /* prefix.pch */,
-			);
-			name = "Supporting Files";
 			path = Finch;
 			sourceTree = "<group>";
 		};
@@ -289,12 +280,12 @@
 				0D2AA9561417501200F4071B /* FISoundEngine.h in Headers */,
 				0D2AA95A1417501200F4071B /* FIRevolverSound.h in Headers */,
 				0D2AA95C1417501200F4071B /* FISound.h in Headers */,
-				0D2AA95F1417505300F4071B /* prefix.pch in Headers */,
 				0D2AA969141750AE00F4071B /* FIDecoder.h in Headers */,
 				0DF32B9B141A03150059033C /* FIFactory.h in Headers */,
 				0DF32B9F141A03AC0059033C /* FILogger.h in Headers */,
 				0DF32BA4141A37250059033C /* FIError.h in Headers */,
 				0DFC9E5F147FC5FF00FC2066 /* FISample.h in Headers */,
+				0DFC9E68147FDD6100FC2066 /* prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,7 +551,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/Finch.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = prefix.pch;
+				GCC_PREFIX_HEADER = Finch/prefix.pch;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-ObjC";
@@ -575,7 +566,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/Finch.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = prefix.pch;
+				GCC_PREFIX_HEADER = Finch/prefix.pch;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-ObjC";
