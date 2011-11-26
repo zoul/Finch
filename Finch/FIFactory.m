@@ -21,21 +21,18 @@
     return engine;
 }
 
-- (FISound*) loadSoundNamed: (NSString*) soundName
+- (FISound*) loadSoundNamed: (NSString*) soundName error: (NSError**) error
 {
     NSString *path = [soundBundle pathForResource:soundName ofType:nil];
-    if (!path) {
-        return nil;
-    }
-    FISample *sample = [decoder decodeSampleAtPath:path error:NULL];
-    return [[FISound alloc] initWithSample:sample error:NULL];
+    FISample *sample = [decoder decodeSampleAtPath:path error:error];
+    return [[FISound alloc] initWithSample:sample error:error];
 }
 
-- (FISound*) loadSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices
+- (FISound*) loadSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices error: (NSError**) error
 {
     NSMutableArray *sounds = [NSMutableArray array];
     for (NSUInteger i=0; i<voices; i++) {
-        FISound *voice = [self loadSoundNamed:soundName];
+        FISound *voice = [self loadSoundNamed:soundName error:error];
         if (voice == nil)
             return nil;
         [sounds addObject:voice];

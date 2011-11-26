@@ -7,5 +7,12 @@ enum {
     FIErrorInvalidFileFormat,
     FIErrorInvalidNumberOfChannels,
     FIErrorInvalidEndianity,
-    FIErrorInvalidSampleResolution
+    FIErrorInvalidSampleResolution,
+    FIErrorOpenALError
 };
+
+@interface FIError : NSObject
+
++ (id) errorWithMessage: (NSString*) message code: (NSUInteger) errorCode;
+
+@end

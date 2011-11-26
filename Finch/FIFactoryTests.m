@@ -11,8 +11,8 @@
 {
     FISound *soundA = nil, *soundB = nil;
     STAssertNoThrow({
-        soundA = [factory loadSoundNamed:@"none_such"];
-        soundB = [factory loadSoundNamed:@"none_such" maxPolyphony:2];
+        soundA = [factory loadSoundNamed:@"none_such" error:NULL];
+        soundB = [factory loadSoundNamed:@"none_such" maxPolyphony:2 error:NULL];
     },  @"Loading a non-existent sound does not throw.");
     STAssertNil(soundA, @"Loading a non-existent sound returns nil.");
     STAssertNil(soundB, @"Loading a non-existent revolver sound returns nil.");
