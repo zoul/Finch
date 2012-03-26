@@ -54,7 +54,7 @@
             code:FIErrorOpenALError];
         return nil;
     }
-    
+
     // Allocate OpenAL buffer
     CLEAR_ERROR_FLAG;
     alGenBuffers(1, &buffer);
@@ -74,7 +74,7 @@
             code:FIErrorOpenALError];
         return nil;
     }
-    
+
     // Initialize the OpenAL source
     CLEAR_ERROR_FLAG;
     alGenSources(1, &source);
