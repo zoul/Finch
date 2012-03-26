@@ -21,7 +21,11 @@ of headers. This is a bit clumsy (see [another SO question][headers]), but in
 essence you can put Finch into a folder inside your project (say `Support`) and
 set the user header search path to this folder and below (`Support/**`).
 
+If you are unsure about the instructions above, please see the [Xcode 4 static
+libraries][tutorial] tutorial by Jonah Williams.
+
 [headers]: http://stackoverflow.com/questions/6289999
+[tutorial]: http://blog.carbonfive.com/2011/04/04/using-open-source-static-libraries-in-xcode-4/#using_a_static_library
 
 Using
 =====
