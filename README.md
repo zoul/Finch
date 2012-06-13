@@ -46,8 +46,8 @@ The factory will give you the sound engine:
 
 And also the sounds:
 
-    FISound *soundA = [soundFactory loadSoundNamed:@"sitar.wav"];
-    FISound *soundB = [soundFactory loadSoundNamed:@"gun.wav" maxPolyphony:4];
+    FISound *soundA = [soundFactory loadSoundNamed:@"sitar.wav" error:NULL];
+    FISound *soundB = [soundFactory loadSoundNamed:@"gun.wav" maxPolyphony:4 error:NULL];
     [soundA play];
 
 Sound loaded without the `maxPolyphony` argument will only play with one
