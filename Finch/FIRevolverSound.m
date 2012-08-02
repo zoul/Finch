@@ -6,7 +6,9 @@
 @property(assign) NSUInteger current;
 @end
 
-@implementation FIRevolverSound
+@implementation FIRevolverSound {
+    NSUInteger playingSound;
+}
 @synthesize voices, current;
 
 - (id) initWithVoices: (NSArray*) newVoices
@@ -20,13 +22,14 @@
 
 - (void) play
 {
+    playingSound = current;
     [(FISound*) [voices objectAtIndex:current] play];
     current = (current + 1) % [voices count];
 }
 
 - (void) stop
 {
-    [[voices objectAtIndex:current] stop];
+    [[voices objectAtIndex:playingSound] stop];
 }
 
 #pragma mark Sound Properties
