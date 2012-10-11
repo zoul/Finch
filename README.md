@@ -106,7 +106,7 @@ the license text along.
 Author & Support
 ================
 
-Tomáš Znamenáček, <zoul@fleuron.cz>. Suggestions welcomed.
+Tomáš Znamenáček, <tomas.znamenacek@gmail.com>. Suggestions welcomed.
 
 If you have a question that could possibly be of interest to other people, you
 can ask it on [Stack Overflow][questions] and send me a link to your question.
