@@ -63,7 +63,7 @@
 		0DAF0EC716947D8400612EED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0EC316947D8400612EED /* main.m */; };
 		0DF32BA4141A37250059033C /* FIError.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DF32BA3141A37250059033C /* FIError.h */; };
 		0DFC9E56147FBC9800FC2066 /* FIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC9E55147FBC9800FC2066 /* FIError.m */; };
-		0DFC9E68147FDD6100FC2066 /* prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0DFC9E67147FDD6000FC2066 /* prefix.pch */; };
+		0DFC9E68147FDD6100FC2066 /* Lib-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0DFC9E67147FDD6000FC2066 /* Lib-Prefix.pch */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +86,7 @@
 /* Begin PBXFileReference section */
 		0D1BA656141A45B6004A5A9F /* Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D1BA657141A45B6004A5A9F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		0D1BA664141A45B6004A5A9F /* prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = "<group>"; };
+		0D1BA664141A45B6004A5A9F /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Tests-Prefix.pch"; path = "Finch/Tests-Prefix.pch"; sourceTree = "<group>"; };
 		0D2AA93E14174FA000F4071B /* libFinch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFinch.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2AA94114174FA000F4071B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D2AA971141750F700F4071B /* Finch Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Finch Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +138,7 @@
 		0DAF0EC416947D8400612EED /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = "Test Runner/Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		0DF32BA3141A37250059033C /* FIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FIError.h; path = Finch/FIError.h; sourceTree = "<group>"; };
 		0DFC9E55147FBC9800FC2066 /* FIError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FIError.m; path = Finch/FIError.m; sourceTree = "<group>"; };
-		0DFC9E67147FDD6000FC2066 /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = prefix.pch; path = Finch/prefix.pch; sourceTree = "<group>"; };
+		0DFC9E67147FDD6000FC2066 /* Lib-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Lib-Prefix.pch"; path = "Finch/Lib-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,21 +194,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D1BA65B141A45B6004A5A9F /* Test Support */ = {
-			isa = PBXGroup;
-			children = (
-				0D1BA664141A45B6004A5A9F /* prefix.pch */,
-			);
-			name = "Test Support";
-			path = Tests;
-			sourceTree = "<group>";
-		};
 		0D2AA93314174FA000F4071B = {
 			isa = PBXGroup;
 			children = (
 				0DAF0E851694221500612EED /* Plumbing */,
 				0D9CA6F51695846E007B522D /* High-Level Interface */,
-				0D1BA65B141A45B6004A5A9F /* Test Support */,
 				0DAF0EAB16947C8D00612EED /* Test Runner */,
 				0D2AA978141750F800F4071B /* Demo */,
 				0D2AA94014174FA000F4071B /* Frameworks */,
@@ -270,7 +260,8 @@
 				0D9CA6FB16958D46007B522D /* FISound.m */,
 				0D9CA6FE1695CE59007B522D /* FISoundEngine.h */,
 				0D9CA6FF1695CE59007B522D /* FISoundEngine.m */,
-				0DFC9E67147FDD6000FC2066 /* prefix.pch */,
+				0D1BA664141A45B6004A5A9F /* Tests-Prefix.pch */,
+				0DFC9E67147FDD6000FC2066 /* Lib-Prefix.pch */,
 			);
 			name = "High-Level Interface";
 			sourceTree = "<group>";
@@ -322,7 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DF32BA4141A37250059033C /* FIError.h in Headers */,
-				0DFC9E68147FDD6100FC2066 /* prefix.pch in Headers */,
+				0DFC9E68147FDD6100FC2066 /* Lib-Prefix.pch in Headers */,
 				0DAF0E891694223100612EED /* FISampleBuffer.h in Headers */,
 				0DAF0E9616943E0800612EED /* FISoundContext.h in Headers */,
 				0DAF0E9A16943F5200612EED /* FISoundDevice.h in Headers */,
@@ -557,7 +548,7 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Tests/prefix.pch;
+				GCC_PREFIX_HEADER = "Finch/Tests-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_AFTER_BUILD = NO;
@@ -576,7 +567,7 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Tests/prefix.pch;
+				GCC_PREFIX_HEADER = "Finch/Tests-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_AFTER_BUILD = NO;
@@ -631,7 +622,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/Finch.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Finch/prefix.pch;
+				GCC_PREFIX_HEADER = "Finch/Lib-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-ObjC";
@@ -646,7 +637,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/Finch.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Finch/prefix.pch;
+				GCC_PREFIX_HEADER = "Finch/Lib-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-ObjC";
