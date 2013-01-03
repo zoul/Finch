@@ -50,6 +50,11 @@
 		0D9CA7011695CE59007B522D /* FISoundEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CA6FF1695CE59007B522D /* FISoundEngine.m */; };
 		0D9CA7041695DEE2007B522D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9CA7021695DEE2007B522D /* Default-568h@2x.png */; };
 		0D9CA7051695DEE2007B522D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9CA7031695DEE2007B522D /* Default@2x.png */; };
+		0D9CA7071695E16F007B522D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9CA7021695DEE2007B522D /* Default-568h@2x.png */; };
+		0D9CA7081695E16F007B522D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9CA7031695DEE2007B522D /* Default@2x.png */; };
+		0D9CA7091695E16F007B522D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2AA9921417515A00F4071B /* Default.png */; };
+		0D9CA70A1695E16F007B522D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2AA9931417515A00F4071B /* Icon.png */; };
+		0D9CA70B1695E16F007B522D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2AA9941417515A00F4071B /* Icon@2x.png */; };
 		0DAF0E891694223100612EED /* FISampleBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DAF0E871694223100612EED /* FISampleBuffer.h */; };
 		0DAF0E8A1694223100612EED /* FISampleBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0E881694223100612EED /* FISampleBuffer.m */; };
 		0DAF0E8D1694254000612EED /* FISampleBufferTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0E8C1694254000612EED /* FISampleBufferTests.m */; };
@@ -205,6 +210,7 @@
 				0D9CA6F51695846E007B522D /* High-Level Interface */,
 				0DAF0EAB16947C8D00612EED /* Test Runner */,
 				0D2AA978141750F800F4071B /* Demo */,
+				0D9CA7061695DEED007B522D /* Resources */,
 				0D2AA94014174FA000F4071B /* Frameworks */,
 				0D2AA93F14174FA000F4071B /* Products */,
 			);
@@ -238,7 +244,6 @@
 		0D2AA978141750F800F4071B /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				0D9CA7061695DEED007B522D /* Artworks */,
 				0D2AA98D1417515A00F4071B /* Application.h */,
 				0D2AA98E1417515A00F4071B /* Application.m */,
 				0D2AA98F1417515A00F4071B /* Controller.h */,
@@ -268,16 +273,17 @@
 			name = "High-Level Interface";
 			sourceTree = "<group>";
 		};
-		0D9CA7061695DEED007B522D /* Artworks */ = {
+		0D9CA7061695DEED007B522D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				0D9CA7021695DEE2007B522D /* Default-568h@2x.png */,
 				0D9CA7031695DEE2007B522D /* Default@2x.png */,
 				0D2AA9921417515A00F4071B /* Default.png */,
-				0D2AA9931417515A00F4071B /* Icon.png */,
 				0D2AA9941417515A00F4071B /* Icon@2x.png */,
+				0D2AA9931417515A00F4071B /* Icon.png */,
 			);
-			name = Artworks;
+			name = Resources;
+			path = "Finch Demo";
 			sourceTree = "<group>";
 		};
 		0DAF0E851694221500612EED /* Plumbing */ = {
@@ -469,6 +475,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D9CA7071695E16F007B522D /* Default-568h@2x.png in Resources */,
+				0D9CA7081695E16F007B522D /* Default@2x.png in Resources */,
+				0D9CA7091695E16F007B522D /* Default.png in Resources */,
+				0D9CA70A1695E16F007B522D /* Icon.png in Resources */,
+				0D9CA70B1695E16F007B522D /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
