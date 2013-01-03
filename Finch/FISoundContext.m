@@ -36,8 +36,8 @@
 - (void) dealloc
 {
     if (_handle) {
-        if ([self isCurrent]) {
-            [self setCurrent:NO];
+        if ([self isActive]) {
+            [self setActive:NO];
         }
         alcDestroyContext(_handle);
         _handle = 0;
@@ -46,12 +46,12 @@
 
 #pragma mark Switching
 
-- (BOOL) isCurrent
+- (BOOL) isActive
 {
     return (alcGetCurrentContext() == _handle);
 }
 
-- (void) setCurrent: (BOOL) flag
+- (void) setActive: (BOOL) flag
 {
     alcMakeContextCurrent(flag ? _handle : NULL);
 }

@@ -18,7 +18,7 @@
     _soundContext = [FISoundContext contextForDevice:_soundDevice error:NULL];
     if (_soundContext) {
         [self setSoundBundle:[NSBundle bundleForClass:[self class]]];
-        [_soundContext setCurrent:YES];
+        [_soundContext setActive:YES];
         return self;
     } else {
         return nil;
