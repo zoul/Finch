@@ -4,10 +4,11 @@
 @property(assign) ALCdevice *device;
 @property(assign) ALCcontext *context;
 @property(assign) BOOL isRunning;
+@property(assign) BOOL isSuspended;
 @end
 
 @implementation FISoundEngine
-@synthesize device, context, logger, isRunning, audioSession;
+@synthesize device, context, logger, isRunning, isSuspended, audioSession;
 
 #pragma mark Initialization
 
@@ -49,6 +50,7 @@
     }
 
     [self setIsRunning:YES];
+    [self setIsSuspended:NO];
     return YES;
 }
 
@@ -59,6 +61,38 @@
     alcDestroyContext(context);
     alcCloseDevice(device);
     [self setIsRunning:NO];
+    [self setIsSuspended:NO];
+}
+
+- (void) suspendAudioDevice
+{
+    if (!self.isRunning) {
+        logger(@"Can't suspend closed audio device.");
+        return;
+    }
+
+    logger(@"Suspendng OpenAL audio device.");
+    alcMakeContextCurrent(NULL);
+    alcSuspendContext(context);
+    [self setIsSuspended:YES];
+}
+
+- (void) resumeAudioDevice
+{
+    if (!self.isRunning) {
+        logger(@"Can't resume closed audio device.");
+        return;
+    }
+
+    if (!self.isSuspended) {
+        logger(@"Can't resume not suspended audio device.");
+        return;
+    }
+
+    logger(@"Resuming OpenAL audio device.");
+    alcMakeContextCurrent(context);
+    alcProcessContext(context);
+    [self setIsSuspended:NO];
 }
 
 #pragma mark Audio Session Convenience
