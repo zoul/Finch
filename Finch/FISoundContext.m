@@ -28,6 +28,11 @@
     return self;
 }
 
++ (id) contextForDevice: (FISoundDevice*) device error: (NSError**) error
+{
+    return [(FISoundContext*) [self alloc] initWithDevice:device error:error];
+}
+
 - (void) dealloc
 {
     if (_handle) {

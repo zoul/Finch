@@ -1,4 +1,4 @@
-@class FISound, FIRevolverSound;
+@class FISound;
 
 @interface Controller : UIViewController
 

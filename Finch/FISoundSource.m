@@ -38,6 +38,9 @@
 
 - (void) dealloc
 {
+    if ([self isPlaying]) {
+        [self stop];
+    }
     if (_handle) {
         alSourcei(_handle, AL_BUFFER, 0 /* detach */);
         alDeleteSources(1, &_handle);

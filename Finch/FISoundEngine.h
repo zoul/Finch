@@ -1,15 +1,12 @@
-#import "FILogger.h"
+#import "FISound.h"
 
 @interface FISoundEngine : NSObject
 
-@property(copy) FILogger logger;
-@property(readonly) BOOL isRunning;
-@property(strong) AVAudioSession *audioSession;
+@property(strong) NSBundle *soundBundle;
 
-- (BOOL) activateAudioSessionWithCategory: (NSString*) categoryName;
-- (void) deactivateAudioSession;
++ (id) sharedEngine;
 
-- (BOOL) openAudioDevice;
-- (void) closeAudioDevice;
+- (FISound*) soundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices error: (NSError**) error;
+- (FISound*) soundNamed: (NSString*) soundName error: (NSError**) error;
 
 @end

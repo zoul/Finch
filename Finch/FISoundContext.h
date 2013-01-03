@@ -12,5 +12,6 @@ enum {
 @property(assign, nonatomic, getter = isCurrent) BOOL current;
 
 - (id) initWithDevice: (FISoundDevice*) device error: (NSError**) error;
++ (id) contextForDevice: (FISoundDevice*) device error: (NSError**) error;
 
 @end

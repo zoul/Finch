@@ -4,7 +4,7 @@
 
 @implementation FISampleDecoder
 
-- (FISampleBuffer*) decodeSampleAtPath: (NSString*) path error: (NSError**) error
++ (FISampleBuffer*) decodeSampleAtPath: (NSString*) path error: (NSError**) error
 {
     FI_INIT_ERROR_IF_NULL(error);
 
@@ -39,7 +39,7 @@
     return buffer;
 }
 
-- (BOOL) checkFormatSanity: (AudioStreamBasicDescription) format error: (NSError**) error
++ (BOOL) checkFormatSanity: (AudioStreamBasicDescription) format error: (NSError**) error
 {
     NSParameterAssert(error);
 
@@ -67,7 +67,7 @@
     return YES;
 }
 
-- (NSData*) readSampleDataAtPath: (NSString*) path fileFormat: (AudioStreamBasicDescription*) fileFormat error: (NSError**) error
++ (NSData*) readSampleDataAtPath: (NSString*) path fileFormat: (AudioStreamBasicDescription*) fileFormat error: (NSError**) error
 {
     NSParameterAssert(fileFormat);
     NSParameterAssert(error);
