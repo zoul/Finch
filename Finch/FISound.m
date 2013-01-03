@@ -44,13 +44,12 @@
 
 - (void) play
 {
-    [(FISoundSource*) [_voices objectAtIndex:_currentVoiceIndex] play];
     _currentVoiceIndex = (_currentVoiceIndex + 1) % [_voices count];
+    [(FISoundSource*) [_voices objectAtIndex:_currentVoiceIndex] play];
 }
 
 - (void) stop
 {
-    // TODO: This is plain wrong, we’re stopping the sound at the wrong index
     [[_voices objectAtIndex:_currentVoiceIndex] stop];
 }
 
