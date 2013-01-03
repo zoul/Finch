@@ -1,12 +1,5 @@
 #import "FISampleFormat.h"
 
-enum {
-    FISampleBufferErrorNone,
-    FISampleBufferErrorNoOpenALContext,
-    FISampleBufferErrorAllocationFailed,
-    FISampleBufferErrorDataUploadFailed
-};
-
 @interface FISampleBuffer : NSObject
 
 @property(assign, readonly) ALuint handle;

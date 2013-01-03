@@ -29,7 +29,7 @@
 
     if (!buffer) {
         *error = [NSError errorWithDomain:FIErrorDomain
-            code:FISampleDecoderErrorBufferCreate userInfo:@{
+            code:FIErrorCannotCreateBuffer userInfo:@{
             NSLocalizedDescriptionKey : @"Cannot create sound buffer",
             NSUnderlyingErrorKey : bufferError
         }];
@@ -46,21 +46,21 @@
     if (!TestAudioFormatNativeEndian(format)) {
         *error = [FIError
             errorWithMessage:@"Invalid sample endianity, only native endianity supported"
-            code:FISampleDecoderErrorFileFormatInvalid];
+            code:FIErrorInvalidSampleFormat];
         return NO;
     }
 
     if (format.mChannelsPerFrame != 1 && format.mChannelsPerFrame != 2) {
         *error = [FIError
             errorWithMessage:@"Invalid number of sound channels, only mono and stereo supported"
-            code:FISampleDecoderErrorFileFormatInvalid];
+            code:FIErrorInvalidSampleFormat];
         return NO;
     }
 
     if (format.mBitsPerChannel != 8 && format.mBitsPerChannel != 16) {
         *error = [FIError
             errorWithMessage:@"Invalid sample resolution, only 8-bit and 16-bit supported"
-            code:FISampleDecoderErrorFileFormatInvalid];
+            code:FIErrorInvalidSampleFormat];
         return NO;
     }
 
@@ -85,7 +85,7 @@
     if (errcode) {
         *error = [FIError
             errorWithMessage:@"Can’t read file"
-            code:FISampleDecoderErrorFileRead];
+            code:FIErrorCannotReadFile];
         return nil;
     }
 
@@ -94,7 +94,7 @@
     if (errcode) {
         *error = [FIError
             errorWithMessage:@"Can’t read file format"
-            code:FISampleDecoderErrorFileFormatInvalid];
+            code:FIErrorInvalidSampleFormat];
         AudioFileClose(fileId);
         return nil;
     }
@@ -102,7 +102,7 @@
     if (fileFormat->mFormatID != kAudioFormatLinearPCM) {
         *error = [FIError
             errorWithMessage:@"Audio format not linear PCM"
-            code:FISampleDecoderErrorFileFormatInvalid];
+            code:FIErrorInvalidSampleFormat];
         AudioFileClose(fileId);
         return nil;
     }
@@ -113,7 +113,7 @@
     if (errcode) {
         *error = [FIError
             errorWithMessage:@"Can’t read audio data byte count"
-            code:FISampleDecoderErrorFileFormatInvalid];
+            code:FIErrorInvalidSampleFormat];
         AudioFileClose(fileId);
         return nil;
     }
@@ -123,7 +123,7 @@
     if (!data) {
         *error = [FIError
             errorWithMessage:@"Can’t allocate memory for audio data"
-            code:FISampleDecoderErrorMemoryAllocation];
+            code:FIErrorCannotAllocateMemory];
         AudioFileClose(fileId);
         return nil;
     }
@@ -132,7 +132,7 @@
     if (errcode) {
         *error = [FIError
             errorWithMessage:@"Can’t read audio data from file"
-            code:FISampleDecoderErrorFileFormatInvalid];
+            code:FIErrorInvalidSampleFormat];
         AudioFileClose(fileId);
         free(data);
         return nil;

@@ -1,10 +1,5 @@
 @class FISoundDevice;
 
-enum {
-    FISoundContextErrorNone,
-    FISoundContextErrorCreate
-};
-
 @interface FISoundContext : NSObject
 
 @property(assign, readonly) ALCcontext *handle;

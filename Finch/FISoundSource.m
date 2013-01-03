@@ -26,7 +26,7 @@
     if (status) {
         *error = [FIError
             errorWithMessage:@"Failed to create OpenAL source"
-            code:FISoundSourceErrorCreate OpenALCode:status];
+            code:FIErrorCannotCreateSoundSource OpenALCode:status];
         return nil;
     }
 

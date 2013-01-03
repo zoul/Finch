@@ -1,10 +1,5 @@
 @class FISampleBuffer;
 
-enum {
-    FISoundSourceErrorNone,
-    FISoundSourceErrorCreate
-};
-
 @interface FISoundSource : NSObject
 
 @property(strong, readonly) FISampleBuffer *sampleBuffer;

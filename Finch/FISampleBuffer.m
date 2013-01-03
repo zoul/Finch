@@ -23,7 +23,7 @@
 
     if (!alcGetCurrentContext()) {
         *error = [FIError errorWithMessage:@"No OpenAL context"
-            code:FISampleBufferErrorNoOpenALContext];
+            code:FIErrorNoActiveContext];
         return nil;
     }
 
@@ -32,7 +32,7 @@
     status = alGetError();
     if (status) {
         *error = [FIError errorWithMessage:@"Failed to create OpenAL buffer"
-            code:FISampleBufferErrorAllocationFailed OpenALCode:status];
+            code:FIErrorCannotCreateBuffer OpenALCode:status];
         return nil;
     }
 
@@ -41,7 +41,7 @@
     status = alGetError();
     if (status) {
         *error = [FIError errorWithMessage:@"Failed to pass sample data to OpenAL"
-            code:FISampleBufferErrorDataUploadFailed OpenALCode:status];
+            code:FIErrorCannotUploadData OpenALCode:status];
         return nil;
     }
 

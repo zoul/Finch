@@ -20,7 +20,7 @@
     if (!_handle) {
         if (error) {
             *error = [FIError errorWithMessage:@"Can’t create OpenAL context"
-                code:FISoundContextErrorCreate OpenALCode:alGetError()];
+                code:FIErrorCannotCreateContext OpenALCode:alGetError()];
         }
         return nil;
     }
