@@ -1,9 +1,7 @@
 #import "FISampleBuffer.h"
 #import "FIError.h"
 
-@implementation FISampleBuffer {
-    ALuint _buffer;
-}
+@implementation FISampleBuffer
 
 #pragma mark Initialization
 
@@ -30,7 +28,7 @@
     }
 
     alClearError();
-    alGenBuffers(1, &_buffer);
+    alGenBuffers(1, &_handle);
     status = alGetError();
     if (status) {
         *error = [FIError errorWithMessage:@"Failed to create OpenAL buffer"
@@ -39,7 +37,7 @@
     }
 
     alClearError();
-    alBufferData(_buffer, [self OpenALSampleFormat], [data bytes], [data length], sampleRate);
+    alBufferData(_handle, [self OpenALSampleFormat], [data bytes], [data length], sampleRate);
     status = alGetError();
     if (status) {
         *error = [FIError errorWithMessage:@"Failed to pass sample data to OpenAL"
@@ -52,9 +50,9 @@
 
 - (void) dealloc
 {
-    if (_buffer) {
-        alDeleteBuffers(1, &_buffer);
-        _buffer = 0;
+    if (_handle) {
+        alDeleteBuffers(1, &_handle);
+        _handle = 0;
     }
 }
 

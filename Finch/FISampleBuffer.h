@@ -9,6 +9,7 @@ enum {
 
 @interface FISampleBuffer : NSObject
 
+@property(assign, readonly) ALuint handle;
 @property(assign, readonly) NSUInteger sampleRate;
 @property(assign, readonly) FISampleFormat sampleFormat;
 
