@@ -17,11 +17,10 @@
     alClearError();
     _device = device;
     _handle = alcCreateContext([device handle], 0);
+    FI_INIT_ERROR_IF_NULL(error);
     if (!_handle) {
-        if (error) {
-            *error = [FIError errorWithMessage:@"Can’t create OpenAL context"
-                code:FIErrorCannotCreateContext OpenALCode:alGetError()];
-        }
+        *error = [FIError errorWithMessage:@"Can’t create OpenAL context"
+            code:FIErrorCannotCreateContext OpenALCode:alGetError()];
         return nil;
     }
 

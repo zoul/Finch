@@ -34,7 +34,7 @@
     [self setContext:[[FISoundContext alloc]
         initWithDevice:[FISoundDevice defaultSoundDevice]
         error:NULL]];
-    [_context setCurrent:YES];
+    [_context setActive:YES];
 }
 
 @end

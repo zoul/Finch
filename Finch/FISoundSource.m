@@ -22,6 +22,7 @@
     alClearError();
     alGenSources(1, &_handle);
     alSourcei(_handle, AL_BUFFER, [buffer handle]);
+    FI_INIT_ERROR_IF_NULL(error);
     ALenum status = alGetError();
     if (status) {
         *error = [FIError
