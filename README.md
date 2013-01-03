@@ -97,16 +97,17 @@ Some links you might find useful:
 License
 =======
 
-Licensed under the [MIT License][license]. Essentially you can do with this
-software whatever you like, provided that you keep the copyright notice and
-the license text along.
+The code is offered under the [MIT License][license]. Essentially you can do
+with this software whatever you like, provided that you keep the copyright
+notice and the license text along.
 
 [license]: http://www.opensource.org/licenses/mit-license.php
 
 Author & Support
 ================
 
-Tomáš Znamenáček, <tomas.znamenacek@gmail.com>. Suggestions welcomed.
+Code by Tomáš Znamenáček, <tomas.znamenacek@gmail.com>.  
+The Finch image is © [asukawashere].
 
 If you have a question that could possibly be of interest to other people, you
 can ask it on [Stack Overflow][questions] and send me a link to your question.
@@ -115,3 +116,4 @@ other people and once the question has been answered, other people can benefit
 from the answer, too.
 
 [questions]: http://stackoverflow.com/questions/tagged/finch
+[asukawashere]: http://asukawashere.deviantart.com/art/Gouldian-Finch-Watercolor-122610881

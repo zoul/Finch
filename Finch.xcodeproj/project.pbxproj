@@ -48,6 +48,8 @@
 		0D9CA6FD16958D46007B522D /* FISound.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CA6FB16958D46007B522D /* FISound.m */; };
 		0D9CA7001695CE59007B522D /* FISoundEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D9CA6FE1695CE59007B522D /* FISoundEngine.h */; };
 		0D9CA7011695CE59007B522D /* FISoundEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CA6FF1695CE59007B522D /* FISoundEngine.m */; };
+		0D9CA7041695DEE2007B522D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9CA7021695DEE2007B522D /* Default-568h@2x.png */; };
+		0D9CA7051695DEE2007B522D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9CA7031695DEE2007B522D /* Default@2x.png */; };
 		0DAF0E891694223100612EED /* FISampleBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DAF0E871694223100612EED /* FISampleBuffer.h */; };
 		0DAF0E8A1694223100612EED /* FISampleBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0E881694223100612EED /* FISampleBuffer.m */; };
 		0DAF0E8D1694254000612EED /* FISampleBufferTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0E8C1694254000612EED /* FISampleBufferTests.m */; };
@@ -121,6 +123,8 @@
 		0D9CA6FB16958D46007B522D /* FISound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FISound.m; path = Finch/FISound.m; sourceTree = "<group>"; };
 		0D9CA6FE1695CE59007B522D /* FISoundEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FISoundEngine.h; path = Finch/FISoundEngine.h; sourceTree = "<group>"; };
 		0D9CA6FF1695CE59007B522D /* FISoundEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FISoundEngine.m; path = Finch/FISoundEngine.m; sourceTree = "<group>"; };
+		0D9CA7021695DEE2007B522D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Demo/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		0D9CA7031695DEE2007B522D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Demo/Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		0DAF0E871694223100612EED /* FISampleBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FISampleBuffer.h; path = Finch/FISampleBuffer.h; sourceTree = "<group>"; };
 		0DAF0E881694223100612EED /* FISampleBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FISampleBuffer.m; path = Finch/FISampleBuffer.m; sourceTree = "<group>"; };
 		0DAF0E8C1694254000612EED /* FISampleBufferTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FISampleBufferTests.m; path = Finch/FISampleBufferTests.m; sourceTree = "<group>"; };
@@ -234,14 +238,12 @@
 		0D2AA978141750F800F4071B /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				0D9CA7061695DEED007B522D /* Artworks */,
 				0D2AA98D1417515A00F4071B /* Application.h */,
 				0D2AA98E1417515A00F4071B /* Application.m */,
 				0D2AA98F1417515A00F4071B /* Controller.h */,
 				0D2AA9901417515A00F4071B /* Controller.m */,
 				0D2AA9911417515A00F4071B /* Controller.xib */,
-				0D2AA9921417515A00F4071B /* Default.png */,
-				0D2AA9931417515A00F4071B /* Icon.png */,
-				0D2AA9941417515A00F4071B /* Icon@2x.png */,
 				0D2AA9951417515A00F4071B /* Info.plist */,
 				0D2AA9A61417526C00F4071B /* prefix.pch */,
 				0D2AA9961417515A00F4071B /* main.m */,
@@ -264,6 +266,18 @@
 				0DFC9E67147FDD6000FC2066 /* Lib-Prefix.pch */,
 			);
 			name = "High-Level Interface";
+			sourceTree = "<group>";
+		};
+		0D9CA7061695DEED007B522D /* Artworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D9CA7021695DEE2007B522D /* Default-568h@2x.png */,
+				0D9CA7031695DEE2007B522D /* Default@2x.png */,
+				0D2AA9921417515A00F4071B /* Default.png */,
+				0D2AA9931417515A00F4071B /* Icon.png */,
+				0D2AA9941417515A00F4071B /* Icon@2x.png */,
+			);
+			name = Artworks;
 			sourceTree = "<group>";
 		};
 		0DAF0E851694221500612EED /* Plumbing */ = {
@@ -446,6 +460,8 @@
 				0D2AA9A21417515A00F4071B /* Bootstrap.xib in Resources */,
 				0D2AA9A31417515A00F4071B /* shot.wav in Resources */,
 				0D2AA9A41417515A00F4071B /* sitar.wav in Resources */,
+				0D9CA7041695DEE2007B522D /* Default-568h@2x.png in Resources */,
+				0D9CA7051695DEE2007B522D /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
