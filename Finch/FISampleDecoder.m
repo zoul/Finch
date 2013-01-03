@@ -6,7 +6,7 @@
 
 - (FISampleBuffer*) decodeSampleAtPath: (NSString*) path error: (NSError**) error
 {
-    error = error ? error : &(NSError*){ nil };
+    FI_INIT_ERROR_IF_NULL(error);
 
     // Read sample data
     AudioStreamBasicDescription format = {0};

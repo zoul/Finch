@@ -20,7 +20,7 @@
         return nil;
     }
 
-    error = error ? error : &(NSError*){ nil };
+    FI_INIT_ERROR_IF_NULL(error);
     ALenum status = ALC_NO_ERROR;
 
     if (!alcGetCurrentContext()) {
