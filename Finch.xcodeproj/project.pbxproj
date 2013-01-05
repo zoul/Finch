@@ -41,7 +41,6 @@
 		0D9CA6ED169573C7007B522D /* FISampleDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CA6EC169573C7007B522D /* FISampleDecoderTests.m */; };
 		0D9CA6F016958028007B522D /* FISampleFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D9CA6EE16958028007B522D /* FISampleFormat.h */; };
 		0D9CA6F116958028007B522D /* FISampleFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CA6EF16958028007B522D /* FISampleFormat.m */; };
-		0D9CA6F4169582AF007B522D /* FISampleFormatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CA6F3169582AF007B522D /* FISampleFormatTests.m */; };
 		0D9CA6F81695896E007B522D /* FISoundSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D9CA6F61695896E007B522D /* FISoundSource.h */; };
 		0D9CA6F91695896E007B522D /* FISoundSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9CA6F71695896E007B522D /* FISoundSource.m */; };
 		0D9CA6FC16958D46007B522D /* FISound.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D9CA6FA16958D46007B522D /* FISound.h */; };
@@ -69,6 +68,14 @@
 		0DAF0EC516947D8400612EED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0EC116947D8400612EED /* AppDelegate.m */; };
 		0DAF0EC716947D8400612EED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0EC316947D8400612EED /* main.m */; };
 		0DC3BFD91698153D00B7C4F2 /* FITestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3BFD81698153D00B7C4F2 /* FITestCase.m */; };
+		0DC3BFDE1698165E00B7C4F2 /* mono8bit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DC3BFDA1698165E00B7C4F2 /* mono8bit.wav */; };
+		0DC3BFDF1698165E00B7C4F2 /* mono8bit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DC3BFDA1698165E00B7C4F2 /* mono8bit.wav */; };
+		0DC3BFE01698165E00B7C4F2 /* mono16bit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DC3BFDB1698165E00B7C4F2 /* mono16bit.wav */; };
+		0DC3BFE11698165E00B7C4F2 /* mono16bit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DC3BFDB1698165E00B7C4F2 /* mono16bit.wav */; };
+		0DC3BFE21698165E00B7C4F2 /* stereo8bit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DC3BFDC1698165E00B7C4F2 /* stereo8bit.wav */; };
+		0DC3BFE31698165E00B7C4F2 /* stereo8bit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DC3BFDC1698165E00B7C4F2 /* stereo8bit.wav */; };
+		0DC3BFE41698165E00B7C4F2 /* stereo16bit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DC3BFDD1698165E00B7C4F2 /* stereo16bit.wav */; };
+		0DC3BFE51698165E00B7C4F2 /* stereo16bit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DC3BFDD1698165E00B7C4F2 /* stereo16bit.wav */; };
 		0DF32BA4141A37250059033C /* FIError.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DF32BA3141A37250059033C /* FIError.h */; };
 		0DFC9E56147FBC9800FC2066 /* FIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC9E55147FBC9800FC2066 /* FIError.m */; };
 		0DFC9E68147FDD6100FC2066 /* Lib-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0DFC9E67147FDD6000FC2066 /* Lib-Prefix.pch */; };
@@ -122,7 +129,6 @@
 		0D9CA6EC169573C7007B522D /* FISampleDecoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FISampleDecoderTests.m; path = Finch/FISampleDecoderTests.m; sourceTree = "<group>"; };
 		0D9CA6EE16958028007B522D /* FISampleFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FISampleFormat.h; path = Finch/FISampleFormat.h; sourceTree = "<group>"; };
 		0D9CA6EF16958028007B522D /* FISampleFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FISampleFormat.m; path = Finch/FISampleFormat.m; sourceTree = "<group>"; };
-		0D9CA6F3169582AF007B522D /* FISampleFormatTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FISampleFormatTests.m; path = Finch/FISampleFormatTests.m; sourceTree = "<group>"; };
 		0D9CA6F61695896E007B522D /* FISoundSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FISoundSource.h; path = Finch/FISoundSource.h; sourceTree = "<group>"; };
 		0D9CA6F71695896E007B522D /* FISoundSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FISoundSource.m; path = Finch/FISoundSource.m; sourceTree = "<group>"; };
 		0D9CA6FA16958D46007B522D /* FISound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FISound.h; path = Finch/FISound.h; sourceTree = "<group>"; };
@@ -148,6 +154,10 @@
 		0DAF0EC416947D8400612EED /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = "Test Runner/Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		0DC3BFD71698153D00B7C4F2 /* FITestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FITestCase.h; path = Finch/FITestCase.h; sourceTree = "<group>"; };
 		0DC3BFD81698153D00B7C4F2 /* FITestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FITestCase.m; path = Finch/FITestCase.m; sourceTree = "<group>"; };
+		0DC3BFDA1698165E00B7C4F2 /* mono8bit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = mono8bit.wav; path = Resources/mono8bit.wav; sourceTree = SOURCE_ROOT; };
+		0DC3BFDB1698165E00B7C4F2 /* mono16bit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = mono16bit.wav; path = Resources/mono16bit.wav; sourceTree = SOURCE_ROOT; };
+		0DC3BFDC1698165E00B7C4F2 /* stereo8bit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = stereo8bit.wav; path = Resources/stereo8bit.wav; sourceTree = SOURCE_ROOT; };
+		0DC3BFDD1698165E00B7C4F2 /* stereo16bit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = stereo16bit.wav; path = Resources/stereo16bit.wav; sourceTree = SOURCE_ROOT; };
 		0DF32BA3141A37250059033C /* FIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FIError.h; path = Finch/FIError.h; sourceTree = "<group>"; };
 		0DFC9E55147FBC9800FC2066 /* FIError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FIError.m; path = Finch/FIError.m; sourceTree = "<group>"; };
 		0DFC9E67147FDD6000FC2066 /* Lib-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Lib-Prefix.pch"; path = "Finch/Lib-Prefix.pch"; sourceTree = "<group>"; };
@@ -279,6 +289,10 @@
 		0D9CA7061695DEED007B522D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0DC3BFDA1698165E00B7C4F2 /* mono8bit.wav */,
+				0DC3BFDB1698165E00B7C4F2 /* mono16bit.wav */,
+				0DC3BFDC1698165E00B7C4F2 /* stereo8bit.wav */,
+				0DC3BFDD1698165E00B7C4F2 /* stereo16bit.wav */,
 				0D9CA7021695DEE2007B522D /* Default-568h@2x.png */,
 				0D9CA7031695DEE2007B522D /* Default@2x.png */,
 				0D2AA9921417515A00F4071B /* Default.png */,
@@ -304,7 +318,6 @@
 				0D47D2701694848E00720C56 /* FISoundContextTests.m */,
 				0D9CA6EE16958028007B522D /* FISampleFormat.h */,
 				0D9CA6EF16958028007B522D /* FISampleFormat.m */,
-				0D9CA6F3169582AF007B522D /* FISampleFormatTests.m */,
 				0DAF0E871694223100612EED /* FISampleBuffer.h */,
 				0DAF0E881694223100612EED /* FISampleBuffer.m */,
 				0DAF0E8C1694254000612EED /* FISampleBufferTests.m */,
@@ -457,6 +470,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC3BFDE1698165E00B7C4F2 /* mono8bit.wav in Resources */,
+				0DC3BFE01698165E00B7C4F2 /* mono16bit.wav in Resources */,
+				0DC3BFE21698165E00B7C4F2 /* stereo8bit.wav in Resources */,
+				0DC3BFE41698165E00B7C4F2 /* stereo16bit.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +502,10 @@
 				0D9CA7091695E16F007B522D /* Default.png in Resources */,
 				0D9CA70A1695E16F007B522D /* Icon.png in Resources */,
 				0D9CA70B1695E16F007B522D /* Icon@2x.png in Resources */,
+				0DC3BFDF1698165E00B7C4F2 /* mono8bit.wav in Resources */,
+				0DC3BFE11698165E00B7C4F2 /* mono16bit.wav in Resources */,
+				0DC3BFE31698165E00B7C4F2 /* stereo8bit.wav in Resources */,
+				0DC3BFE51698165E00B7C4F2 /* stereo16bit.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,7 +536,6 @@
 				0DAF0EA0169479A900612EED /* FISoundDeviceTests.m in Sources */,
 				0D47D2711694848E00720C56 /* FISoundContextTests.m in Sources */,
 				0D9CA6ED169573C7007B522D /* FISampleDecoderTests.m in Sources */,
-				0D9CA6F4169582AF007B522D /* FISampleFormatTests.m in Sources */,
 				0DC3BFD91698153D00B7C4F2 /* FITestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
