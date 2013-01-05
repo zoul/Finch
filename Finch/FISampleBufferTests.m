@@ -1,9 +1,9 @@
+#import "FITestCase.h"
 #import "FISampleBuffer.h"
 #import "FISoundContext.h"
 #import "FISoundDevice.h"
 
-@interface FISampleBufferTests : SenTestCase
-@property(strong) FISoundContext *context;
+@interface FISampleBufferTests : FITestCase
 @end
 
 @implementation FISampleBufferTests
@@ -24,17 +24,6 @@
     STAssertNotNil(buffer, @"Create a sample buffer");
     STAssertEquals([buffer duration], (NSTimeInterval) 0.5,
         @"Calculate duration from sample data length and format");
-}
-
-#pragma mark Setup
-
-- (void) setUp
-{
-    [super setUp];
-    [self setContext:[[FISoundContext alloc]
-        initWithDevice:[FISoundDevice defaultSoundDevice]
-        error:NULL]];
-    [_context setActive:YES];
 }
 
 @end

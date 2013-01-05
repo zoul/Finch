@@ -68,6 +68,7 @@
 		0DAF0EAA16947C8D00612EED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAF0EA916947C8D00612EED /* CoreGraphics.framework */; };
 		0DAF0EC516947D8400612EED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0EC116947D8400612EED /* AppDelegate.m */; };
 		0DAF0EC716947D8400612EED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0EC316947D8400612EED /* main.m */; };
+		0DC3BFD91698153D00B7C4F2 /* FITestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3BFD81698153D00B7C4F2 /* FITestCase.m */; };
 		0DF32BA4141A37250059033C /* FIError.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DF32BA3141A37250059033C /* FIError.h */; };
 		0DFC9E56147FBC9800FC2066 /* FIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC9E55147FBC9800FC2066 /* FIError.m */; };
 		0DFC9E68147FDD6100FC2066 /* Lib-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0DFC9E67147FDD6000FC2066 /* Lib-Prefix.pch */; };
@@ -145,6 +146,8 @@
 		0DAF0EC216947D8400612EED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Test Runner/Info.plist"; sourceTree = SOURCE_ROOT; };
 		0DAF0EC316947D8400612EED /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Test Runner/main.m"; sourceTree = SOURCE_ROOT; };
 		0DAF0EC416947D8400612EED /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = "Test Runner/Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		0DC3BFD71698153D00B7C4F2 /* FITestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FITestCase.h; path = Finch/FITestCase.h; sourceTree = "<group>"; };
+		0DC3BFD81698153D00B7C4F2 /* FITestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FITestCase.m; path = Finch/FITestCase.m; sourceTree = "<group>"; };
 		0DF32BA3141A37250059033C /* FIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FIError.h; path = Finch/FIError.h; sourceTree = "<group>"; };
 		0DFC9E55147FBC9800FC2066 /* FIError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FIError.m; path = Finch/FIError.m; sourceTree = "<group>"; };
 		0DFC9E67147FDD6000FC2066 /* Lib-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Lib-Prefix.pch"; path = "Finch/Lib-Prefix.pch"; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 			children = (
 				0DF32BA3141A37250059033C /* FIError.h */,
 				0DFC9E55147FBC9800FC2066 /* FIError.m */,
+				0DC3BFD71698153D00B7C4F2 /* FITestCase.h */,
+				0DC3BFD81698153D00B7C4F2 /* FITestCase.m */,
 				0DAF0E9816943F5200612EED /* FISoundDevice.h */,
 				0DAF0E9916943F5200612EED /* FISoundDevice.m */,
 				0DAF0E9D169479A400612EED /* FISoundDeviceTests.m */,
@@ -511,6 +516,7 @@
 				0D47D2711694848E00720C56 /* FISoundContextTests.m in Sources */,
 				0D9CA6ED169573C7007B522D /* FISampleDecoderTests.m in Sources */,
 				0D9CA6F4169582AF007B522D /* FISampleFormatTests.m in Sources */,
+				0DC3BFD91698153D00B7C4F2 /* FITestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
