@@ -77,6 +77,7 @@
 		0DC3BFE41698165E00B7C4F2 /* stereo16bit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DC3BFDD1698165E00B7C4F2 /* stereo16bit.wav */; };
 		0DC3BFE51698165E00B7C4F2 /* stereo16bit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DC3BFDD1698165E00B7C4F2 /* stereo16bit.wav */; };
 		0DC3BFE81698189E00B7C4F2 /* FISoundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3BFE71698189D00B7C4F2 /* FISoundTests.m */; };
+		0DC3BFEA16981DD700B7C4F2 /* duration.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DC3BFE916981DD700B7C4F2 /* duration.wav */; };
 		0DF32BA4141A37250059033C /* FIError.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DF32BA3141A37250059033C /* FIError.h */; };
 		0DFC9E56147FBC9800FC2066 /* FIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC9E55147FBC9800FC2066 /* FIError.m */; };
 		0DFC9E68147FDD6100FC2066 /* Lib-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0DFC9E67147FDD6000FC2066 /* Lib-Prefix.pch */; };
@@ -160,6 +161,7 @@
 		0DC3BFDC1698165E00B7C4F2 /* stereo8bit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = stereo8bit.wav; path = Resources/stereo8bit.wav; sourceTree = SOURCE_ROOT; };
 		0DC3BFDD1698165E00B7C4F2 /* stereo16bit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = stereo16bit.wav; path = Resources/stereo16bit.wav; sourceTree = SOURCE_ROOT; };
 		0DC3BFE71698189D00B7C4F2 /* FISoundTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FISoundTests.m; path = Finch/FISoundTests.m; sourceTree = "<group>"; };
+		0DC3BFE916981DD700B7C4F2 /* duration.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = duration.wav; path = Resources/duration.wav; sourceTree = SOURCE_ROOT; };
 		0DF32BA3141A37250059033C /* FIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FIError.h; path = Finch/FIError.h; sourceTree = "<group>"; };
 		0DFC9E55147FBC9800FC2066 /* FIError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FIError.m; path = Finch/FIError.m; sourceTree = "<group>"; };
 		0DFC9E67147FDD6000FC2066 /* Lib-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Lib-Prefix.pch"; path = "Finch/Lib-Prefix.pch"; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 		0D9CA7061695DEED007B522D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0DC3BFE916981DD700B7C4F2 /* duration.wav */,
 				0DC3BFDA1698165E00B7C4F2 /* mono8bit.wav */,
 				0DC3BFDB1698165E00B7C4F2 /* mono16bit.wav */,
 				0DC3BFDC1698165E00B7C4F2 /* stereo8bit.wav */,
@@ -477,6 +480,7 @@
 				0DC3BFE01698165E00B7C4F2 /* mono16bit.wav in Resources */,
 				0DC3BFE21698165E00B7C4F2 /* stereo8bit.wav in Resources */,
 				0DC3BFE41698165E00B7C4F2 /* stereo16bit.wav in Resources */,
+				0DC3BFEA16981DD700B7C4F2 /* duration.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

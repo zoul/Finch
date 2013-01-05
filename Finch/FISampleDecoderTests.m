@@ -64,4 +64,12 @@
     STAssertEquals([buffer duration], (NSTimeInterval)1, @"Calculate sample duration for 16-bit stereo files");
 }
 
+- (void) testFractionalDuration
+{
+    FISampleBuffer *buffer = [FISampleDecoder decodeSampleAtPath:
+        [[self soundBundle] pathForResource:@"duration" ofType:@"wav"] error:NULL];
+    STAssertEqualsWithAccuracy([buffer duration], (NSTimeInterval)1.35, 0.001,
+        @"Load and calculate fractional duration");
+}
+
 @end

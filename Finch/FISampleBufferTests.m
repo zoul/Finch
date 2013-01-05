@@ -15,7 +15,7 @@
     STAssertNil(buffer, @"Creating buffer with nil data returns nil");
 }
 
-- (void) testDurationCalculations
+- (void) testBasicDurationCalculation
 {
     unsigned char sampleBytes[44100] = {0};
     NSData *sampleData = [NSData dataWithBytes:sampleBytes length:44100];

@@ -9,7 +9,7 @@
 @end
 
 @implementation FISound
-@dynamic isPlaying, loop, gain, pitch;
+@dynamic isPlaying, loop, gain, pitch, duration;
 
 #pragma mark Initialization
 
@@ -54,6 +54,11 @@
 }
 
 #pragma mark Sound Properties
+
+- (NSTimeInterval) duration
+{
+    return [[[_voices lastObject] sampleBuffer] duration];
+}
 
 - (void) forwardInvocation: (NSInvocation*) invocation
 {
