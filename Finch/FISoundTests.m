@@ -17,7 +17,7 @@
 
 - (void) testBasicLoading
 {
-    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:@"mono8bit" ofType:@"wav"];
+    NSString *path = [[self soundBundle] pathForResource:@"mono8bit" ofType:@"wav"];
     FISound *sound = [[FISound alloc] initWithPath:path error:NULL];
     STAssertNotNil(sound, @"Load a basic sound");
 }

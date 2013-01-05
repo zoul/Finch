@@ -3,16 +3,9 @@
 #import "FISampleBuffer.h"
 
 @interface FISampleDecoderTests : FITestCase
-@property(strong) NSBundle *bundle;
 @end
 
 @implementation FISampleDecoderTests
-
-- (void) setUp
-{
-    [super setUp];
-    _bundle = [NSBundle bundleForClass:[self class]];
-}
 
 - (void) testInitializationWithEmptyPath
 {
@@ -26,7 +19,8 @@
 - (void) test8BitMonoDecoding
 {
     NSError *error = nil;
-    FISampleBuffer *buffer = [FISampleDecoder decodeSampleAtPath:[_bundle pathForResource:@"mono8bit" ofType:@"wav"] error:&error];
+    FISampleBuffer *buffer = [FISampleDecoder decodeSampleAtPath:
+        [[self soundBundle] pathForResource:@"mono8bit" ofType:@"wav"] error:&error];
     STAssertNotNil(buffer, @"Load 8-bit mono sample: %@", error);
     STAssertEquals([buffer sampleRate], (NSUInteger)44100, @"Detect sample rate for 8-bit mono files");
     STAssertEquals([buffer sampleFormat], FISampleFormatMono8, @"Detect sample format for 8-bit mono files");
@@ -37,7 +31,8 @@
 - (void) test8BitStereoDecoding
 {
     NSError *error = nil;
-    FISampleBuffer *buffer = [FISampleDecoder decodeSampleAtPath:[_bundle pathForResource:@"stereo8bit" ofType:@"wav"] error:&error];
+    FISampleBuffer *buffer = [FISampleDecoder decodeSampleAtPath:
+        [[self soundBundle] pathForResource:@"stereo8bit" ofType:@"wav"] error:&error];
     STAssertNotNil(buffer, @"Load 8-bit stereo sample: %@", error);
     STAssertEquals([buffer sampleRate], (NSUInteger)44100, @"Detect sample rate for 8-bit stereo files");
     STAssertEquals([buffer sampleFormat], FISampleFormatStereo8, @"Detect sample format for 8-bit stereo files");
@@ -48,7 +43,8 @@
 - (void) test16BitMonoDecoding
 {
     NSError *error = nil;
-    FISampleBuffer *buffer = [FISampleDecoder decodeSampleAtPath:[_bundle pathForResource:@"mono16bit" ofType:@"wav"] error:&error];
+    FISampleBuffer *buffer = [FISampleDecoder decodeSampleAtPath:
+        [[self soundBundle] pathForResource:@"mono16bit" ofType:@"wav"] error:&error];
     STAssertNotNil(buffer, @"Load 16-bit mono sample: %@", error);
     STAssertEquals([buffer sampleRate], (NSUInteger)44100, @"Detect sample rate for 16-bit mono files");
     STAssertEquals([buffer sampleFormat], FISampleFormatMono16, @"Detect sample format for 16-bit mono files");
@@ -59,7 +55,8 @@
 - (void) test16BitStereoDecoding
 {
     NSError *error = nil;
-    FISampleBuffer *buffer = [FISampleDecoder decodeSampleAtPath:[_bundle pathForResource:@"stereo16bit" ofType:@"wav"] error:&error];
+    FISampleBuffer *buffer = [FISampleDecoder decodeSampleAtPath:
+        [[self soundBundle] pathForResource:@"stereo16bit" ofType:@"wav"] error:&error];
     STAssertNotNil(buffer, @"Load 16-bit stereo sample: %@", error);
     STAssertEquals([buffer sampleRate], (NSUInteger)44100, @"Detect sample rate for 16-bit stereo files");
     STAssertEquals([buffer sampleFormat], FISampleFormatStereo16, @"Detect sample format for 16-bit stereo files");
