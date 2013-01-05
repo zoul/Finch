@@ -32,6 +32,7 @@
     }
 
     _sampleBuffer = buffer;
+    _pitch = 1;
     _gain = 1;
 
     return self;
