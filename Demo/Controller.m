@@ -2,24 +2,16 @@
 #import "FISound.h"
 
 @implementation Controller
-@synthesize sitarSound, gunSound;
 
-- (IBAction) playSitarSound
+- (IBAction) playSound
 {
-    [sitarSound play];
-}
-
-- (IBAction) playGunSound
-{
-    for (int i=0; i<4; i++) {
-        [gunSound play];
-        usleep(80000);
-    }
+    [_sound play];
 }
 
 - (IBAction) updateSoundPitchFrom: (UISlider*) slider
 {
-    sitarSound.pitch = gunSound.pitch = slider.value;
+    NSLog(@"Setting pitch to %0.2f.", [slider value]);
+    [_sound setPitch:[slider value]];
 }
 
 @end

@@ -2,11 +2,9 @@
 
 @interface Controller : UIViewController
 
-@property(strong) FISound *sitarSound;
-@property(strong) FISound *gunSound;
+@property(strong) FISound *sound;
 
-- (IBAction) playSitarSound;
-- (IBAction) playGunSound;
+- (IBAction) playSound;
 - (IBAction) updateSoundPitchFrom: (UISlider*) slider;
 
 @end

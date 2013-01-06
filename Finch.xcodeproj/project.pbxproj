@@ -27,8 +27,6 @@
 		0D2AA99F1417515A00F4071B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2AA9941417515A00F4071B /* Icon@2x.png */; };
 		0D2AA9A11417515A00F4071B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2AA9961417515A00F4071B /* main.m */; };
 		0D2AA9A21417515A00F4071B /* Bootstrap.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2AA9971417515A00F4071B /* Bootstrap.xib */; };
-		0D2AA9A31417515A00F4071B /* shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0D2AA9981417515A00F4071B /* shot.wav */; };
-		0D2AA9A41417515A00F4071B /* sitar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0D2AA9991417515A00F4071B /* sitar.wav */; };
 		0D2AA9A51417521500F4071B /* libFinch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA93E14174FA000F4071B /* libFinch.a */; };
 		0D2AA9A8141752A200F4071B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA9A7141752A200F4071B /* AVFoundation.framework */; };
 		0D2AA9AA141752BE00F4071B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2AA9A9141752BE00F4071B /* AudioToolbox.framework */; };
@@ -79,6 +77,7 @@
 		0DC3BFE81698189E00B7C4F2 /* FISoundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3BFE71698189D00B7C4F2 /* FISoundTests.m */; };
 		0DC3BFEA16981DD700B7C4F2 /* duration.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DC3BFE916981DD700B7C4F2 /* duration.wav */; };
 		0DC3BFED1698214900B7C4F2 /* FISoundSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3BFEC1698214800B7C4F2 /* FISoundSourceTests.m */; };
+		0DCA26E116998170000B20EB /* finch.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0DCA26E016998170000B20EB /* finch.wav */; };
 		0DF32BA4141A37250059033C /* FIError.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DF32BA3141A37250059033C /* FIError.h */; };
 		0DFC9E56147FBC9800FC2066 /* FIError.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFC9E55147FBC9800FC2066 /* FIError.m */; };
 		0DFC9E68147FDD6100FC2066 /* Lib-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0DFC9E67147FDD6000FC2066 /* Lib-Prefix.pch */; };
@@ -120,8 +119,6 @@
 		0D2AA9951417515A00F4071B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demo/Info.plist; sourceTree = SOURCE_ROOT; };
 		0D2AA9961417515A00F4071B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Demo/main.m; sourceTree = SOURCE_ROOT; };
 		0D2AA9971417515A00F4071B /* Bootstrap.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Bootstrap.xib; path = Demo/Bootstrap.xib; sourceTree = SOURCE_ROOT; };
-		0D2AA9981417515A00F4071B /* shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = shot.wav; path = Demo/shot.wav; sourceTree = SOURCE_ROOT; };
-		0D2AA9991417515A00F4071B /* sitar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = sitar.wav; path = Demo/sitar.wav; sourceTree = SOURCE_ROOT; };
 		0D2AA9A61417526C00F4071B /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = prefix.pch; path = Demo/prefix.pch; sourceTree = SOURCE_ROOT; };
 		0D2AA9A7141752A200F4071B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0D2AA9A9141752BE00F4071B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -165,6 +162,7 @@
 		0DC3BFE916981DD700B7C4F2 /* duration.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = duration.wav; path = Resources/duration.wav; sourceTree = SOURCE_ROOT; };
 		0DC3BFEB1698214800B7C4F2 /* FISoundSourceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FISoundSourceTests.h; path = Finch/FISoundSourceTests.h; sourceTree = "<group>"; };
 		0DC3BFEC1698214800B7C4F2 /* FISoundSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FISoundSourceTests.m; path = Finch/FISoundSourceTests.m; sourceTree = "<group>"; };
+		0DCA26E016998170000B20EB /* finch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = finch.wav; path = Demo/finch.wav; sourceTree = SOURCE_ROOT; };
 		0DF32BA3141A37250059033C /* FIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FIError.h; path = Finch/FIError.h; sourceTree = "<group>"; };
 		0DFC9E55147FBC9800FC2066 /* FIError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FIError.m; path = Finch/FIError.m; sourceTree = "<group>"; };
 		0DFC9E67147FDD6000FC2066 /* Lib-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Lib-Prefix.pch"; path = "Finch/Lib-Prefix.pch"; sourceTree = "<group>"; };
@@ -269,12 +267,11 @@
 				0D2AA98F1417515A00F4071B /* Controller.h */,
 				0D2AA9901417515A00F4071B /* Controller.m */,
 				0D2AA9911417515A00F4071B /* Controller.xib */,
+				0D2AA9971417515A00F4071B /* Bootstrap.xib */,
 				0D2AA9951417515A00F4071B /* Info.plist */,
 				0D2AA9A61417526C00F4071B /* prefix.pch */,
+				0DCA26E016998170000B20EB /* finch.wav */,
 				0D2AA9961417515A00F4071B /* main.m */,
-				0D2AA9971417515A00F4071B /* Bootstrap.xib */,
-				0D2AA9981417515A00F4071B /* shot.wav */,
-				0D2AA9991417515A00F4071B /* sitar.wav */,
 			);
 			name = Demo;
 			path = "Finch Demo";
@@ -498,10 +495,9 @@
 				0D2AA99E1417515A00F4071B /* Icon.png in Resources */,
 				0D2AA99F1417515A00F4071B /* Icon@2x.png in Resources */,
 				0D2AA9A21417515A00F4071B /* Bootstrap.xib in Resources */,
-				0D2AA9A31417515A00F4071B /* shot.wav in Resources */,
-				0D2AA9A41417515A00F4071B /* sitar.wav in Resources */,
 				0D9CA7041695DEE2007B522D /* Default-568h@2x.png in Resources */,
 				0D9CA7051695DEE2007B522D /* Default@2x.png in Resources */,
+				0DCA26E116998170000B20EB /* finch.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
