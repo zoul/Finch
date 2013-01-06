@@ -23,9 +23,14 @@ After you link against the library and import the headers you may start using th
 
     #import "FISoundEngine.h"
 
+    NSError *error = nil;
     FISoundEngine *engine = [FISoundEngine sharedEngine];
-    FISound *sound = [engine soundNamed:@"finch.wav" maxPolyphony:4 error:NULL];  
-    [sound play];
+    FISound *sound = [engine soundNamed:@"finch.wav" maxPolyphony:4 error:&error];
+    if (!sound) {
+        NSLog(@"Failed to load sound: %@", error);
+    } else {
+        [sound play];
+    }
 
 Sound loaded without the `maxPolyphony` argument will only play with one “voice” at a time. If you call `play` before such sound is finished, it will play again from the start:
 
