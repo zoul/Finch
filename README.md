@@ -60,18 +60,11 @@ Further info may be found in the documentation for the `AVAudioSession` class.
 Hacking
 =======
 
-The `FISoundEngine` and `FISound` classes are just a thin layer atop of the plumbing classes that implement the actual OpenAL primitives. See the Xcode project to learn more, it’s fairly easy to do your own things if you need to.
+The `FISoundEngine` and `FISound` classes are just a thin layer atop of the plumbing classes that implement the actual OpenAL primitives. See the Xcode project to learn more, it’s fairly easy to do your own things if you need to. Some links you might find useful:
 
-Links
-=====
-
-Some links you might find useful:
-
-* [Finch on github][git]
 * [An iPhone OpenAL brain dump][dump]
 * [OpenAL Programmer’s Guide][guide]
 
-[git]: http://github.com/zoul/Finch/
 [dump]: http://www.subfurther.com/blog/?p=602
 [guide]: http://connect.creativelabs.com/openal/Documentation/OpenAL_Programmers_Guide.pdf
 
