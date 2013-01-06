@@ -8,6 +8,11 @@
     [_sound play];
 }
 
+- (IBAction) stopSound
+{
+    [_sound stop];
+}
+
 - (IBAction) updateSoundPitchFrom: (UISlider*) slider
 {
     NSLog(@"Setting pitch to %0.2f.", [slider value]);

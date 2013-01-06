@@ -50,7 +50,9 @@
 
 - (void) stop
 {
-    [[_voices objectAtIndex:_currentVoiceIndex] stop];
+    for (FISound *voice in _voices) {
+        [voice stop];
+    }
 }
 
 #pragma mark Sound Properties
