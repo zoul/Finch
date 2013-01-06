@@ -14,15 +14,22 @@
 - (id) init
 {
     self = [super init];
+
     _soundDevice = [FISoundDevice defaultSoundDevice];
     _soundContext = [FISoundContext contextForDevice:_soundDevice error:NULL];
-    if (_soundContext) {
-        [self setSoundBundle:[NSBundle bundleForClass:[self class]]];
-        [_soundContext setActive:YES];
-        return self;
-    } else {
+    if (!_soundContext) {
         return nil;
     }
+
+    [self setSoundBundle:[NSBundle bundleForClass:[self class]]];
+    [_soundContext setCurrent:YES];
+
+    return self;
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 + (id) sharedEngine
@@ -47,6 +54,24 @@
 - (FISound*) soundNamed: (NSString*) soundName error: (NSError**) error
 {
     return [self soundNamed:soundName maxPolyphony:1 error:error];
+}
+
+#pragma mark Interruption Handling
+
+// TODO: Resume may fail here, and in that case
+// we would like to keep _suspended at YES.
+- (void) setSuspended: (BOOL) newValue
+{
+    if (newValue != _suspended) {
+        _suspended = newValue;
+        if (_suspended) {
+            [_soundContext setCurrent:NO];
+            [_soundContext setSuspended:YES];
+        } else {
+            [_soundContext setCurrent:YES];
+            [_soundContext setSuspended:NO];
+        }
+    }
 }
 
 @end

@@ -35,8 +35,8 @@
 - (void) dealloc
 {
     if (_handle) {
-        if ([self isActive]) {
-            [self setActive:NO];
+        if ([self isCurrent]) {
+            [self setCurrent:NO];
         }
         alcDestroyContext(_handle);
         _handle = 0;
@@ -45,14 +45,29 @@
 
 #pragma mark Switching
 
-- (BOOL) isActive
+- (BOOL) isCurrent
 {
     return (alcGetCurrentContext() == _handle);
 }
 
-- (void) setActive: (BOOL) flag
+- (void) setCurrent: (BOOL) flag
 {
     alcMakeContextCurrent(flag ? _handle : NULL);
+}
+
+#pragma mark Suspending
+
+- (void) setSuspended: (BOOL) flag
+{
+    if (flag != _suspended) {
+        if (flag) {
+            alcSuspendContext(_handle);
+            _suspended = YES;
+        } else {
+            alcProcessContext(_handle);
+            _suspended = NO;
+        }
+    }
 }
 
 @end

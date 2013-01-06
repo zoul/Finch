@@ -9,7 +9,7 @@
     [super setUp];
     _soundBundle = [NSBundle bundleForClass:[self class]];
     _soundContext = [FISoundContext contextForDevice:[FISoundDevice defaultSoundDevice] error:NULL];
-    [_soundContext setActive:YES];
+    [_soundContext setCurrent:YES];
 }
 
 - (void) tearDown

@@ -48,6 +48,15 @@ If you wish to overlay multiple instances of the sound, set the `maxPolyphony` a
 
 And please note that Finch does not yet support compressed audio. You should be safe with 8-bit or 16-bit mono or stereo little-endian WAV files sampled at 44.1 kHz. There is a demo target inside the project, take a look at it to see more.
 
+Audio Interruption Handling
+===========================
+
+Your app’s audio session may be interrupted at any moment, be it with an incoming call, the iPod playback being started or whatever else. In this case you are reponsible for correctly suspending your audio session and resuming it later when the interruption ends. This is a bit hard, since the sound system is very particular about your suspend and resume code.
+
+Finch currently supports suspend and resume with the `suspended` property of the `FISoundEngine` class. When you receive an interruption notification or callback from the system, you can set this property to `YES` and later flip it to `NO` when the interruption is ended. There’s a slight catch, though – when your app receives a notification about the interruption being ended, your app still may be in background and therefore it can’t resume the sound session right away. You have to wait until the app is active again and only then resume the sound engine. See the application delegate in the demo project about how this can be done. (Also notice that the audio session delegates, callbacks and notifications differ between iOS versions.)
+
+Further info may be found in the documentation for the `AVAudioSession` class.
+
 Hacking
 =======
 
