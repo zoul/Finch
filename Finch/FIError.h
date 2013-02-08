@@ -1,4 +1,4 @@
-#define FI_INIT_ERROR_IF_NULL(error) error = error ? error : &(NSError*){ nil }
+#define FI_INIT_ERROR_IF_NULL(error) error = error ? error : &(NSError __autoreleasing*){ nil }
 #define alClearError alGetError
 
 extern NSString *const FIErrorDomain;
