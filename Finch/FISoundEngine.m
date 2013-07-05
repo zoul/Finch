@@ -23,6 +23,8 @@
 
     [self setSoundBundle:[NSBundle bundleForClass:[self class]]];
     [_soundContext setCurrent:YES];
+    
+    _sounds = [NSMutableDictionary dictionaryWithCapacity:1];
 
     return self;
 }
@@ -46,9 +48,17 @@
 
 - (FISound*) soundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices error: (NSError**) error
 {
-    return [[FISound alloc]
-        initWithPath:[_soundBundle pathForResource:soundName ofType:nil]
-        maxPolyphony:voices error:error];
+    if ([self.sounds objectForKey:soundName]) {
+        return (FISound*)[self.sounds objectForKey:soundName];
+    }
+    
+    FISound *sound = [[FISound alloc]
+                      initWithPath:[_soundBundle pathForResource:soundName ofType:nil] andName:soundName
+                      maxPolyphony:voices error:error];
+    if (sound)
+        [self.sounds setObject:sound forKey:soundName];
+    
+    return sound;
 }
 
 - (FISound*) soundNamed: (NSString*) soundName error: (NSError**) error

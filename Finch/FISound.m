@@ -13,12 +13,12 @@
 
 #pragma mark Initialization
 
-- (id) initWithPath: (NSString*) path maxPolyphony: (NSUInteger) maxPolyphony error: (NSError**) error
+- (id) initWithPath: (NSString*) path andName: (NSString *) name maxPolyphony: (NSUInteger) maxPolyphony error: (NSError**) error
 {
     self = [super init];
     _voices = @[];
 
-    FISampleBuffer *buffer = [FISampleDecoder decodeSampleAtPath:path error:error];
+    FISampleBuffer *buffer = [FISampleDecoder decodeSampleAtPath:path andName:name error:error];
     if (!buffer || !maxPolyphony) {
         return nil;
     }
@@ -35,9 +35,9 @@
     return self;
 }
 
-- (id) initWithPath: (NSString*) path error: (NSError**) error
+- (id) initWithPath: (NSString*) path andName: (NSString *) name error: (NSError**) error
 {
-    return [self initWithPath:path maxPolyphony:1 error:error];
+    return [self initWithPath:path andName:name maxPolyphony:1 error:error];
 }
 
 #pragma mark Playback
