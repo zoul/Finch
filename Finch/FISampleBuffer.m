@@ -5,7 +5,7 @@
 
 #pragma mark Initialization
 
-- (id) initWithData: (NSData*) data sampleRate: (NSUInteger) sampleRate
+- (id) initWithData: (void *) data ofLength: (NSUInteger) dataSize sampleRate: (NSUInteger) sampleRate
     sampleFormat: (FISampleFormat) sampleFormat error: (NSError**) error
 {
     self = [super init];
@@ -13,7 +13,8 @@
     if (data != nil) {
         _sampleFormat = sampleFormat;
         _sampleRate = sampleRate;
-        _numberOfSamples = [data length] / [self bytesPerSample];
+        _numberOfSamples = dataSize / [self bytesPerSample];
+        //theData = data;
     } else {
         return nil;
     }
@@ -29,6 +30,7 @@
 
     alClearError();
     alGenBuffers(1, &_handle);
+    
     status = alGetError();
     if (status) {
         *error = [FIError errorWithMessage:@"Failed to create OpenAL buffer"
@@ -37,7 +39,8 @@
     }
 
     alClearError();
-    alBufferData(_handle, [self OpenALSampleFormat], [data bytes], [data length], sampleRate);
+    alBufferData(_handle, [self OpenALSampleFormat], data, dataSize, sampleRate);
+    
     status = alGetError();
     if (status) {
         *error = [FIError errorWithMessage:@"Failed to pass sample data to OpenAL"
@@ -53,6 +56,7 @@
     if (_handle) {
         alDeleteBuffers(1, &_handle);
         _handle = 0;
+        //free ( [theData bytes] );
     }
 }
 

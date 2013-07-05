@@ -2,6 +2,8 @@
 #import "FISoundContext.h"
 #import "FISoundDevice.h"
 
+#import "FISampleBufferConstructor.h"
+
 @interface FISoundEngine ()
 @property(strong) FISoundDevice *soundDevice;
 @property(strong) FISoundContext *soundContext;
@@ -66,7 +68,37 @@
     return [self soundNamed:soundName maxPolyphony:1 error:error];
 }
 
+- (void) playSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices
+{
+    if ([self.sounds objectForKey:soundName]) {
+        [((FISound*)[self.sounds objectForKey:soundName]) play];
+    }
+    else {
+        NSOperationQueue *opQueue = [FISoundEngine sharedOperationQueue];
+        FISampleBufferConstructor *bufferConstructor = [[FISampleBufferConstructor alloc] initWithSoundNamed:soundName maxPolyphony:voices];
+
+        [bufferConstructor setQueuePriority:NSOperationQueuePriorityVeryLow];
+        
+        // start the construction operation, will load and play sound in queue.
+        [opQueue addOperation:bufferConstructor];
+    }
+}
+
++(NSOperationQueue *)sharedOperationQueue {
+    @synchronized( [FISoundEngine class] ) {
+        static NSOperationQueue *sharedQueue = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            sharedQueue = [[NSOperationQueue alloc] init];
+            [sharedQueue setName:@"FISampleBufferConstructor"];
+            [sharedQueue setMaxConcurrentOperationCount:1]; // try to minimize lag while we construct these
+        });
+        return sharedQueue;
+    }
+}
+
 #pragma mark Interruption Handling
+
 
 // TODO: Resume may fail here, and in that case
 // we would like to keep _suspended at YES.

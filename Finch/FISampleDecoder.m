@@ -13,14 +13,22 @@
     // Read sample data
     AudioStreamBasicDescription *format = &(struct AudioStreamBasicDescription) {0};
     NSData *sampleData = [self readSampleDataAtPath:path fileFormat:format error:error];
+    void *sampleDataRaw = nil;
+    UInt32 sampleDataRawSize;
+    AudioBufferList *convertedAudio = nil;
     if (!sampleData) {
 
         if ( [*error code] == FIErrorInvalidSampleFormat) {//then this audio file is not linear pcm, so we need to convert it
-            
-            sampleData = [self convertAudio:name withFormat:&format];
+            convertedAudio = [self convertAudio:name withFormat:&format];
+            sampleDataRaw = convertedAudio->mBuffers[0].mData;
+            sampleDataRawSize = convertedAudio->mBuffers[0].mDataByteSize;
         }
-        if (!sampleData)
+        if (!sampleDataRaw)
             return nil;
+    }
+    else {
+        sampleDataRaw = (void *)[sampleData bytes];
+        sampleDataRawSize = [sampleData length];
     }
 
     // Check sample format
@@ -31,7 +39,7 @@
     // Create sample buffer
     NSError *bufferError = nil;
     FISampleBuffer *buffer = [[FISampleBuffer alloc]
-        initWithData:sampleData sampleRate:format->mSampleRate
+        initWithData:sampleDataRaw ofLength:sampleDataRawSize sampleRate:format->mSampleRate
         sampleFormat:FISampleFormatMake(format->mChannelsPerFrame, format->mBitsPerChannel)
         error:&bufferError];
 
@@ -64,7 +72,7 @@
     }
 }
 
-+ (NSData *) convertAudio: (NSString *) path withFormat:(AudioStreamBasicDescription**)format {
++ (AudioBufferList *) convertAudio: (NSString *) path withFormat: (AudioStreamBasicDescription**) format {
     NSString *name;
     NSString *type;
     
@@ -80,7 +88,9 @@
     OSType outputFormat = kAudioFormatLinearPCM;
     AudioBufferList *convertedAudio = GetConvertedData(sourceURL, outputFormat, 0, format);
     
-    return [NSData dataWithBytes:convertedAudio->mBuffers[0].mData length:convertedAudio->mBuffers[0].mDataByteSize];
+    //*outSize = new UInt32convertedAudio->mBuffers[0].mDataByteSize;
+    
+    return convertedAudio;
 }
 
 + (BOOL) checkFormatSanity: (AudioStreamBasicDescription) format error: (NSError**) error

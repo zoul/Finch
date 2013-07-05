@@ -50,7 +50,11 @@
 
 - (void) stop
 {
-    for (FISound *voice in _voices) {
+    ///????? why
+//    for (FISound *voice in _voices) {
+//        [voice stop];
+//    }
+    for (FISoundSource *voice in _voices) {
         [voice stop];
     }
 }

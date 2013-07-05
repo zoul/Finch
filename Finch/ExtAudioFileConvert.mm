@@ -591,7 +591,6 @@ AudioBufferList * GetConvertedData(CFURLRef sourceURL, OSType outputFormat, Floa
                 destBufferList->mBuffers[0].mNumberChannels = clientFormat.NumberChannels();
                 destBufferList->mBuffers[0].mDataByteSize = destBufferSize;
                 destBufferList->mBuffers[0].mData = destBuffer;
-                
                 break;
             }
             sourceFrameOffset += numFrames;
@@ -620,15 +619,15 @@ AudioBufferList * GetConvertedData(CFURLRef sourceURL, OSType outputFormat, Floa
     // close
     if (sourceFile) ExtAudioFileDispose(sourceFile);
     
-    // transition thread state to kStateDone before continuing
-    ThreadStateSetDone();
-    
     //remove the original raw read data
     for (unsigned int i = 0; i < srcBuffers.size(); i++) {
         free(srcBuffers[i]->mBuffers[0].mData);
         free(srcBuffers[i]);
     }
     srcBuffers.clear();
+    
+    // transition thread state to kStateDone before continuing
+    ThreadStateSetDone();
     
     return destBufferList;
 }
