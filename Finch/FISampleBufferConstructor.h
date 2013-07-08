@@ -11,6 +11,7 @@
 @interface FISampleBufferConstructor : NSOperation {
     NSString * soundName;
     NSUInteger voices;
+    float cacheDuration;
 }
-- (id)initWithSoundNamed:(NSString*)aSoundName maxPolyphony:(NSUInteger)numVoices;
+- (id)initWithSoundNamed:(NSString*)aSoundName maxPolyphony:(NSUInteger)numVoices withCacheDuration:(float)aCacheDuration;
 @end

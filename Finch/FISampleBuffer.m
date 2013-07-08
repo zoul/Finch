@@ -1,6 +1,14 @@
 #import "FISampleBuffer.h"
 #import "FIError.h"
 
+typedef ALvoid AL_APIENTRY (*alBufferDataStaticProcPtr) (const ALint bid,
+ALenum format,
+const ALvoid* data,
+ALsizei size,
+ALsizei freq);
+
+static alBufferDataStaticProcPtr alBufferDataStatic = NULL;
+
 @implementation FISampleBuffer
 
 #pragma mark Initialization
@@ -39,7 +47,12 @@
     }
 
     alClearError();
-    alBufferData(_handle, [self OpenALSampleFormat], data, dataSize, sampleRate);
+    
+    theData = data;
+    //alBufferDataStatic (as opposed to alBufferData) points to the passed in data, rather than copy it.
+    alBufferDataStatic = (alBufferDataStaticProcPtr) alcGetProcAddress(NULL, (const ALCchar*) "alBufferDataStatic");
+    alBufferDataStatic(_handle, [self OpenALSampleFormat], data, dataSize, sampleRate);
+    //free(data); //only needed on alBufferData, on alBufferDataStatic, we call free(data) in the dealloc.
     
     status = alGetError();
     if (status) {
@@ -56,7 +69,7 @@
     if (_handle) {
         alDeleteBuffers(1, &_handle);
         _handle = 0;
-        //free ( [theData bytes] );
+        free(theData);
     }
 }
 

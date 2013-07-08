@@ -1,7 +1,8 @@
 #import "FISampleFormat.h"
 
 @interface FISampleBuffer : NSObject {
-    //NSData* theData;
+    
+    void *theData;
 }
 @property(assign, readonly) ALuint handle;
 @property(assign, readonly) NSUInteger sampleRate;

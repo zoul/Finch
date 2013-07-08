@@ -46,11 +46,13 @@
 {
     _currentVoiceIndex = (_currentVoiceIndex + 1) % [_voices count];
     [(FISoundSource*) [_voices objectAtIndex:_currentVoiceIndex] play];
+    
+    self.lastPlayTime = [[NSDate date ] timeIntervalSince1970];
 }
 
 - (void) stop
 {
-    ///????? why
+//    ????? why
 //    for (FISound *voice in _voices) {
 //        [voice stop];
 //    }

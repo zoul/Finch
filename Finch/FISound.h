@@ -7,6 +7,9 @@
 @property(assign, nonatomic) float pitch;
 @property(assign, readonly) NSTimeInterval duration;
 
+@property(assign, nonatomic) NSTimeInterval lastPlayTime;
+@property(assign, nonatomic) float cacheDuration;
+
 - (id) initWithPath: (NSString*) path andName: (NSString *) name maxPolyphony: (NSUInteger) voices error: (NSError**) error;
 - (id) initWithPath: (NSString*) path andName: (NSString *) name error: (NSError**) error;
 

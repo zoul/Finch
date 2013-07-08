@@ -27,6 +27,7 @@
     [_soundContext setCurrent:YES];
     
     _sounds = [NSMutableDictionary dictionaryWithCapacity:1];
+    _lastTidyTime = 0;
 
     return self;
 }
@@ -68,23 +69,33 @@
     return [self soundNamed:soundName maxPolyphony:1 error:error];
 }
 
-- (void) playSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices
+- (void) playSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices {
+    [self playSoundNamed:soundName maxPolyphony:voices withCacheDuration:DEFAULT_SOUND_CACHE_DURATION];
+}
+
+- (void) playSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices withCacheDuration: (float)cacheDuration
 {
     if ([self.sounds objectForKey:soundName]) {
-        [((FISound*)[self.sounds objectForKey:soundName]) play];
+        FISound * sound = ((FISound*)[self.sounds objectForKey:soundName]);
+        if (cacheDuration < 0.0)
+            cacheDuration = 0.0;
+        [sound setCacheDuration:cacheDuration];
+        [sound play];
     }
     else {
         NSOperationQueue *opQueue = [FISoundEngine sharedOperationQueue];
-        FISampleBufferConstructor *bufferConstructor = [[FISampleBufferConstructor alloc] initWithSoundNamed:soundName maxPolyphony:voices];
-
+        FISampleBufferConstructor *bufferConstructor = [[FISampleBufferConstructor alloc] initWithSoundNamed:soundName maxPolyphony:voices withCacheDuration:cacheDuration];
+        
         [bufferConstructor setQueuePriority:NSOperationQueuePriorityVeryLow];
         
         // start the construction operation, will load and play sound in queue.
         [opQueue addOperation:bufferConstructor];
     }
+    
+    [self tidyBuffers];
 }
 
-+(NSOperationQueue *)sharedOperationQueue {
++ (NSOperationQueue*) sharedOperationQueue {
     @synchronized( [FISoundEngine class] ) {
         static NSOperationQueue *sharedQueue = nil;
         static dispatch_once_t onceToken;
@@ -94,6 +105,29 @@
             [sharedQueue setMaxConcurrentOperationCount:1]; // try to minimize lag while we construct these
         });
         return sharedQueue;
+    }
+}
+#pragma mark Sound Management
+
+- (void) tidyBuffers {
+     NSTimeInterval currentTime = [[NSDate date ] timeIntervalSince1970];
+    //only tidy memory every so often
+    if (self.lastTidyTime < (currentTime - TIDY_SOUND_BUFFERS_INTERVAL)) {
+        self.lastTidyTime = currentTime;
+        
+        NSMutableArray *deadSounds = [NSMutableArray arrayWithCapacity:0];
+        for (NSString *soundKey in [self.sounds allKeys]) {
+            FISound *sound = self.sounds[soundKey];
+            NSTimeInterval soundDuration = sound.duration;
+            if ((sound.lastPlayTime + soundDuration + sound.cacheDuration) < currentTime) {
+                [sound stop];
+                [deadSounds addObject:soundKey];
+            }
+        }
+        //actually remove the sounds from the list, cleaning up sources and buffers.
+        for (NSString *soundKey in deadSounds) {
+            [self.sounds removeObjectForKey:soundKey];
+        }
     }
 }
 
