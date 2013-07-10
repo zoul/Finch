@@ -33,13 +33,12 @@
     
     @synchronized( [FISoundEngine class] ) {
         if (sound) {
-             [((FISoundEngine *)[FISoundEngine sharedEngine]).sounds setObject:sound forKey:soundName];
+            [((FISoundEngine *)[FISoundEngine sharedEngine]).sounds setObject:sound forKey:soundName];
+            //do error handling here:
+
+            //finally play the sound
+            [sound play];
         }
-        
-        //do error handling here:
-        
-        //finally play the sound
-        [sound play];
     }
 }
 
