@@ -84,7 +84,28 @@
     }
     else {
         NSOperationQueue *opQueue = [FISoundEngine sharedOperationQueue];
-        FISampleBufferConstructor *bufferConstructor = [[FISampleBufferConstructor alloc] initWithSoundNamed:soundName maxPolyphony:voices withCacheDuration:cacheDuration];
+        FISampleBufferConstructor *bufferConstructor = [[FISampleBufferConstructor alloc] initWithSoundNamed:soundName maxPolyphony:voices withCacheDuration:cacheDuration andShouldPlay:YES];
+        
+        [bufferConstructor setQueuePriority:NSOperationQueuePriorityVeryLow];
+        
+        // start the construction operation, will load and play sound in queue.
+        [opQueue addOperation:bufferConstructor];
+    }
+    
+    [self tidyBuffers];
+}
+
+- (void) loadSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices withCacheDuration: (float)cacheDuration
+{
+    if ([self.sounds objectForKey:soundName]) {
+        FISound * sound = ((FISound*)[self.sounds objectForKey:soundName]);
+        if (cacheDuration < 0.0)
+            cacheDuration = 0.0;
+        [sound setCacheDuration:cacheDuration];
+    }
+    else {
+        NSOperationQueue *opQueue = [FISoundEngine sharedOperationQueue];
+        FISampleBufferConstructor *bufferConstructor = [[FISampleBufferConstructor alloc] initWithSoundNamed:soundName maxPolyphony:voices withCacheDuration:cacheDuration andShouldPlay:NO];
         
         [bufferConstructor setQueuePriority:NSOperationQueuePriorityVeryLow];
         

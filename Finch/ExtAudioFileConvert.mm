@@ -295,9 +295,10 @@ OSStatus DoConvertFile(CFURLRef sourceURL, CFURLRef destinationURL, OSType outpu
             clientFormat.SetCanonical(srcFormat.NumberChannels(), true);
             clientFormat.mSampleRate = srcFormat.mSampleRate;
         }
-        
-        printf("\nClient data format: "); clientFormat.Print();
-        printf("\n");
+        if (DEBUG_CONVERT_AUDIO) {
+            printf("\nClient data format: "); clientFormat.Print();
+            printf("\n");
+        }
         
         size = sizeof(clientFormat);
         XThrowIfError(ExtAudioFileSetProperty(sourceFile, kExtAudioFileProperty_ClientDataFormat, size, &clientFormat), "couldn't set source client format");

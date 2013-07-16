@@ -12,19 +12,19 @@
 
 @implementation FISampleBufferConstructor
 
-- (id)initWithSoundNamed:(NSString*)aSoundName maxPolyphony:(NSUInteger)numVoices withCacheDuration:(float)aCacheDuration {
+- (id)initWithSoundNamed:(NSString*)aSoundName maxPolyphony:(NSUInteger)numVoices withCacheDuration:(float)aCacheDuration andShouldPlay:(bool)play {
     
     if (self = [super init]) {
         soundName = aSoundName;
         voices = numVoices;
         cacheDuration = aCacheDuration;
+        shouldPlay = play;
     }
     return self;
 }
 
 - (void)main {
-     NSError* error;
-    
+    NSError* error;
     FISound *sound = [[FISound alloc]
                       initWithPath:[((FISoundEngine *)[FISoundEngine sharedEngine]).soundBundle pathForResource:soundName ofType:nil] andName:soundName
                       maxPolyphony:voices error:&error];
@@ -35,9 +35,10 @@
         if (sound) {
             [((FISoundEngine *)[FISoundEngine sharedEngine]).sounds setObject:sound forKey:soundName];
             //do error handling here:
-
-            //finally play the sound
-            [sound play];
+            if (shouldPlay) {
+                //finally play the sound
+                [sound play];
+            }
         }
     }
 }

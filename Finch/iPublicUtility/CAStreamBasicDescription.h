@@ -47,6 +47,8 @@
 #ifndef __CAStreamBasicDescription_h__
 #define __CAStreamBasicDescription_h__
 
+#define DEBUG_CA_STREAM_BASIC_DESCRIPTION 0
+
 #if !defined(__COREAUDIO_USE_FLAT_INCLUDES__)
 	#include <CoreAudio/CoreAudioTypes.h>
 	#include <CoreFoundation/CoreFoundation.h>
@@ -357,7 +359,8 @@ public:
 	}
 
 	void	Print(FILE* file) const {
-		PrintFormat (file, "", "AudioStreamBasicDescription:");	
+        if (DEBUG_CA_STREAM_BASIC_DESCRIPTION)
+            PrintFormat (file, "", "AudioStreamBasicDescription:");	
 	}
 
 	void	PrintFormat(FILE *f, const char *indent, const char *name) const {
