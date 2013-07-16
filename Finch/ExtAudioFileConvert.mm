@@ -243,8 +243,8 @@ OSStatus DoConvertFile(CFURLRef sourceURL, CFURLRef destinationURL, OSType outpu
     
     // transition thread state to kStateRunning before continuing
     ThreadStateSetRunning();
-    
-    printf("DoConvertFile\n");
+    if (DEBUG_CONVERT_AUDIO)
+        printf("DoConvertFile\n");
     
 	try {
         CAStreamBasicDescription srcFormat, dstFormat;
@@ -256,7 +256,8 @@ OSStatus DoConvertFile(CFURLRef sourceURL, CFURLRef destinationURL, OSType outpu
 		UInt32 size = sizeof(srcFormat);
 		XThrowIfError(ExtAudioFileGetProperty(sourceFile, kExtAudioFileProperty_FileDataFormat, &size, &srcFormat), "couldn't get source data format");
 		
-		printf("\nSource file format: "); srcFormat.Print();
+		if (DEBUG_CONVERT_AUDIO)
+            printf("\nSource file format: "); srcFormat.Print();
         
         // setup the output file format
         dstFormat.mSampleRate = (outputSampleRate == 0 ? srcFormat.mSampleRate : outputSampleRate); // set sample rate
@@ -278,7 +279,8 @@ OSStatus DoConvertFile(CFURLRef sourceURL, CFURLRef destinationURL, OSType outpu
             XThrowIfError(AudioFormatGetProperty(kAudioFormatProperty_FormatInfo, 0, NULL, &size, &dstFormat), "couldn't create destination data format");
         }
         
-        printf("\nDestination file format: "); dstFormat.Print();
+        if (DEBUG_CONVERT_AUDIO)
+            printf("\nDestination file format: "); dstFormat.Print();
         
         // create the destination file
         XThrowIfError(ExtAudioFileCreateWithURL(destinationURL, kAudioFileCAFType, &dstFormat, NULL, kAudioFileFlags_EraseFile, &destinationFile), "ExtAudioFileCreateWithURL failed!");
@@ -322,16 +324,18 @@ OSStatus DoConvertFile(CFURLRef sourceURL, CFURLRef destinationURL, OSType outpu
             
             if (0 == canResume) canResumeFromInterruption = false;
             
-            printf("Audio Converter %s continue after interruption!\n", (canResumeFromInterruption == 0 ? "CANNOT" : "CAN"));
+            if (DEBUG_CONVERT_AUDIO)
+                printf("Audio Converter %s continue after interruption!\n", (canResumeFromInterruption == 0 ? "CANNOT" : "CAN"));
         } else {
             // if the property is unimplemented (kAudioConverterErr_PropertyNotSupported, or paramErr returned in the case of PCM),
             // then the codec being used is not a hardware codec so we're not concerned about codec state
             // we are always going to be able to resume conversion after an interruption
-            
-            if (kAudioConverterErr_PropertyNotSupported == error) {
-                printf("kAudioConverterPropertyCanResumeFromInterruption property not supported!\n");
-            } else {
-                printf("AudioConverterGetProperty kAudioConverterPropertyCanResumeFromInterruption result %ld\n", error);
+            if (DEBUG_CONVERT_AUDIO) {
+                if (kAudioConverterErr_PropertyNotSupported == error) {
+                    printf("kAudioConverterPropertyCanResumeFromInterruption property not supported!\n");
+                } else {
+                    printf("AudioConverterGetProperty kAudioConverterPropertyCanResumeFromInterruption result %ld\n", error);
+                }
             }
             
             error = noErr;
@@ -346,7 +350,8 @@ OSStatus DoConvertFile(CFURLRef sourceURL, CFURLRef destinationURL, OSType outpu
         SInt64 sourceFrameOffset = 0;
         
         //***** do the read and write - the conversion is done on and by the write call *****//
-        printf("Converting...\n");
+        if (DEBUG_CONVERT_AUDIO)
+            printf("Converting...\n");
         while (1) {
             
             AudioBufferList fillBufList;
@@ -384,7 +389,8 @@ OSStatus DoConvertFile(CFURLRef sourceURL, CFURLRef destinationURL, OSType outpu
             if (error) {
                 if (kExtAudioFileError_CodecUnavailableInputConsumed == error) {
                     
-                    printf("ExtAudioFileWrite kExtAudioFileError_CodecUnavailableInputConsumed error %ld\n", error);
+                    if (DEBUG_CONVERT_AUDIO)
+                        printf("ExtAudioFileWrite kExtAudioFileError_CodecUnavailableInputConsumed error %ld\n", error);
                     
                     /*
                      Returned when ExtAudioFileWrite was interrupted. You must stop calling
@@ -397,7 +403,8 @@ OSStatus DoConvertFile(CFURLRef sourceURL, CFURLRef destinationURL, OSType outpu
                     
                 } else if (kExtAudioFileError_CodecUnavailableInputNotConsumed == error) {
                     
-                    printf("ExtAudioFileWrite kExtAudioFileError_CodecUnavailableInputNotConsumed error %ld\n", error);
+                    if (DEBUG_CONVERT_AUDIO)
+                        printf("ExtAudioFileWrite kExtAudioFileError_CodecUnavailableInputNotConsumed error %ld\n", error);
                     
                     /*
                      Returned when ExtAudioFileWrite was interrupted. You must stop calling
@@ -448,7 +455,8 @@ AudioBufferList * GetConvertedData(CFURLRef sourceURL, OSType outputFormat, Floa
     // transition thread state to kStateRunning before continuing
     ThreadStateSetRunning();
     
-    printf("DoConvertFile\n");
+    if (DEBUG_CONVERT_AUDIO)
+        printf("DoConvertFile\n");
     
     std::vector<AudioBufferList *> srcBuffers;
     
@@ -462,7 +470,8 @@ AudioBufferList * GetConvertedData(CFURLRef sourceURL, OSType outputFormat, Floa
 		UInt32 size = sizeof(srcFormat);
 		XThrowIfError(ExtAudioFileGetProperty(sourceFile, kExtAudioFileProperty_FileDataFormat, &size, &srcFormat), "couldn't get source data format");
 		
-		printf("\nSource file format: "); srcFormat.Print();
+		if (DEBUG_CONVERT_AUDIO)
+            printf("\nSource file format: "); srcFormat.Print();
         
         // setup the output file format
         dstFormat.mSampleRate = (outputSampleRate == 0 ? srcFormat.mSampleRate : outputSampleRate); // set sample rate
@@ -484,7 +493,8 @@ AudioBufferList * GetConvertedData(CFURLRef sourceURL, OSType outputFormat, Floa
             XThrowIfError(AudioFormatGetProperty(kAudioFormatProperty_FormatInfo, 0, NULL, &size, &dstFormat), "couldn't create destination data format");
         }
         
-        printf("\nDestination file format: "); dstFormat.Print();
+        if (DEBUG_CONVERT_AUDIO)
+            printf("\nDestination file format: "); dstFormat.Print();
         
         
         // set the client format - The format must be linear PCM (kAudioFormatLinearPCM)
@@ -498,8 +508,10 @@ AudioBufferList * GetConvertedData(CFURLRef sourceURL, OSType outputFormat, Floa
             clientFormat.mSampleRate = srcFormat.mSampleRate;
         }
         
-        printf("\nClient data format: "); clientFormat.Print();
-        printf("\n");
+        if (DEBUG_CONVERT_AUDIO) {
+            printf("\nClient data format: "); clientFormat.Print();
+            printf("\n");
+        }
         
         size = sizeof(clientFormat);
         XThrowIfError(ExtAudioFileSetProperty(sourceFile, kExtAudioFileProperty_ClientDataFormat, size, &clientFormat), "couldn't set source client format");
@@ -524,16 +536,19 @@ AudioBufferList * GetConvertedData(CFURLRef sourceURL, OSType outputFormat, Floa
             
             if (0 == canResume) canResumeFromInterruption = false;
             
-            printf("Audio Converter %s continue after interruption!\n", (canResumeFromInterruption == 0 ? "CANNOT" : "CAN"));
+            if (DEBUG_CONVERT_AUDIO)
+                printf("Audio Converter %s continue after interruption!\n", (canResumeFromInterruption == 0 ? "CANNOT" : "CAN"));
         } else {
             // if the property is unimplemented (kAudioConverterErr_PropertyNotSupported, or paramErr returned in the case of PCM),
             // then the codec being used is not a hardware codec so we're not concerned about codec state
             // we are always going to be able to resume conversion after an interruption
             
-            if (kAudioConverterErr_PropertyNotSupported == error) {
-                printf("kAudioConverterPropertyCanResumeFromInterruption property not supported!\n");
-            } else {
-                printf("AudioConverterGetProperty kAudioConverterPropertyCanResumeFromInterruption result %ld\n", error);
+            if (DEBUG_CONVERT_AUDIO) {
+                if (kAudioConverterErr_PropertyNotSupported == error) {
+                    printf("kAudioConverterPropertyCanResumeFromInterruption property not supported!\n");
+                } else {
+                    printf("AudioConverterGetProperty kAudioConverterPropertyCanResumeFromInterruption result %ld\n", error);
+                }
             }
             
             error = noErr;
@@ -547,7 +562,8 @@ AudioBufferList * GetConvertedData(CFURLRef sourceURL, OSType outputFormat, Floa
         SInt64 sourceFrameOffset = 0;
         
         //***** do the read and write - the conversion is done on and by the write call *****//
-        printf("Converting...\n");
+        if (DEBUG_CONVERT_AUDIO)
+            printf("Converting...\n");
         
         int destBufferSize = 0;
         

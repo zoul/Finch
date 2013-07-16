@@ -9,6 +9,7 @@
 #ifndef Bazingo_ExtAudioFileConvert_h
 #define Bazingo_ExtAudioFileConvert_h
 
+#define DEBUG_CONVERT_AUDIO 0
 
 __BEGIN_DECLS
 
