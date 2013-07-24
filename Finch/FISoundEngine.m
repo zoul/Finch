@@ -27,6 +27,8 @@
     [_soundContext setCurrent:YES];
     
     _sounds = [NSMutableDictionary dictionaryWithCapacity:1];
+    _soundsCalledToLoad = [NSMutableSet setWithCapacity:1];
+    
     _lastTidyTime = 0;
 
     return self;
@@ -75,45 +77,62 @@
 
 - (void) playSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices withCacheDuration: (float)cacheDuration
 {
-    if ([self.sounds objectForKey:soundName]) {
-        FISound * sound = ((FISound*)[self.sounds objectForKey:soundName]);
-        if (cacheDuration < 0.0)
-            cacheDuration = 0.0;
-        [sound setCacheDuration:cacheDuration];
-        [sound play];
-    }
-    else {
-        NSOperationQueue *opQueue = [FISoundEngine sharedOperationQueue];
-        FISampleBufferConstructor *bufferConstructor = [[FISampleBufferConstructor alloc] initWithSoundNamed:soundName maxPolyphony:voices withCacheDuration:cacheDuration andShouldPlay:YES];
+    @synchronized( [FISoundEngine class] ) {
+        if ([self.sounds objectForKey:soundName]) {
+            FISound * sound = ((FISound*)[self.sounds objectForKey:soundName]);
+            if (cacheDuration < 0.0)
+                cacheDuration = 0.0;
+            [sound setCacheDuration:cacheDuration];
+            
+            [sound play];            
+        }
+        else {
+            //if we've already made a call to load this sound, don't do it again.
+            if ([self.soundsCalledToLoad containsObject:soundName]) {
+                return;
+            }
+            [self.soundsCalledToLoad addObject:soundName];
+            
+            NSOperationQueue *opQueue = [FISoundEngine sharedOperationQueue];
+            FISampleBufferConstructor *bufferConstructor = [[FISampleBufferConstructor alloc] initWithSoundNamed:soundName maxPolyphony:voices withCacheDuration:cacheDuration andShouldPlay:YES];
+            
+            [bufferConstructor setQueuePriority:NSOperationQueuePriorityVeryLow];
+            
+            // start the construction operation, will load and play sound in queue.
+            [opQueue addOperation:bufferConstructor];
+        }
         
-        [bufferConstructor setQueuePriority:NSOperationQueuePriorityVeryLow];
-        
-        // start the construction operation, will load and play sound in queue.
-        [opQueue addOperation:bufferConstructor];
-    }
-    
-    [self tidyBuffers];
+        [self tidyBuffers];
+     }
 }
 
 - (void) loadSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices withCacheDuration: (float)cacheDuration
 {
-    if ([self.sounds objectForKey:soundName]) {
-        FISound * sound = ((FISound*)[self.sounds objectForKey:soundName]);
-        if (cacheDuration < 0.0)
-            cacheDuration = 0.0;
-        [sound setCacheDuration:cacheDuration];
-    }
-    else {
-        NSOperationQueue *opQueue = [FISoundEngine sharedOperationQueue];
-        FISampleBufferConstructor *bufferConstructor = [[FISampleBufferConstructor alloc] initWithSoundNamed:soundName maxPolyphony:voices withCacheDuration:cacheDuration andShouldPlay:NO];
+    @synchronized( [FISoundEngine class] ) {
+        if ([self.sounds objectForKey:soundName]) {
+            FISound * sound = ((FISound*)[self.sounds objectForKey:soundName]);
+            if (cacheDuration < 0.0)
+                cacheDuration = 0.0;
+            [sound setCacheDuration:cacheDuration];
+        }
+        else {
+            //if we've already made a call to load this sound, don't do it again.
+            if ([self.soundsCalledToLoad containsObject:soundName]) {
+                return;
+            }
+            [self.soundsCalledToLoad addObject:soundName];
+            
+            NSOperationQueue *opQueue = [FISoundEngine sharedOperationQueue];
+            FISampleBufferConstructor *bufferConstructor = [[FISampleBufferConstructor alloc] initWithSoundNamed:soundName maxPolyphony:voices withCacheDuration:cacheDuration andShouldPlay:NO];
+            
+            [bufferConstructor setQueuePriority:NSOperationQueuePriorityVeryLow];
+            
+            // start the construction operation, will load and play sound in queue.
+            [opQueue addOperation:bufferConstructor];
+        }
         
-        [bufferConstructor setQueuePriority:NSOperationQueuePriorityVeryLow];
-        
-        // start the construction operation, will load and play sound in queue.
-        [opQueue addOperation:bufferConstructor];
+        [self tidyBuffers];
     }
-    
-    [self tidyBuffers];
 }
 
 + (NSOperationQueue*) sharedOperationQueue {
@@ -148,6 +167,7 @@
         //actually remove the sounds from the list, cleaning up sources and buffers.
         for (NSString *soundKey in deadSounds) {
             [self.sounds removeObjectForKey:soundKey];
+            [self.soundsCalledToLoad removeObject:soundKey];
         }
     }
 }
