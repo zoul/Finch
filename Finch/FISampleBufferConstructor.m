@@ -25,8 +25,16 @@
 
 - (void)main {
     NSError* error;
+    
+    NSString *fullpath;
+    if ( [[NSFileManager defaultManager] fileExistsAtPath:soundName] ) {
+        fullpath = soundName;
+    } else {
+        fullpath = [((FISoundEngine *)[FISoundEngine sharedEngine]).soundBundle pathForResource:soundName ofType:nil];
+    }
+    
     FISound *sound = [[FISound alloc]
-                      initWithPath:[((FISoundEngine *)[FISoundEngine sharedEngine]).soundBundle pathForResource:soundName ofType:nil] andName:soundName
+                      initWithPath:fullpath andName:soundName
                       maxPolyphony:voices error:&error];
     
     sound.cacheDuration = cacheDuration;

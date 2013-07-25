@@ -19,7 +19,7 @@
     if (!sampleData) {
 
         if ( [*error code] == FIErrorInvalidSampleFormat) {//then this audio file is not linear pcm, so we need to convert it
-            convertedAudio = [self convertAudio:name withFormat:&format];
+            convertedAudio = [self convertAudio:path withFormat:&format];
             sampleDataRaw = convertedAudio->mBuffers[0].mData;
             sampleDataRawSize = convertedAudio->mBuffers[0].mDataByteSize;
         }
@@ -35,7 +35,7 @@
     if (![self checkFormatSanity:*format error:error]) {
         return nil;
     }
-    
+
     // Create sample buffer
     NSError *bufferError = nil;
     FISampleBuffer *buffer = [[FISampleBuffer alloc]
@@ -51,7 +51,7 @@
         }];
         return nil;
     }
-    
+
     return buffer;
 }
 
@@ -73,13 +73,8 @@
 }
 
 + (AudioBufferList *) convertAudio: (NSString *) path withFormat: (AudioStreamBasicDescription**) format {
-    NSString *name;
-    NSString *type;
     
-    [self getFileNameAndType:path outName:&name outType:&type];
-    
-    NSString *source = [[NSBundle mainBundle]  pathForResource:name ofType:type];
-    CFURLRef sourceURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)source, kCFURLPOSIXPathStyle, false);
+    CFURLRef sourceURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)path, kCFURLPOSIXPathStyle, false);
     
     //NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     //NSString *documentsDirectory = [paths objectAtIndex:0];
