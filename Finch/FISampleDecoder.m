@@ -35,7 +35,7 @@
     if (![self checkFormatSanity:*format error:error]) {
         return nil;
     }
-
+    
     // Create sample buffer
     NSError *bufferError = nil;
     FISampleBuffer *buffer = [[FISampleBuffer alloc]
@@ -51,7 +51,7 @@
         }];
         return nil;
     }
-
+    
     return buffer;
 }
 

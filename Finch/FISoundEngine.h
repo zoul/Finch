@@ -9,6 +9,7 @@
 @property(assign, nonatomic, getter = isSuspended) BOOL suspended;
 
 @property(strong, nonatomic) NSMutableDictionary *sounds;
+@property(strong, nonatomic) NSMutableSet *soundsCalledToLoad;
 
 @property (nonatomic) NSTimeInterval lastTidyTime;
 
