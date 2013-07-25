@@ -77,6 +77,8 @@
 
 - (void) playSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices withCacheDuration: (float)cacheDuration
 {
+    if (!soundName)
+        return;
     @synchronized( [FISoundEngine class] ) {
         if ([self.sounds objectForKey:soundName]) {
             FISound * sound = ((FISound*)[self.sounds objectForKey:soundName]);
@@ -108,6 +110,8 @@
 
 - (void) loadSoundNamed: (NSString*) soundName maxPolyphony: (NSUInteger) voices withCacheDuration: (float)cacheDuration
 {
+    if (!soundName)
+        return;
     @synchronized( [FISoundEngine class] ) {
         if ([self.sounds objectForKey:soundName]) {
             FISound * sound = ((FISound*)[self.sounds objectForKey:soundName]);
