@@ -1,14 +1,6 @@
 #import "FISampleBuffer.h"
 #import "FIError.h"
 
-typedef ALvoid AL_APIENTRY (*alBufferDataStaticProcPtr) (const ALint bid,
-ALenum format,
-const ALvoid* data,
-ALsizei size,
-ALsizei freq);
-
-static alBufferDataStaticProcPtr alBufferDataStatic = NULL;
-
 @implementation FISampleBuffer
 
 #pragma mark Initialization
@@ -22,7 +14,6 @@ static alBufferDataStaticProcPtr alBufferDataStatic = NULL;
         _sampleFormat = sampleFormat;
         _sampleRate = sampleRate;
         _numberOfSamples = dataSize / [self bytesPerSample];
-        //theData = data;
     } else {
         return nil;
     }
@@ -48,11 +39,11 @@ static alBufferDataStaticProcPtr alBufferDataStatic = NULL;
 
     alClearError();
     
-    theData = data;
-    //alBufferDataStatic (as opposed to alBufferData) points to the passed in data, rather than copy it.
-    alBufferDataStatic = (alBufferDataStaticProcPtr) alcGetProcAddress(NULL, (const ALCchar*) "alBufferDataStatic");
-    alBufferDataStatic(_handle, [self OpenALSampleFormat], data, dataSize, sampleRate);
-    //free(data); //only needed on alBufferData, on alBufferDataStatic, we call free(data) in the dealloc.
+    // iOS appears to have issues with alBufferDataStatic, we'll avoid using it to be safe
+    // http://books.google.ca/books?id=QoxeAqTvevIC&pg=PA509&lpg=PA509&dq=alBufferDataStatic&source=bl&ots=fLRdN_PBe4&sig=S9xFWvwSQVx4Qa1tXTBWw-PRTK0&hl=en&sa=X&ei=Hcf2UZeIO5be4APk5ICADA&ved=0CEEQ6AEwAw#v=onepage&q=alBufferDataStatic&f=false
+    // http://benbritten.com/2009/09/20/albufferdatastatic-why-you-should-avoid-it/
+    alGenBuffers(1, &_handle);
+    alBufferData(_handle, [self OpenALSampleFormat], data, dataSize, sampleRate);
     
     status = alGetError();
     if (status) {
@@ -69,7 +60,6 @@ static alBufferDataStaticProcPtr alBufferDataStatic = NULL;
     if (_handle) {
         alDeleteBuffers(1, &_handle);
         _handle = 0;
-        free(theData);
     }
 }
 

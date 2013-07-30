@@ -42,6 +42,10 @@
         initWithData:sampleDataRaw ofLength:sampleDataRawSize sampleRate:format->mSampleRate
         sampleFormat:FISampleFormatMake(format->mChannelsPerFrame, format->mBitsPerChannel)
         error:&bufferError];
+    
+    // Clean up
+    free ( convertedAudio );
+    free ( sampleDataRaw );
 
     if (!buffer) {
         *error = [NSError errorWithDomain:FIErrorDomain
@@ -76,14 +80,8 @@
     
     CFURLRef sourceURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)path, kCFURLPOSIXPathStyle, false);
     
-    //NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    //NSString *documentsDirectory = [paths objectAtIndex:0];
-    //NSString *destinationFilePath = [[NSString alloc] initWithFormat: @"%@/outputt.caf", documentsDirectory];
-    
     OSType outputFormat = kAudioFormatLinearPCM;
     AudioBufferList *convertedAudio = GetConvertedData(sourceURL, outputFormat, 0, format);
-    
-    //*outSize = new UInt32convertedAudio->mBuffers[0].mDataByteSize;
     
     return convertedAudio;
 }
