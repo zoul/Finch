@@ -13,12 +13,12 @@
 
 #pragma mark Initialization
 
-- (id) initWithPath: (NSString*) path maxPolyphony: (NSUInteger) maxPolyphony error: (NSError**) error
+- (id) initWithPath: (NSString*) path andName: (NSString *) name maxPolyphony: (NSUInteger) maxPolyphony error: (NSError**) error
 {
     self = [super init];
     _voices = @[];
 
-    FISampleBuffer *buffer = [FISampleDecoder decodeSampleAtPath:path error:error];
+    FISampleBuffer *buffer = [FISampleDecoder decodeSampleAtPath:path andName:name error:error];
     if (!buffer || !maxPolyphony) {
         return nil;
     }
@@ -35,9 +35,9 @@
     return self;
 }
 
-- (id) initWithPath: (NSString*) path error: (NSError**) error
+- (id) initWithPath: (NSString*) path andName: (NSString *) name error: (NSError**) error
 {
-    return [self initWithPath:path maxPolyphony:1 error:error];
+    return [self initWithPath:path andName:name maxPolyphony:1 error:error];
 }
 
 #pragma mark Playback
@@ -46,11 +46,17 @@
 {
     _currentVoiceIndex = (_currentVoiceIndex + 1) % [_voices count];
     [(FISoundSource*) [_voices objectAtIndex:_currentVoiceIndex] play];
+    
+    self.lastPlayTime = [[NSDate date ] timeIntervalSince1970];
 }
 
 - (void) stop
 {
-    for (FISound *voice in _voices) {
+//    ????? why
+//    for (FISound *voice in _voices) {
+//        [voice stop];
+//    }
+    for (FISoundSource *voice in _voices) {
         [voice stop];
     }
 }

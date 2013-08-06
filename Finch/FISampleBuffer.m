@@ -5,7 +5,7 @@
 
 #pragma mark Initialization
 
-- (id) initWithData: (NSData*) data sampleRate: (NSUInteger) sampleRate
+- (id) initWithData: (void *) data ofLength: (NSUInteger) dataSize sampleRate: (NSUInteger) sampleRate
     sampleFormat: (FISampleFormat) sampleFormat error: (NSError**) error
 {
     self = [super init];
@@ -13,7 +13,7 @@
     if (data != nil) {
         _sampleFormat = sampleFormat;
         _sampleRate = sampleRate;
-        _numberOfSamples = [data length] / [self bytesPerSample];
+        _numberOfSamples = dataSize / [self bytesPerSample];
     } else {
         return nil;
     }
@@ -29,6 +29,7 @@
 
     alClearError();
     alGenBuffers(1, &_handle);
+    
     status = alGetError();
     if (status) {
         *error = [FIError errorWithMessage:@"Failed to create OpenAL buffer"
@@ -37,7 +38,13 @@
     }
 
     alClearError();
-    alBufferData(_handle, [self OpenALSampleFormat], [data bytes], [data length], sampleRate);
+    
+    // iOS appears to have issues with alBufferDataStatic, we'll avoid using it to be safe
+    // http://books.google.ca/books?id=QoxeAqTvevIC&pg=PA509&lpg=PA509&dq=alBufferDataStatic&source=bl&ots=fLRdN_PBe4&sig=S9xFWvwSQVx4Qa1tXTBWw-PRTK0&hl=en&sa=X&ei=Hcf2UZeIO5be4APk5ICADA&ved=0CEEQ6AEwAw#v=onepage&q=alBufferDataStatic&f=false
+    // http://benbritten.com/2009/09/20/albufferdatastatic-why-you-should-avoid-it/
+    alGenBuffers(1, &_handle);
+    alBufferData(_handle, [self OpenALSampleFormat], data, dataSize, sampleRate);
+    
     status = alGetError();
     if (status) {
         *error = [FIError errorWithMessage:@"Failed to pass sample data to OpenAL"

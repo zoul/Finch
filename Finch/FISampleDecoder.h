@@ -2,6 +2,6 @@
 
 @interface FISampleDecoder : NSObject
 
-+ (FISampleBuffer*) decodeSampleAtPath: (NSString*) path error: (NSError**) error;
++ (FISampleBuffer*) decodeSampleAtPath: (NSString*) path andName: (NSString *) name error: (NSError**) error;
 
 @end

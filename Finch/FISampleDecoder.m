@@ -2,30 +2,50 @@
 #import "FISampleBuffer.h"
 #import "FIError.h"
 
+#import "ExtAudioFileConvert.h"
+
 @implementation FISampleDecoder
 
-+ (FISampleBuffer*) decodeSampleAtPath: (NSString*) path error: (NSError**) error
++ (FISampleBuffer*) decodeSampleAtPath: (NSString*) path andName: (NSString *) name error: (NSError**) error
 {
     FI_INIT_ERROR_IF_NULL(error);
 
     // Read sample data
-    AudioStreamBasicDescription format = {0};
-    NSData *sampleData = [self readSampleDataAtPath:path fileFormat:&format error:error];
+    AudioStreamBasicDescription *format = &(struct AudioStreamBasicDescription) {0};
+    NSData *sampleData = [self readSampleDataAtPath:path fileFormat:format error:error];
+    void *sampleDataRaw = nil;
+    UInt32 sampleDataRawSize;
+    AudioBufferList *convertedAudio = nil;
     if (!sampleData) {
-        return nil;
+
+        if ( [*error code] == FIErrorInvalidSampleFormat) {//then this audio file is not linear pcm, so we need to convert it
+            convertedAudio = [self convertAudio:path withFormat:&format];
+            sampleDataRaw = convertedAudio->mBuffers[0].mData;
+            sampleDataRawSize = convertedAudio->mBuffers[0].mDataByteSize;
+        }
+        if (!sampleDataRaw)
+            return nil;
+    }
+    else {
+        sampleDataRaw = (void *)[sampleData bytes];
+        sampleDataRawSize = [sampleData length];
     }
 
     // Check sample format
-    if (![self checkFormatSanity:format error:error]) {
+    if (![self checkFormatSanity:*format error:error]) {
         return nil;
     }
 
     // Create sample buffer
     NSError *bufferError = nil;
     FISampleBuffer *buffer = [[FISampleBuffer alloc]
-        initWithData:sampleData sampleRate:format.mSampleRate
-        sampleFormat:FISampleFormatMake(format.mChannelsPerFrame, format.mBitsPerChannel)
+        initWithData:sampleDataRaw ofLength:sampleDataRawSize sampleRate:format->mSampleRate
+        sampleFormat:FISampleFormatMake(format->mChannelsPerFrame, format->mBitsPerChannel)
         error:&bufferError];
+    
+    // Clean up
+    free ( convertedAudio );
+    free ( sampleDataRaw );
 
     if (!buffer) {
         *error = [NSError errorWithDomain:FIErrorDomain
@@ -37,6 +57,33 @@
     }
 
     return buffer;
+}
+
++ (void) getFileNameAndType: (NSString *) path outName: (NSString**) name outType: (NSString**) type {
+    NSArray *fileNameArray = [path componentsSeparatedByString:@"."];
+    
+    if ([fileNameArray count] > 0) {
+        *name = [fileNameArray objectAtIndex:0];
+        //acount for filenames with more than one .
+        if ([fileNameArray count] > 2) {
+            for (int i = 1; i < [fileNameArray count]-1; i++){
+                *name = [NSString stringWithFormat:@"%@.%@", *name, fileNameArray[i]];
+            }
+        }
+    }
+    if ([fileNameArray count] > 1) {
+        *type = [fileNameArray objectAtIndex:([fileNameArray count]-1)];
+    }
+}
+
++ (AudioBufferList *) convertAudio: (NSString *) path withFormat: (AudioStreamBasicDescription**) format {
+    
+    CFURLRef sourceURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)path, kCFURLPOSIXPathStyle, false);
+    
+    OSType outputFormat = kAudioFormatLinearPCM;
+    AudioBufferList *convertedAudio = GetConvertedData(sourceURL, outputFormat, 0, format);
+    
+    return convertedAudio;
 }
 
 + (BOOL) checkFormatSanity: (AudioStreamBasicDescription) format error: (NSError**) error
