@@ -26,4 +26,6 @@
 
 - (void) tidyBuffers;
 
+- (void) unloadAllSounds;
+
 @end

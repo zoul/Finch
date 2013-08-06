@@ -176,6 +176,32 @@
     }
 }
 
+- (void) unloadAllSounds {
+    @synchronized( [FISoundEngine class] ) {
+        
+        NSTimeInterval currentTime = [[NSDate date ] timeIntervalSince1970];
+
+        self.lastTidyTime = currentTime;
+        
+        NSMutableArray *deadSounds = [NSMutableArray arrayWithCapacity:0];
+        for (NSString *soundKey in [self.sounds allKeys]) {
+            FISound *sound = self.sounds[soundKey];
+            NSTimeInterval soundDuration = sound.duration;
+            //only unload this sound if it is not playing.
+            if ((sound.lastPlayTime + soundDuration) < currentTime) {
+                [sound stop];
+                [deadSounds addObject:soundKey];
+            }
+        }
+        //actually remove the sounds from the list, cleaning up sources and buffers.
+        for (NSString *soundKey in deadSounds) {
+            [self.sounds removeObjectForKey:soundKey];
+            [self.soundsCalledToLoad removeObject:soundKey];
+        }
+        
+    }
+}
+
 #pragma mark Interruption Handling
 
 
