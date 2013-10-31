@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Finch"
-  s.version      = "0.1"
+  s.version      = "1.0.0"
   s.summary      = "Simple, low-latency OpenAL sound engine for Apple iOS."
   s.homepage     = "https://github.com/zoul/Finch"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
