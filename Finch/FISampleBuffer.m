@@ -37,7 +37,7 @@
     }
 
     alClearError();
-    alBufferData(_handle, [self OpenALSampleFormat], [data bytes], [data length], sampleRate);
+    alBufferData(_handle, [self OpenALSampleFormat], [data bytes], (ALsizei)[data length], (ALsizei)sampleRate);
     status = alGetError();
     if (status) {
         *error = [FIError errorWithMessage:@"Failed to pass sample data to OpenAL"
