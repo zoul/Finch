@@ -105,6 +105,17 @@ def podspec_path
   end
 end
 
+# @return [String] The relative path of the Xcode project file.
+#
+def pbxproj_path
+  podspecs = Dir.glob('*.xcodeproj/project.pbxproj')
+  if podspecs.count == 1
+    podspecs.first
+  else
+    raise "Could not select an pbxproj"
+  end
+end
+
 # @return [String] The suggested version number based on the local and remote
 #                  version numbers.
 #
@@ -141,8 +152,19 @@ end
 # @return void
 #
 def replace_version_number(new_version_number)
-  text = File.read(podspec_path)
-  text.gsub!(/(s.version( )*= ")#{spec_version}(")/,
-              "\\1#{new_version_number}\\3")
-  File.open(podspec_path, "w") { |file| file.puts text }
+  preexisting_spec_version = spec_version
+  
+  begin
+    text = File.read(podspec_path)
+    text.gsub!(/(s.version(?: )*= ")#{preexisting_spec_version}(")/,
+                "\\1#{new_version_number}\\2")
+    File.open(podspec_path, "w") { |file| file.puts text }
+  end
+  
+  begin
+    text = File.read(pbxproj_path)
+    text.gsub!(/(MODULE_VERSION = "?)#{preexisting_spec_version}("?;)/,
+                "\\1#{new_version_number}\\2")
+    File.open(pbxproj_path, "w") { |file| file.puts text }
+  end
 end
