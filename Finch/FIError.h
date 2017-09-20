@@ -1,6 +1,8 @@
 #define FI_INIT_ERROR_IF_NULL(error) error = error ? error : &(NSError __autoreleasing*){ nil }
 #define alClearError alGetError
 
+#import <OpenAL/OpenAL.h>
+
 extern NSString *const FIErrorDomain;
 extern NSString *const FIOpenALErrorCodeKey;
 
