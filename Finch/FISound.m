@@ -4,7 +4,7 @@
 #import "FISoundSource.h"
 
 @interface FISound ()
-@property(strong) NSArray *voices;
+@property(strong) NSArray<FISoundSource*> *voices;
 @property(assign) NSUInteger currentVoiceIndex;
 @end
 
