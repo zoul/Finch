@@ -1,3 +1,5 @@
+@import AudioToolbox;
+
 #import "FISampleDecoder.h"
 #import "FISampleBuffer.h"
 #import "FIError.h"

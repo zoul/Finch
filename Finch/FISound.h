@@ -1,3 +1,5 @@
+@import Foundation;
+
 @interface FISound : NSObject
 
 @property(assign, readonly) BOOL isPlaying;

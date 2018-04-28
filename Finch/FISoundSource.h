@@ -1,3 +1,5 @@
+@import Foundation;
+
 @class FISampleBuffer;
 
 @interface FISoundSource : NSObject

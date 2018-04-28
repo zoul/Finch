@@ -1,3 +1,6 @@
+@import Foundation;
+@import OpenAL;
+
 @class FISampleBuffer;
 
 @interface FISampleDecoder : NSObject

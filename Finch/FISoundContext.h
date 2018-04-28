@@ -1,3 +1,6 @@
+@import Foundation;
+@import OpenAL;
+
 @class FISoundDevice;
 
 @interface FISoundContext : NSObject

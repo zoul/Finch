@@ -1,3 +1,6 @@
+@import Foundation;
+@import OpenAL;
+
 typedef enum {
     FISampleFormatMono8,
     FISampleFormatMono16,
