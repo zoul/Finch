@@ -4,7 +4,7 @@
 #import "FISoundSource.h"
 
 @interface FISound ()
-@property(strong) NSArray *voices;
+@property(strong) NSArray<FISoundSource*> *voices;
 @property(assign) NSUInteger currentVoiceIndex;
 @end
 
@@ -59,7 +59,7 @@
 
 - (NSTimeInterval) duration
 {
-    return [[(FISoundSource*)[_voices lastObject] sampleBuffer] duration];
+    return [[[_voices lastObject] sampleBuffer] duration];
 }
 
 - (void) forwardInvocation: (NSInvocation*) invocation
